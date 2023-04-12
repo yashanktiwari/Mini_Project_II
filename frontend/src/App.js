@@ -5,6 +5,7 @@ import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import Dashboard from "./Pages/Dashboard";
 import AboutUs from "./Pages/AboutUs";
+import ContactUs from "./Pages/ContactUs";
 
 
 const App = () => {
@@ -37,6 +38,11 @@ const App = () => {
                         exact
                         path='/aboutus'
                         element= <AboutUs />
+                    />
+                    <Route
+                        exact
+                        path='/contactus'
+                        element= <ContactUs />
                     />
                 </Routes>
             </BrowserRouter>
