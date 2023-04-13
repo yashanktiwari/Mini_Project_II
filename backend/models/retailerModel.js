@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const consumerSchema = new mongoose.Schema({
+const retailerSchema = new mongoose.Schema({
     username: {
         type: String
     },
@@ -30,10 +30,10 @@ const consumerSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        default: "consumer"
+        default: "retailer"
     }
 });
 
-const Consumer = new mongoose.model('Consumer', consumerSchema);
+const Retailer = new mongoose.model('Retailer', retailerSchema);
 
-module.exports = Consumer;
+module.exports = Retailer;
