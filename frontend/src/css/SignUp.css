@@ -1,0 +1,15 @@
+#imageUpload
+{
+    display: none;
+}
+
+
+#profile-container {
+    width: 150px;
+    height: 150px;
+
+    overflow: hidden;
+
+
+    border-radius: 50%;
+}
