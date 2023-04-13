@@ -8,7 +8,6 @@ import ContactUs from "./Pages/ContactUs";
 
 
 const App = () => {
-
     return (
         <>
             <BrowserRouter>
@@ -18,15 +17,15 @@ const App = () => {
                         path='/'
                         element= <HomePage />
                     />
-                    {/*<Route*/}
-                    {/*    exact*/}
-                    {/*    path='/login'*/}
-                    {/*    element=<LoginPage/>*/}
-                    {/*/>*/}
                     <Route
                         exact
-                        path='/signup'
-                        element=<SignupPage />
+                        path='/signupu'
+                        element=<SignupPage retailer={false}/>
+                    />
+                    <Route
+                        exact
+                        path='/signupr'
+                        element=<SignupPage retailer={true}/>
                     />
                     <Route
                         exact

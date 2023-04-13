@@ -1,11 +1,11 @@
 import Signup from "../Components/Signup";
-import Footer from "../Components/Footer";
 
-const SignupPage = () => {
+const SignupPage = ({retailer}) => {
+
     return (
         <>
             {/* Write the html code here */}
-            <Signup />
+            <Signup retailer={retailer}/>
         </>
     )
 };

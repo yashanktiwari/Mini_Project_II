@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import '../css/SignUp.css'
 
 
-const Signup = () => {
+const Signup = ({retailer}) => {
     const [password, setPassword] = useState("");
     const [fName, setFname] = useState("");
     const [lName, setLname] = useState("");
@@ -18,6 +18,7 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [altPhone, setAltPhone] = useState("");
 
+
     const navigate = useNavigate();
 
     const inputRef = useRef();
@@ -25,18 +26,34 @@ const Signup = () => {
 
     const handleSignUp = (e) => {
         e.preventDefault();
-        axios.post('/signup', { fName, lName, email, phone, altPhone, city, address, state, pin, gender, password})
-            .then((obj) => {
-                if (obj.data.errorMsg) {
-                    console.log("User already there in the db");
-                } else {
-                    console.log("User created");
-                    navigate('/login');
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        if(retailer) {
+            axios.post('/signupr', { fName, lName, email, phone, altPhone, city, address, state, pin, gender, password})
+                .then((obj) => {
+                    if (obj.data.errorMsg) {
+                        console.log("User already there in the db");
+                    } else {
+                        console.log("User created");
+                        navigate('/');
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } else {
+            axios.post('/signupu', { fName, lName, email, phone, altPhone, city, address, state, pin, gender, password})
+                .then((obj) => {
+                    if (obj.data.errorMsg) {
+                        console.log("User already there in the db");
+                    } else {
+                        console.log("User created");
+                        navigate('/');
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
     }
 
     const handleImageSubmission = (e) => {
@@ -80,7 +97,7 @@ const Signup = () => {
                                      }
                                      }>
                                     {img && (
-                                        <img src={img.img} id="profileImage" className="h-[100%] w-[100%]"/>
+                                        <img src={img.img} alt="Profile" id="profileImage" className="h-[100%] w-[100%]"/>
                                     )}
                                 </div>
                                 <br/>
@@ -219,7 +236,6 @@ const Signup = () => {
                                     </label>
                                     <div className="mt-2">
                                         <textarea
-                                            type="text"
                                             name="street-address"
                                             id="street-address"
                                             autoComplete="street-address"
