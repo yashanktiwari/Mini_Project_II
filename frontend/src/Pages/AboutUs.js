@@ -1,4 +1,5 @@
 import HomeNavbar from "../Components/HomeNavbar";
+import Footer from "../Components/Footer";
 
 const AboutUs = () => {
     return (
@@ -262,6 +263,8 @@ const AboutUs = () => {
                     </div>
                 </div>
             </section>
+
+            <Footer/>
         </>
     )
 };
