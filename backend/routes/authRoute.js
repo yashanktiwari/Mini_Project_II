@@ -54,7 +54,6 @@ function postSignUpu(req, res) {
                     gender: gender
                 })
                     .then((user) => {
-                        console.log(user)
                         res.send(user);
                     })
                     .catch((error) => {
@@ -99,7 +98,6 @@ function postSignUpr(req, res) {
                     gender: gender
                 })
                     .then((user) => {
-                        console.log(user)
                         res.send(user);
                     })
                     .catch((error) => {
