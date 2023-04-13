@@ -143,7 +143,7 @@ const LoginBoxRetailerUser = () => {
                                 <div className="flex items-start mb-6">
                                     <label
                                         htmlFor="remember"
-                                        className="ml-2 text-md font-bold text-white mx-auto self-end"
+                                        className="ml-2 text-md font-bold text-white mx-auto self-end hover:underline"
                                     >
                                         <a href="#">Forgot Password ?</a>
                                     </label>
@@ -153,9 +153,9 @@ const LoginBoxRetailerUser = () => {
                                         htmlFor="remember"
                                         className="ml-2 text-md font-medium text-white mx-auto self-end"
                                     >
-                                        <span className="font-bold text-md">
+                                        <span className="font-bold text-md ">
                                             Not Registered Yet ?{" "}
-                                            <Link to='/signupu' className="text-cyan-300">
+                                            <Link to='/signupu' className="ml-1 text-cyan-300 hover:underline">
                                                 Create User Account
                                             </Link>
                                         </span>
@@ -212,7 +212,7 @@ const LoginBoxRetailerUser = () => {
                                 <div className="flex items-start mb-6">
                                     <label
                                         htmlFor="remember"
-                                        className="ml-2 text-md font-bold text-white mx-auto self-end"
+                                        className="ml-2 text-md font-bold text-white mx-auto self-end hover:underline"
                                     >
                                         <a href="#">Forgot Password ?</a>
                                     </label>
@@ -224,7 +224,7 @@ const LoginBoxRetailerUser = () => {
                                     >
                                 <span>
                                     Not Registered Yet ?{" "}
-                                    <Link to='/signupr' className="text-cyan-300">
+                                    <Link to='/signupr' className="text-cyan-300 hover:underline ml-1">
                                         Create Retailer Account
                                     </Link>
                                 </span>
