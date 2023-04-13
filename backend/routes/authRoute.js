@@ -3,7 +3,7 @@ const express = require('express');
 const authRouter = express.Router();
 const bcrypt = require('bcrypt');
 
-const User = require('../models/userModel');
+const User = require('../models/consumerModel');
 const jwt = require('jsonwebtoken');
 
 authRouter
@@ -24,8 +24,8 @@ function getSignUp(req, res) {
 }
 
 function postSignUp(req, res) {
-    const {username, password} = req.body;
-    User.findOne({username: username})
+    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender} = req.body;
+    User.findOne({email: email})
         .then(async (userObj) => {
 
             if(userObj == null) {
@@ -37,10 +37,19 @@ function postSignUp(req, res) {
 
 
                 User.create({
-                    username: username,
-                    password: hashedPassword
+                    username: fName + " " + lName,
+                    password: hashedPassword,
+                    email: email,
+                    phone: phone,
+                    altPhone: altPhone,
+                    city: city,
+                    address: address,
+                    state: state,
+                    pin: pin,
+                    gender: gender
                 })
                     .then((user) => {
+                        console.log(user)
                         res.send(user);
                     })
                     .catch((error) => {
