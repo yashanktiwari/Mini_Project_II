@@ -105,7 +105,7 @@ const LoginBoxRetailerUser = () => {
                                 <div className="mb-6">
                                     <label
                                         htmlFor="email"
-                                        className="block mb-2 text-md font-bold mt-4 text-gray-900 dark:text-white"
+                                        className="block mb-2 text-md font-bold mt-4 text-white"
                                     >
                                         User Email
                                     </label>
@@ -124,14 +124,14 @@ const LoginBoxRetailerUser = () => {
                                 <div className="mb-6">
                                     <label
                                         htmlFor="password"
-                                        className="block mb-2 text-md font-bold text-gray-900 dark:text-white"
+                                        className="block mb-2 text-md font-bold text-white"
                                     >
                                         Password
                                     </label>
                                     <input
                                         type="password"
                                         id="password"
-                                        className="bg-gray-50 border border-gray-300 text-white text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 font-medium dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="bg-gray-50 border border-gray-300 text-black text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 font-medium dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Password"
                                         required
                                         name="password"
@@ -143,7 +143,7 @@ const LoginBoxRetailerUser = () => {
                                 <div className="flex items-start mb-6">
                                     <label
                                         htmlFor="remember"
-                                        className="ml-2 text-md font-bold text-gray-900 dark:text-white mx-auto self-end"
+                                        className="ml-2 text-md font-bold text-white mx-auto self-end"
                                     >
                                         <a href="#">Forgot Password ?</a>
                                     </label>
@@ -151,7 +151,7 @@ const LoginBoxRetailerUser = () => {
                                 <div className="flex items-start mb-6">
                                     <label
                                         htmlFor="remember"
-                                        className="ml-2 text-md font-medium text-gray-900 dark:text-white mx-auto self-end"
+                                        className="ml-2 text-md font-medium text-white mx-auto self-end"
                                     >
                                         <span className="font-bold text-md">
                                             Not Registered Yet ?{" "}
@@ -174,7 +174,7 @@ const LoginBoxRetailerUser = () => {
                                 <div className="mb-6">
                                     <label
                                         htmlFor="email"
-                                        className="block mb-2 text-md font-bold mt-4 text-gray-900 dark:text-white"
+                                        className="block mb-2 text-md font-bold mt-4 text-white"
                                     >
                                         Retailer Email
                                     </label>
@@ -193,14 +193,14 @@ const LoginBoxRetailerUser = () => {
                                 <div className="mb-6">
                                     <label
                                         htmlFor="password"
-                                        className="block mb-2 text-md font-bold text-gray-900 dark:text-white"
+                                        className="block mb-2 text-md font-bold text-white"
                                     >
                                         Password
                                     </label>
                                     <input
                                         type="password"
                                         id="password"
-                                        className="bg-gray-50 border border-gray-300 text-white text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="bg-gray-50 border border-gray-300 text-black text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Password"
                                         required
                                         name="passwordr"
@@ -212,7 +212,7 @@ const LoginBoxRetailerUser = () => {
                                 <div className="flex items-start mb-6">
                                     <label
                                         htmlFor="remember"
-                                        className="ml-2 text-md font-bold text-gray-900 dark:text-white mx-auto self-end"
+                                        className="ml-2 text-md font-bold text-white mx-auto self-end"
                                     >
                                         <a href="#">Forgot Password ?</a>
                                     </label>
@@ -220,7 +220,7 @@ const LoginBoxRetailerUser = () => {
                                 <div className="flex items-start mb-6">
                                     <label
                                         htmlFor="remember"
-                                        className="ml-2 text-md font-bold text-gray-900 dark:text-white mx-auto self-end"
+                                        className="ml-2 text-md font-bold text-white mx-auto self-end"
                                     >
                                 <span>
                                     Not Registered Yet ?{" "}
