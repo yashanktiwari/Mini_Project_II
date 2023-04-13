@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from "./Pages/Home";
-import LoginPage from "./Pages/LoginPage";
+import HomePage from "./Pages/HomePage";
 import SignupPage from "./Pages/SignupPage";
 import Dashboard from "./Pages/Dashboard";
 import AboutUs from "./Pages/AboutUs";
@@ -17,13 +16,13 @@ const App = () => {
                     <Route
                         exact
                         path='/'
-                        element= <Home />
+                        element= <HomePage />
                     />
-                    <Route
-                        exact
-                        path='/login'
-                        element=<LoginPage/>
-                    />
+                    {/*<Route*/}
+                    {/*    exact*/}
+                    {/*    path='/login'*/}
+                    {/*    element=<LoginPage/>*/}
+                    {/*/>*/}
                     <Route
                         exact
                         path='/signup'

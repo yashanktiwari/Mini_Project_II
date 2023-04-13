@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import bgImg from "../assets/img/bg_img.jpg";
 import HomeNavbar from "../Components/HomeNavbar";
+import Footer from "../Components/Footer";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -21,8 +22,10 @@ const Home = () => {
                 weight: "100vw"
             }}>
                 <HomeNavbar />
+
                 <h1>HomePage</h1>
             </body>
+            <Footer />
         </>
     )
 };
