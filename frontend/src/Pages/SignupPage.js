@@ -6,7 +6,6 @@ const SignupPage = () => {
         <>
             {/* Write the html code here */}
             <Signup />
-            <Footer />
         </>
     )
 };
