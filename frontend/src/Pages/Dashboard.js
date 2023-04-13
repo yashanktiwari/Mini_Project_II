@@ -1,4 +1,3 @@
-// import Footer from "../Components/Footer";
 import { useSelector,useDispatch } from "react-redux";
 import {setUser} from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
