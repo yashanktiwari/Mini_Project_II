@@ -73,6 +73,7 @@ const Signup = ({retailer}) => {
             {/*    <input className="border border-black" type="text" name="username" onChange={(e) => {*/}
             {/*        setUsername(e.target.value);*/}
             {/*    }}/>*/}
+            {/*Hello Hii*/}
 
             {/*    <input className="border border-black" type="password" name="password" onChange={(e) => {*/}
             {/*        setPassword(e.target.value);*/}
