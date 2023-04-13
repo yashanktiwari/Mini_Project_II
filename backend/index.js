@@ -17,10 +17,11 @@ app.use(cookieParser());
 
 // Requiring the routers
 const authRouter = require('./routes/authRoute');
+const contactusRouter = require('./routes/contactusRoute');
 
 // Middlewares for setting the routers
 app.use('/', authRouter);
-
+app.use('/', contactusRouter);
 
 // Getting the port from the environment variables
 const PORT = process.env.PORT;
