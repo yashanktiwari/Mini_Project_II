@@ -131,7 +131,8 @@ function postLoginu(req, res) {
 
                     // Creating a jwt
                     const payload = {
-                        userid: userObj._id
+                        userid: userObj._id,
+                        retailer: false
                     };
 
                     const secretKey = process.env.SECRET_KEY;
@@ -170,7 +171,8 @@ function postLoginr(req, res) {
                     // Login Successful
                     // Creating a jwt
                     const payload = {
-                        userid: userObj._id
+                        userid: userObj._id,
+                        retailer: true
                     };
 
                     const secretKey = process.env.SECRET_KEY;
@@ -196,11 +198,11 @@ function postLoginr(req, res) {
 }
 
 function getUserData(req, res) {
-    const {token, retailer} = req.body;
+    const {token} = req.body;
     const user = jwt.verify(token, process.env.SECRET_KEY);
 
     const userid = user.userid;
-
+    const retailer = user.retailer;
     if(retailer) {
         Retailer.findById(userid)
             .then((userData) => {
@@ -222,7 +224,6 @@ function getUserData(req, res) {
                 })
             });
     }
-
 }
 
 module.exports = authRouter;

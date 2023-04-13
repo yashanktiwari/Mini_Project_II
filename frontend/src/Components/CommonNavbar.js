@@ -16,6 +16,12 @@ const CommonNavbar = () => {
         navRef.current.classList.toggle("responsive_nav");
     }
 
+    const handleLogout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('isLoggedIn');
+        navigate('/');
+    }
+
     return (
         <>
             {/*    Update*/}
@@ -23,15 +29,7 @@ const CommonNavbar = () => {
                 <img src={logo} alt="Logo" className="h-[3rem] w-[10rem]"/>
 
                 <nav ref={navRef}>
-                    <button onClick={(e) => {
-                        e.preventDefault();
-                        if (userStore.user.role != null) {
-                            let flag = userStore.user.role === "retailer";
-                            navigate('/dashboard', {state: {retailer: flag}});
-                        }
-
-                    }}>Home
-                    </button>
+                    <Link to="/dashboard">Home</Link>
                     <Link to="/contactus">Contact Us!</Link>
                     <Link to="/aboutus">About Us!</Link>
                 </nav>
@@ -44,10 +42,10 @@ const CommonNavbar = () => {
                         </button>
 
                     </div>
-                    <div className="dropdown-content">
-                        <a href="#">Profile</a>
-                        <a href="#">WishList</a>
-                        <a href="#">LogOut</a>
+                    <div className="dropdown-content ">
+                        <Link to={`/profile/${userStore.user._id}`} className="hover:bg-gray-700"><span className="px-12 py-2">Profile</span></Link>
+                        <Link to={`/wishlist/${userStore.user._id}`} className="hover:bg-gray-700"><span className="px-12 py-2">Wishlist</span></Link>
+                        <Link onClick={handleLogout} className="hover:bg-gray-700 rounded-b-[12px]"><span className="px-12 py-2">Log Out</span></Link>
                     </div>
                 </div>
 

@@ -32,7 +32,7 @@ const LoginBoxRetailerUser = () => {
                         localStorage.setItem('isLoggedIn', JSON.stringify(obj.data.token));
 
                         setTimeout(() => {
-                            navigate('/dashboard', {state: {retailer: false}});
+                            navigate('/dashboard');
                         }, 1000);
                     } else {
                         console.log(obj.data.message);
