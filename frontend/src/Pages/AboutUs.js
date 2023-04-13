@@ -1,11 +1,11 @@
 import HomeNavbar from "../Components/HomeNavbar";
 import Footer from "../Components/Footer";
+import CommonNavbar from "../Components/CommonNavbar";
 
 const AboutUs = () => {
     return (
         <>
-            {/* Write the html code here */}
-            <HomeNavbar />
+            {localStorage.getItem("isLoggedIn") == null ? <HomeNavbar /> : <CommonNavbar />}
             <section className="bg-gray-900">
                 <div className="py-8 px-4 mx-auto max-w-screen-xl lg:pb-16 lg:px-6 ">
                     <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">

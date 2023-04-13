@@ -2,6 +2,7 @@ import HomeNavbar from "../Components/HomeNavbar";
 import axios from "axios";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import CommonNavbar from "../Components/CommonNavbar";
 
 const ContactUs = () => {
 
@@ -25,7 +26,7 @@ const ContactUs = () => {
 
     return (
         <>
-            <HomeNavbar />
+            {localStorage.getItem("isLoggedIn") == null ? <HomeNavbar /> : <CommonNavbar />}
             <section className="bg-gray-900">
                 <div className="py-8 lg:pb-8 px-4 mx-auto max-w-screen-md">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-white">Contact
@@ -65,7 +66,7 @@ const ContactUs = () => {
                             }></textarea>
                         </div>
                         <button type="submit"
-                                class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                                className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 border border-blue-700 rounded"
                         onClick={handleQuery} >
                             Send message
                         </button>
