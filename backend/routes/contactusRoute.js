@@ -19,7 +19,7 @@ function sendmail(email, subject, message) {
         secure: false,
         auth: {
             user: 'yashanktiwari@gmail.com',
-            pass: 'psygyvisubupxnwd'
+            pass: 'yrnegmjzkzgwxoru'
         }
     });
 
