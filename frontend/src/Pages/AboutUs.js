@@ -52,7 +52,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                                        <a href="#" className="text-gray-300 hover:text-gray-900 dark:hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path fill-rule="evenodd"
@@ -113,7 +113,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                                        <a href="#" className="text-gray-300 hover:text-gray-900 dark:hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path fill-rule="evenodd"
@@ -174,7 +174,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                                        <a href="#" className="text-gray-300 hover:text-gray-900 dark:hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path fill-rule="evenodd"
@@ -235,7 +235,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                                        <a href="#" className="text-gray-300 hover:text-gray-900 dark:hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path fill-rule="evenodd"
