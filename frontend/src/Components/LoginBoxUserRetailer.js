@@ -47,7 +47,7 @@ const LoginBoxRetailerUser = () => {
                             <form>
                                 <div className="mb-6">
                                     <label
-                                        for="email"
+                                        htmlFor="email"
                                         className="block mb-2 text-md font-bold mt-4 text-gray-900 dark:text-white"
                                     >
                                         User ID
@@ -62,7 +62,7 @@ const LoginBoxRetailerUser = () => {
                                 </div>
                                 <div className="mb-6">
                                     <label
-                                        for="password"
+                                        htmlFor="password"
                                         className="block mb-2 text-md font-bold text-gray-900 dark:text-white"
                                     >
                                         Password
@@ -77,7 +77,7 @@ const LoginBoxRetailerUser = () => {
                                 </div>
                                 <div className="flex items-start mb-6">
                                     <label
-                                        for="remember"
+                                        htmlFor="remember"
                                         className="ml-2 text-md font-bold text-gray-900 dark:text-white mx-auto self-end"
                                     >
                                         <a href="#">Forgot Password ?</a>
@@ -85,7 +85,7 @@ const LoginBoxRetailerUser = () => {
                                 </div>
                                 <div className="flex items-start mb-6">
                                     <label
-                                        for="remember"
+                                        htmlFor="remember"
                                         className="ml-2 text-md font-medium text-gray-900 dark:text-white mx-auto self-end"
                                     >
                     <span className="font-bold text-md">
@@ -108,7 +108,7 @@ const LoginBoxRetailerUser = () => {
                             <form>
                                 <div className="mb-6">
                                     <label
-                                        for="email"
+                                        htmlFor="email"
                                         className="block mb-2 text-md font-bold mt-4 text-gray-900 dark:text-white"
                                     >
                                         Retailer ID
@@ -123,7 +123,7 @@ const LoginBoxRetailerUser = () => {
                                 </div>
                                 <div className="mb-6">
                                     <label
-                                        for="password"
+                                        htmlFor="password"
                                         className="block mb-2 text-md font-bold text-gray-900 dark:text-white"
                                     >
                                         Password
@@ -138,7 +138,7 @@ const LoginBoxRetailerUser = () => {
                                 </div>
                                 <div className="flex items-start mb-6">
                                     <label
-                                        for="remember"
+                                        htmlFor="remember"
                                         className="ml-2 text-md font-bold text-gray-900 dark:text-white mx-auto self-end"
                                     >
                                         <a href="#">Forgot Password ?</a>
@@ -146,7 +146,7 @@ const LoginBoxRetailerUser = () => {
                                 </div>
                                 <div className="flex items-start mb-6">
                                     <label
-                                        for="remember"
+                                        htmlFor="remember"
                                         className="ml-2 text-md font-bold text-gray-900 dark:text-white mx-auto self-end"
                                     >
                     <span>
@@ -159,7 +159,7 @@ const LoginBoxRetailerUser = () => {
                                 </div>
                                 <button
                                     type="submit"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-md w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-md w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                 >
                                     Login
                                 </button>
