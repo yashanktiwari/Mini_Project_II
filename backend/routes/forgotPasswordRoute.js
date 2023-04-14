@@ -54,13 +54,13 @@ function sendmail(email, otp) {
         port: 587, // port for smtp
         secure: false,
         auth: {
-            user: 'yashanktiwari@gmail.com',
-            pass: 'ykixnulfxtqbqklb'
+            user: 'assist.estately@gmail.com',
+            pass: 'jajypjwmtotuyfjq'
         }
     });
 
     transporter.sendMail({
-        from: `yashanktiwari@gmail.com`,
+        from: `assist.estately@gmail.com`,
         to: `${email}`,
         subject: `Estately - Reset your password`,
         html: `

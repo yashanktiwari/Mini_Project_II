@@ -18,14 +18,14 @@ function sendmail(email, subject, message) {
         port: 587, // port for smtp
         secure: false,
         auth: {
-            user: 'yashanktiwari@gmail.com',
-            pass: 'yrnegmjzkzgwxoru'
+            user: 'assist.estately@gmail.com',
+            pass: 'jajypjwmtotuyfjq'
         }
     });
 
     transporter.sendMail({
         from: `<${email}>`,
-        to: "yashanktiwari@gmail.com",
+        to: "assist.estately@gmail.com",
         subject: `From: ${email}: ${subject}`,
         html: `
 <!DOCTYPE html>
