@@ -67,7 +67,7 @@ function postSignUp(req, res) {
             } else {
                 // User found in DB
                 res.send({
-                    errorMsg: "User already present"
+                    error: "User already present"
                 });
             }
         })
@@ -79,17 +79,13 @@ function postSignUp(req, res) {
 
 function postLogin(req, res) {
     const {useremail, password, retailer} = req.body;
-    let model;
-    if(retailer) {
-        model = Retailer;
-    } else {
-        model = Consumer;
-    }
+    let model = retailer ? Retailer : Consumer;
+
     model.findOne({email: useremail})
         .then(async (userObj) => {
             if(userObj == null) {
                 res.send({
-                    message: "User is not found!!! Please signup first"
+                    error: "User is not found!!! Please signup first"
                 })
             } else {
                 let isMatch = await bcrypt.compare(password, userObj.password);
@@ -114,7 +110,7 @@ function postLogin(req, res) {
                     });
                 } else {
                     res.send({
-                        message: "Invalid credentials"
+                        error: "Invalid credentials"
                     });
                 }
             }
@@ -137,7 +133,7 @@ function getUserData(req, res) {
             })
             .catch((error) => {
                 res.send({
-                    errorMsg: error
+                    error: error
                 })
             });
     } else {
@@ -147,7 +143,7 @@ function getUserData(req, res) {
             })
             .catch((error) => {
                 res.send({
-                    errorMsg: error
+                    error: error
                 })
             });
     }

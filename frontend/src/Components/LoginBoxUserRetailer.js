@@ -35,8 +35,6 @@ const LoginBoxRetailerUser = () => {
     const [forgotemailu, setForgotEmailu] = useState("");
     const [forgotemailr, setForgotEmailr] = useState("");
 
-    const [changePasswordToggler, setChangePasswordToggler] = useState(true);
-
     const navigate = useNavigate();
 
     const handleULogin = (e) => {
@@ -44,7 +42,7 @@ const LoginBoxRetailerUser = () => {
         axios.post('/loginu', {useremail: useremailu, password: passwordu, retailer: false})
             .then((obj) => {
                 if (!obj.data.userObj) {
-                    console.log("User not found");
+                    console.log(obj.data.error);
                 } else {
                     if (!obj.data.userObj.message) {
                         localStorage.setItem('isLoggedIn', JSON.stringify(obj.data.token));
@@ -53,7 +51,7 @@ const LoginBoxRetailerUser = () => {
                             navigate('/dashboard');
                         }, 1000);
                     } else {
-                        console.log(obj.data.message);
+                        console.log(obj.data.error);
                     }
                 }
             })
