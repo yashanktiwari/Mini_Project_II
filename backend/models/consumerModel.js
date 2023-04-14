@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const otpGenerator = require("otp-generator");
 
 const consumerSchema = new mongoose.Schema({
     username: {
@@ -31,8 +32,16 @@ const consumerSchema = new mongoose.Schema({
     role: {
         type: String,
         default: "consumer"
+    },
+    otp: {
+        type: String
     }
 });
+
+consumerSchema.methods.generateOTP = () => {
+    let gotp = otpGenerator.generate(4, {digits: true, lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false});
+    return gotp;
+}
 
 const Consumer = new mongoose.model('Consumer', consumerSchema);
 

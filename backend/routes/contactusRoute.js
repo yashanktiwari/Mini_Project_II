@@ -27,7 +27,10 @@ function sendmail(email, subject, message) {
         from: `<${email}>`,
         to: "yashanktiwari@gmail.com",
         subject: `From: ${email}: ${subject}`,
-        text: `${message}`
+        html: `
+<!DOCTYPE html>
+<h2>${message}</h2>
+`
     })
         .then((info) => {
             return info;

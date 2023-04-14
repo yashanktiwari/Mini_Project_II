@@ -27,7 +27,7 @@ const Signup = ({retailer}) => {
     const handleSignUp = (e) => {
         e.preventDefault();
         if(retailer) {
-            axios.post('/signupr', { fName, lName, email, phone, altPhone, city, address, state, pin, gender, password})
+            axios.post('/signupr', { fName, lName, email, phone, altPhone, city, address, state, pin, gender, password, retailer})
                 .then((obj) => {
                     if (obj.data.errorMsg) {
                         console.log("User already there in the db");
@@ -40,7 +40,7 @@ const Signup = ({retailer}) => {
                     console.log(error);
                 });
         } else {
-            axios.post('/signupu', { fName, lName, email, phone, altPhone, city, address, state, pin, gender, password})
+            axios.post('/signupu', { fName, lName, email, phone, altPhone, city, address, state, pin, gender, password, retailer})
                 .then((obj) => {
                     if (obj.data.errorMsg) {
                         console.log("User already there in the db");

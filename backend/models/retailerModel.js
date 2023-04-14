@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const otpGenerator = require("otp-generator");
 
 const retailerSchema = new mongoose.Schema({
     username: {
@@ -31,8 +32,17 @@ const retailerSchema = new mongoose.Schema({
     role: {
         type: String,
         default: "retailer"
+    },
+    otp: {
+        type: String
     }
 });
+
+retailerSchema.methods.generateOTP = () => {
+    let gotp = otpGenerator.generate(4, {digits: true, lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false});
+    this.otp = gotp;
+    return gotp;
+}
 
 const Retailer = new mongoose.model('Retailer', retailerSchema);
 
