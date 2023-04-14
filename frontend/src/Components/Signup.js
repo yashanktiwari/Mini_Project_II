@@ -358,8 +358,8 @@ const Signup = ({ retailer }) => {
                             />
                         </div>
 
-                        <div className="sm:grid-rows-1 md:col-span-3 ml-[4rem]">
-                            <div className="md:col-span-3 my-[2rem]">
+                        <div className="md:col-span-3 ml-[4rem]">
+                            <div className="sm:col-span-2 md:col-span-3 my-[2rem]">
                                 <label
                                     htmlFor="first-name"
                                     className="block text-sm leading-6 text-white font-semibold"
@@ -382,7 +382,7 @@ const Signup = ({ retailer }) => {
                                 </div>
                             </div>
 
-                            <div className="md:col-span-3">
+                            <div className="sm:col-span-2 md:col-span-3">
                                 <label
                                     htmlFor="last-name"
                                     className="block text-sm leading-6 text-white font-semibold"
@@ -651,7 +651,8 @@ const Signup = ({ retailer }) => {
                                 >
                                     Gender
                                 </label>
-                                <span className="text-white border-2 rounded px-3 py-1 mr-[2rem]">Male{"  "}
+                                <span className="text-white border-2 rounded px-3 py-1 mr-[2rem]">
+                                    Male{"  "}
                                     <input
                                         type="radio"
                                         name="gender"
@@ -662,9 +663,9 @@ const Signup = ({ retailer }) => {
                                         }}
                                         required
                                     />
-                </span>
+                                </span>
                                 <span className="text-white border-2 rounded px-3 py-1">
-                Female{"  "}
+                                    Female{"  "}
                                     <input
                                         type="radio"
                                         name="gender"
