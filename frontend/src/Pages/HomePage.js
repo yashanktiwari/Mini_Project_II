@@ -25,6 +25,7 @@ const Login = () => {
                     backgroundSize: "cover",
                     height: "100vh",
                 }}
+                className="min-h-[576px]"
             >
             <div className="grid grid-cols-3 gap-5 mx-8 pt-8">
                 <div className="columns-1 col-span-2 bg-transparent rounded-xl p-4 bg-opacity-40">
