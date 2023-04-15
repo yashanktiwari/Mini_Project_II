@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const authRouter = express.Router();
 const bcrypt = require('bcrypt');
+const cloudinary = require('../utils/cloudinary');
 
 const Consumer = require('../models/consumerModel');
 const Retailer = require('../models/retailerModel');
@@ -28,13 +29,10 @@ authRouter
     .post(getUserData);
 
 function postSignUp(req, res) {
-    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, retailer} = req.body;
-    let model;
-    if(retailer) {
-        model = Retailer;
-    } else {
-        model = Consumer;
-    }
+    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image, retailer} = req.body;
+
+    let model = retailer ? Retailer : Consumer;
+
     model.findOne({email: email})
         .then(async (userObj) => {
 
@@ -45,25 +43,56 @@ function postSignUp(req, res) {
                 const salt = await bcrypt.genSalt(10);
                 const hashedPassword = await bcrypt.hash(password, salt);
 
+                // Checking if the file is an image or not
 
-                model.create({
-                    username: fName + " " + lName,
-                    password: hashedPassword,
-                    email: email,
-                    phone: phone,
-                    altPhone: altPhone,
-                    city: city,
-                    address: address,
-                    state: state,
-                    pin: pin,
-                    gender: gender
-                })
-                    .then((user) => {
-                        res.send(user);
-                    })
-                    .catch((error) => {
-                        res.json(error);
+                if(profile_image.length != 0) {
+                    // Uploading the image on the cloudinary cloud
+                    cloudinary.uploader.upload(profile_image, {
+                        folder: `Users/${email}`
+                    }).then((resultImage) => {
+
+                        model.create({
+                            profile_image: resultImage.secure_url,
+                            username: fName + " " + lName,
+                            password: hashedPassword,
+                            email: email,
+                            phone: phone,
+                            altPhone: altPhone,
+                            city: city,
+                            address: address,
+                            state: state,
+                            pin: pin,
+                            gender: gender
+                        })
+                            .then((user) => {
+                                res.send(user);
+                            })
+                            .catch((error) => {
+                                res.json(error);
+                            });
                     });
+                } else {
+                    model.create({
+                        username: fName + " " + lName,
+                        password: hashedPassword,
+                        email: email,
+                        phone: phone,
+                        altPhone: altPhone,
+                        city: city,
+                        address: address,
+                        state: state,
+                        pin: pin,
+                        gender: gender
+                    })
+                        .then((user) => {
+                            console.log(user)
+                            res.send(user);
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                            res.json(error);
+                        });
+                }
             } else {
                 // User found in DB
                 res.send({

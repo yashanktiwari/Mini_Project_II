@@ -65,16 +65,16 @@ const LoginBoxRetailerUser = () => {
         axios.post('/loginr', {useremail: useremailr, password: passwordr, retailer: true})
             .then((obj) => {
                 if (!obj.data.userObj) {
-                    console.log("User not found");
+                    console.log(obj.data.error);
                 } else {
                     if (!obj.data.userObj.message) {
                         localStorage.setItem('isLoggedIn', JSON.stringify(obj.data.token));
 
                         setTimeout(() => {
-                            navigate('/dashboard', {state: {retailer: true}});
+                            navigate('/dashboard');
                         }, 1000);
                     } else {
-                        console.log(obj.data.message);
+                        console.log(obj.data.error);
                     }
                 }
             })
@@ -107,7 +107,7 @@ const LoginBoxRetailerUser = () => {
     const handleRForgotPassword = (e) => {
         axios.post('/forgotpasswordr', {email: forgotemailr, retailer: true})
             .then((obj) => {
-                if (!obj.data.userObj) {
+                if (!obj.data._id) {
                     console.log("User not found");
                 } else {
                     // User found and otp sent successfully
@@ -172,7 +172,7 @@ const LoginBoxRetailerUser = () => {
             .then((obj) => {
                 if (obj.data.success) {
                     console.log("Password changed successfully");
-                    setOtpVerifiedu(false);
+                    setOtpVerifiedr(false);
                 } else {
                     console.log(obj.data.error);
                 }
