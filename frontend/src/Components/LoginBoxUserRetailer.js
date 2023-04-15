@@ -5,7 +5,8 @@ import {Tab} from "@headlessui/react";
 import {Ripple, Input, initTE} from "tw-elements";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-import OtpInput from 'react-otp-input';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 initTE({Ripple, Input});
 
@@ -42,16 +43,19 @@ const LoginBoxRetailerUser = () => {
         axios.post('/loginu', {useremail: useremailu, password: passwordu, retailer: false})
             .then((obj) => {
                 if (!obj.data.userObj) {
-                    console.log(obj.data.error);
+                    toast.error(obj.data.error);
+                    // console.log(obj.data.error);
                 } else {
                     if (!obj.data.userObj.message) {
                         localStorage.setItem('isLoggedIn', JSON.stringify(obj.data.token));
 
                         setTimeout(() => {
+                            toast.success("Login Successful");
                             navigate('/dashboard');
                         }, 1000);
                     } else {
-                        console.log(obj.data.error);
+                        toast.error(obj.data.error);
+                        // console.log(obj.data.error);
                     }
                 }
             })
@@ -65,16 +69,19 @@ const LoginBoxRetailerUser = () => {
         axios.post('/loginr', {useremail: useremailr, password: passwordr, retailer: true})
             .then((obj) => {
                 if (!obj.data.userObj) {
-                    console.log(obj.data.error);
+                    toast.error(obj.data.error);
+                    // console.log(obj.data.error);
                 } else {
                     if (!obj.data.userObj.message) {
                         localStorage.setItem('isLoggedIn', JSON.stringify(obj.data.token));
 
                         setTimeout(() => {
+                            toast.success("Login Successful");
                             navigate('/dashboard');
                         }, 1000);
                     } else {
-                        console.log(obj.data.error);
+                        toast.error(obj.data.error);
+                        // console.log(obj.data.error);
                     }
                 }
             })
@@ -91,10 +98,12 @@ const LoginBoxRetailerUser = () => {
             .then((obj) => {
                 // console.log(obj);
                 if (!obj.data._id) {
-                    console.log("User not found");
+                    toast.error("User not found");
+                    // console.log("User not found");
                 } else {
                     // User found and otp sent successfully
-                    console.log("OTP sent yayy");
+                    toast.success("OTP sent successfully");
+                    // console.log("OTP sent yayy");
                     setShowModalu(false);
                     setOtpDialogu(true);
                 }
@@ -108,10 +117,12 @@ const LoginBoxRetailerUser = () => {
         axios.post('/forgotpasswordr', {email: forgotemailr, retailer: true})
             .then((obj) => {
                 if (!obj.data._id) {
-                    console.log("User not found");
+                    toast.error("User not found");
+                    // console.log("User not found");
                 } else {
                     // User found and otp sent successfully
-                    console.log("OTP sent yayy");
+                    toast.success("OTP sent successfully");
+                    // console.log("OTP sent yayy");
                     setShowModalr(false);
                     setOtpDialogr(true);
                 }
@@ -126,10 +137,12 @@ const LoginBoxRetailerUser = () => {
             .then((obj) => {
                 if (obj.data.success) {
                     //     OTP verified
+                    toast.success("OTP verified successfully");
                     setOtpVerifiedu(true);
                 } else {
                     //     Incorrect OTP
-                    console.log(obj.data.error);
+                    toast.error(obj.data.error);
+                    // console.log(obj.data.error);
                 }
                 setOtpDialogu(false);
             })
@@ -143,10 +156,12 @@ const LoginBoxRetailerUser = () => {
             .then((obj) => {
                 if (obj.data.success) {
                     //     OTP verified
+                    toast.success("OTP verified successfully");
                     setOtpVerifiedr(true);
                 } else {
                     //     Incorrect OTP
-                    console.log(obj.data.error);
+                    toast.error(obj.data.error);
+                    // console.log(obj.data.error);
                 }
                 setOtpDialogr(false);
             })
@@ -159,10 +174,12 @@ const LoginBoxRetailerUser = () => {
         axios.post('/changepasswordu', {email: forgotemailu, newpassword: newPassword, retailer: false})
             .then((obj) => {
                 if (obj.data.success) {
-                    console.log("Password changed successfully");
+                    toast.success("Password changed successfully");
+                    // console.log("Password changed successfully");
                     setOtpVerifiedu(false);
                 } else {
-                    console.log(obj.data.error);
+                    toast.error(obj.data.error);
+                    // console.log(obj.data.error);
                 }
             });
     }
@@ -171,10 +188,12 @@ const LoginBoxRetailerUser = () => {
         axios.post('/changepasswordr', {email: forgotemailr, newpassword: newPassword, retailer: true})
             .then((obj) => {
                 if (obj.data.success) {
-                    console.log("Password changed successfully");
+                    toast.success("Password changed successfully");
+                    // console.log("Password changed successfully");
                     setOtpVerifiedr(false);
                 } else {
-                    console.log(obj.data.error);
+                    toast.error(obj.data.error);
+                    // console.log(obj.data.error);
                 }
             });
     }

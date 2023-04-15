@@ -2,7 +2,7 @@ import {useState, useRef} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import "../css/SignUp.css";
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = ({retailer}) => {
@@ -241,8 +241,6 @@ const Signup = ({retailer}) => {
     const [phone, setPhone] = useState("");
     const [gender, setGender] = useState("");
     const [address, setAddress] = useState("");
-    // const [city, setCity] = useState("");
-    // const [state, setState] = useState("");
     const [pin, setPin] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [altPhone, setAltPhone] = useState("");
@@ -283,11 +281,8 @@ const Signup = ({retailer}) => {
                 .then((obj) => {
                     if (obj.data.error) {
                         toast.error("User already present");
-                        console.log("User already there in the db");
                     } else {
-                        console.log(obj);
-                        console.log("First Name : " + fName + " Last Name : " + lName + " Email : " + email + " Mobile No. " + phone + altPhone + " City : " + city + " State : " + state + " Address : " + address + " PIN : " + pin + " Gender : " + gender + " A/C Holder Name : " + acHolderName + " A/C Number : " + acNumber + " IFS Code : " + ifsCode);
-                        console.log("User created");
+                        toast.success("Sign up successful");
                         navigate("/");
                     }
                 })
@@ -313,10 +308,9 @@ const Signup = ({retailer}) => {
                 })
                 .then((obj) => {
                     if (obj.data.error) {
-                        console.log("User already there in the db");
+                        toast.error("User already present");
                     } else {
-                        console.log("First Name : " + fName + " Last Name : " + lName + " Email : " + email + " Mobile No. " + phone + altPhone + " City : " + city + " State : " + state + " Address : " + address + " PIN : " + pin + " Gender : " + gender);
-                        console.log("User created");
+                        toast.success("Sign up successful");
                         navigate("/");
                     }
                 })
@@ -356,7 +350,6 @@ const Signup = ({retailer}) => {
 
     return (
         <>
-
             <div className="bg-grey-lighter flex flex-col mx-auto w-[70%]">
                 <h1 className="text-4xl font-semibold text-white mx-auto text-center my-5">
                     Signup Page

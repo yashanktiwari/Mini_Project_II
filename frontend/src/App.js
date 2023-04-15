@@ -7,11 +7,13 @@ import AboutUs from "./Pages/AboutUs";
 import ContactUs from "./Pages/ContactUs";
 import ProfilePage from "./Pages/ProfilePage";
 import WishlistPage from "./Pages/WishlistPage";
+import {ToastContainer} from "react-toastify";
 
 
 const App = () => {
     return (
         <>
+            <ToastContainer />
             <BrowserRouter>
                 <Routes>
                     <Route

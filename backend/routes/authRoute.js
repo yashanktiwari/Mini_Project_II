@@ -192,7 +192,7 @@ function postLogin(req, res) {
         .then(async (userObj) => {
             if(userObj == null) {
                 res.send({
-                    error: "User is not found!!! Please signup first"
+                    error: "User not found!!! Please signup first"
                 })
             } else {
                 let isMatch = await bcrypt.compare(password, userObj.password);
