@@ -18,8 +18,8 @@ const HomeNavbar = () => {
                 <img src={logo} alt="Logo" className="h-[3rem] w-[10rem]"/>
                 <nav ref = {navRef} className="pb-4">
                     <Link to="/">Home</Link>
-                    <Link to="/contactus">Contact Us!</Link>
-                    <Link to="/aboutus">About Us!</Link>
+                    <Link to="/contactus">Contact Us</Link>
+                    <Link to="/aboutus">About Us</Link>
 
                     <button className = "nav-btn nav-close-btn" onClick={showNavbar}>
                         <FaTimes />

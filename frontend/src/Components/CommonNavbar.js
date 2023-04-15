@@ -29,9 +29,9 @@ const CommonNavbar = () => {
                 <img src={logo} alt="Logo" className="h-[3rem] w-[10rem]"/>
 
                 <nav ref={navRef}>
-                    <Link to="/dashboard">Home</Link>
-                    <Link to="/contactus">Contact Us!</Link>
-                    <Link to="/aboutus">About Us!</Link>
+                    <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/contactus">Contact Us</Link>
+                    <Link to="/aboutus">About Us</Link>
                     {userStore.user.role === "retailer" ?  (
                         <Link to="/addnewproperty">List new property</Link>
                         ) : null}
