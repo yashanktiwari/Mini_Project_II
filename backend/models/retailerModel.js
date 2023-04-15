@@ -33,6 +33,15 @@ const retailerSchema = new mongoose.Schema({
         type: String,
         default: "retailer"
     },
+    acNumber: {
+        type: String,
+    },
+    acHolderName: {
+        type: String,
+    },
+    ifsCode: {
+        type: String
+    },
     otp: {
         type: String
     }

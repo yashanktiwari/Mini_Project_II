@@ -22,7 +22,8 @@ const Signup = ({ retailer }) => {
                 {
                     name: "Arunachal Pradesh",
                     cities: [
-                        "Itanagar"]
+                        "Itanagar"
+                    ]
                     ,
                 },
                 {
@@ -244,6 +245,12 @@ const Signup = ({ retailer }) => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [altPhone, setAltPhone] = useState("");
 
+    // Additional Account Details
+    const [acHolderName, setAcName] = useState("");
+    const [acNumber, setAcNumber] = useState("");
+    const [ifsCode, setIfsCode] = useState("");
+
+
     const navigate = useNavigate();
 
     const inputRef = useRef();
@@ -265,12 +272,15 @@ const Signup = ({ retailer }) => {
                     pin,
                     gender,
                     password,
+                    acNumber,
+                    acHolderName,
+                    ifsCode
                 })
                 .then((obj) => {
                     if (obj.data.errorMsg) {
                         console.log("User already there in the db");
                     } else {
-                        console.log("First Name : " + fName + " Last Name : " + lName + " Email : " + email + " Mobile No. " + phone + altPhone + " City : " + city + " State : " + state + " Address : " + address + " PIN : " + pin + " Gender : " + gender);
+                        console.log("First Name : " + fName + " Last Name : " + lName + " Email : " + email + " Mobile No. " + phone + altPhone + " City : " + city + " State : " + state + " Address : " + address + " PIN : " + pin + " Gender : " + gender + " A/C Holder Name : " + acHolderName + " A/C Number : " + acNumber + " IFS Code : " + ifsCode);
                         console.log("User created");
                         navigate("/");
                     }
@@ -560,17 +570,17 @@ const Signup = ({ retailer }) => {
                                         Address
                                     </label>
                                     <div className="mt-2">
-                    <textarea
-                        name="street-address"
-                        id="street-address"
-                        autoComplete="street-address"
-                        placeholder=" Enter your Complete Address..."
-                        className="block w-full rounded-md border-0 p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        onChange={(e) => {
-                            setAddress(e.target.value);
-                        }}
-                        required
-                    />
+                                        <textarea
+                                            name="street-address"
+                                            id="street-address"
+                                            autoComplete="street-address"
+                                            placeholder=" Enter your Complete Address..."
+                                            className="block w-full rounded-md border-0 p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            onChange={(e) => {
+                                                setAddress(e.target.value);
+                                            }}
+                                            required
+                                        />
                                     </div>
                                 </div>
 
@@ -642,6 +652,88 @@ const Signup = ({ retailer }) => {
                                         />
                                     </div>
                                 </div>
+
+                                { retailer ? (
+                                    <>
+                                        <h3 className="text-white col-span-full text-3xl font-semibold mt-4">Additional Account Details</h3>
+                                        <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700 col-span-full"/>
+                                    </>
+                                ) : null }
+
+                                { retailer ? (
+                                    <>
+                                        <div className="sm:col-span-2">
+                                            <label
+                                                htmlFor="acHolderName"
+                                                className="block text-sm leading-6 text-white font-semibold"
+                                            >
+                                                Account Holder Name
+                                            </label>
+                                            <div className="mt-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+                                                <input
+                                                    type="text"
+                                                    name="acHolderName"
+                                                    id="acHolderName"
+                                                    placeholder="A/C Holder Name"
+                                                    autoComplete="acHolderName"
+                                                    className="block w-full rounded-md p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                                                    onChange={(e) => {
+                                                        setAcName(e.target.value);
+                                                    }}
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="sm:col-span-2">
+                                            <label
+                                                htmlFor="acNumber"
+                                                className="block text-sm leading-6 text-white font-semibold"
+                                            >
+                                                Account Number
+                                            </label>
+                                            <div className="mt-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+                                                <input
+                                                    type="text"
+                                                    name="acNumber"
+                                                    id="acNumber"
+                                                    placeholder="A/C Number"
+                                                    autoComplete="acNumber"
+                                                    className="block w-full rounded-md p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                                                    onChange={(e) => {
+                                                        setAcNumber(e.target.value);
+                                                    }}
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="sm:col-span-2">
+                                            <label
+                                                htmlFor="ifsCode"
+                                                className="block text-sm leading-6 text-white font-semibold"
+                                            >
+                                                IFS Code
+                                            </label>
+                                            <div className="mt-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+                                                <input
+                                                    type="text"
+                                                    name="ifsCode"
+                                                    id="ifsCode"
+                                                    placeholder="IFS Code"
+                                                    autoComplete="ifsCode"
+                                                    className="block w-full rounded-md p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                                                    onChange={(e) => {
+                                                        setIfsCode(e.target.value);
+                                                    }}
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                    </>
+
+                                ) : null }
+
                             </div>
 
                             <div className="sm:col-span-2 mt-[2rem]">
@@ -676,7 +768,7 @@ const Signup = ({ retailer }) => {
                                         }}
                                         required
                                     />
-                </span>
+                                </span>
                             </div>
 
                             {password.length && password === confirmPassword ? (
