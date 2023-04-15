@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const otpGenerator = require("otp-generator");
 
 const retailerSchema = new mongoose.Schema({
+    profile_image: {
+        type: String,
+        default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+    },
     username: {
         type: String
     },
@@ -48,8 +52,12 @@ const retailerSchema = new mongoose.Schema({
 });
 
 retailerSchema.methods.generateOTP = () => {
-    let gotp = otpGenerator.generate(4, {digits: true, lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false});
-    this.otp = gotp;
+    let gotp = otpGenerator.generate(4, {
+        digits: true,
+        lowerCaseAlphabets: false,
+        upperCaseAlphabets: false,
+        specialChars: false
+    });
     return gotp;
 }
 

@@ -1,9 +1,9 @@
-import { useState, useRef } from "react";
+import {useState, useRef} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "../css/SignUp.css";
 
-const Signup = ({ retailer }) => {
+const Signup = ({retailer}) => {
 
     const countries = [
         {
@@ -117,43 +117,43 @@ const Signup = ({ retailer }) => {
                 },
                 {
                     name: "Maharashtra",
-                    cities : [
+                    cities: [
                         "Ahmadnagar", "Akola", "Amravati", "Aurangabad", "Bhandara", "Bhusawal", "Bid", "Buldhana", "Chandrapur", "Daulatabad", "Dhule", "Jalgaon", "Kalyan", "Karli", "Kolhapur", "Mahabaleshwar", "Malegaon", "Matheran", "Mumbai", "Nagpur", "Nanded", "Nashik", "Osmanabad", "Pandharpur", "Parbhani", "Pune", "Ratnagiri", "Sangli", "Satara", "Sevagram", "Solapur", "Thane", "Ulhasnagar", "Vasai-Virar", "Wardha", "Yavatmal"
                     ]
                 },
                 {
                     name: "Manipur",
-                    cities : [
+                    cities: [
                         "Imphal"
                     ]
                 },
                 {
                     name: "Meghalaya",
-                    cities : [
+                    cities: [
                         "Cherapunji", "Shillong"
                     ]
                 },
                 {
                     name: "Mizoram",
-                    cities : [
+                    cities: [
                         "Aizwal", "Lunglei"
                     ]
                 },
                 {
                     name: "Nagaland",
-                    cities : [
+                    cities: [
                         "Kohima", "Mon", "Phek", "Wokha", "Zunheboto"
                     ]
                 },
                 {
                     name: "Odisha",
-                    cities : [
+                    cities: [
                         "Balangir", "Baleshwar", "Baripada", "Bhubaneshwar", "Brahmapur", "Cuttack", "Dhenkanal", "Kendujhar", "Konark", "Koraput", "Paradip", "Phulabani", "Puri", "Sambalpur", "Udayagiri"
                     ]
                 },
                 {
                     name: "Puducherry",
-                    cities : [
+                    cities: [
                         "Karaikal", "Mahe", "Puducherry", "Yanam"
                     ]
                 },
@@ -171,7 +171,7 @@ const Signup = ({ retailer }) => {
                 },
                 {
                     name: "Sikkim",
-                    cities : [
+                    cities: [
                         "Gangatok", "Gyalshing", "Lachung", "Mangan"
                     ]
                 },
@@ -183,13 +183,13 @@ const Signup = ({ retailer }) => {
                 },
                 {
                     name: "Telangana",
-                    cities : [
+                    cities: [
                         "Hyderabad", "Karimnagar", "Khammam", "Mahbubnagar", "Nizamabad", "Sangareddi", "Warangal"
                     ]
                 },
                 {
                     name: "Tripura",
-                    cities : [
+                    cities: [
                         "Agartala"
                     ]
                 },
@@ -254,7 +254,7 @@ const Signup = ({ retailer }) => {
     const navigate = useNavigate();
 
     const inputRef = useRef();
-    const [img, setImg] = useState();
+    const [img, setImg] = useState([]);
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -272,14 +272,17 @@ const Signup = ({ retailer }) => {
                     pin,
                     gender,
                     password,
+                    profile_image: img,
+                    retailer,
                     acNumber,
                     acHolderName,
                     ifsCode
                 })
                 .then((obj) => {
-                    if (obj.data.errorMsg) {
+                    if (obj.data.error) {
                         console.log("User already there in the db");
                     } else {
+                        console.log(obj);
                         console.log("First Name : " + fName + " Last Name : " + lName + " Email : " + email + " Mobile No. " + phone + altPhone + " City : " + city + " State : " + state + " Address : " + address + " PIN : " + pin + " Gender : " + gender + " A/C Holder Name : " + acHolderName + " A/C Number : " + acNumber + " IFS Code : " + ifsCode);
                         console.log("User created");
                         navigate("/");
@@ -302,9 +305,11 @@ const Signup = ({ retailer }) => {
                     pin,
                     gender,
                     password,
+                    profile_image: img,
+                    retailer
                 })
                 .then((obj) => {
-                    if (obj.data.errorMsg) {
+                    if (obj.data.error) {
                         console.log("User already there in the db");
                     } else {
                         console.log("First Name : " + fName + " Last Name : " + lName + " Email : " + email + " Mobile No. " + phone + altPhone + " City : " + city + " State : " + state + " Address : " + address + " PIN : " + pin + " Gender : " + gender);
@@ -318,19 +323,38 @@ const Signup = ({ retailer }) => {
         }
     };
 
+    const setFiletoBase = (file) => {
+        const reader = new FileReader();
+
+        // Reader is reading the file
+        reader.readAsDataURL(file);
+
+        // Once the reading is completed, onloadend is triggered
+        reader.onloadend = () => {
+            setImg(reader.result);
+        }
+
+    }
+
+    const acceptedTypes = ['image/jpeg', 'image/png'];
+
     const handleImageSubmission = (e) => {
         if (e.target.files && e.target.files[0]) {
             const image = e.target.files[0];
-            setImg({
-                img: URL.createObjectURL(image),
-            });
+
+            // Checking if the file is an image or not
+            if(acceptedTypes.includes(image['type'])) {
+                setFiletoBase(image);
+            } else {
+                setImg([]);
+            }
         }
     };
 
     return (
         <>
 
-            <div className="bg-grey-lighter flex flex-col mx-auto w-[70%]" >
+            <div className="bg-grey-lighter flex flex-col mx-auto w-[70%]">
                 <h1 className="text-4xl font-semibold text-white mx-auto text-center my-5">
                     Signup Page
                 </h1>
@@ -354,10 +378,10 @@ const Signup = ({ retailer }) => {
                                     />
                                 )}
                             </div>
-                            <br />
+                            <br/>
                             <label className="text-white text-sm font-semibold">Upload your Picture Here</label>
-                            <br />
-                            <br />
+                            <br/>
+                            <br/>
                             <input
                                 type="file"
                                 name="profile-file"

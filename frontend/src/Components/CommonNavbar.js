@@ -21,7 +21,7 @@ const CommonNavbar = () => {
         localStorage.removeItem('isLoggedIn');
         navigate('/');
     }
-
+    console.log(userStore);
     return (
         <>
             {/*    Update*/}
@@ -32,15 +32,20 @@ const CommonNavbar = () => {
                     <Link to="/dashboard">Home</Link>
                     <Link to="/contactus">Contact Us!</Link>
                     <Link to="/aboutus">About Us!</Link>
+                    {userStore.user.role === "retailer" ?  (
+                        <Link to="/addnewproperty">List new property</Link>
+                        ) : null}
                 </nav>
 
                 <div className="dropdown">
-                    <div className="myclass">
+                    <div className="myclass flex">
+                        {userStore.user.profile_image ? (
+                            <img src={userStore.user.profile_image} alt="Profile Image" className="w-12 mr-2 h-12 rounded-full"/>
+                        ) : null}
 
                         <button className="dropbtn">
                             Hii, {userStore.user.username} !!!
                         </button>
-
                     </div>
                     <div className="dropdown-content ">
                         <Link to={`/profile/${userStore.user._id}`} className="hover:bg-gray-700"><span className="px-12 py-2">Profile</span></Link>
@@ -55,6 +60,8 @@ const CommonNavbar = () => {
             </header>
             {/*    Update*/}
 
+            {/*<img src={`${userStore.user.profile_image.url}`}/>*/}
+            {/*<img src={userStore.user.profile_image.url}/>*/}
         </>
     )
 };
