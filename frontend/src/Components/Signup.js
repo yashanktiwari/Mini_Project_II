@@ -226,6 +226,9 @@ const Signup = ({retailer}) => {
         setCountry(event.target.value);
         setStates(countries.find((ctr) => ctr.name === event.target.value).states);
     };
+
+    const [showimg, setShowimg] = useState("");
+
     const changeState = (event) => {
         setState(event.target.value);
         setCities(states.find((state) => state.name === event.target.value).cities);
@@ -342,6 +345,9 @@ const Signup = ({retailer}) => {
             // Checking if the file is an image or not
             if(acceptedTypes.includes(image['type'])) {
                 setFiletoBase(image);
+                setShowimg({
+                    image: URL.createObjectURL(image)
+                });
             } else {
                 setImg([]);
             }
@@ -365,9 +371,9 @@ const Signup = ({retailer}) => {
                                     inputRef.current.click();
                                 }}
                             >
-                                {img && (
+                                {showimg && (
                                     <img
-                                        src={img.img}
+                                        src={showimg.image}
                                         alt="Profile"
                                         id="profileImage"
                                         className="h-[100%] w-[100%]"
