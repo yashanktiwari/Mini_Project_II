@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+
+}
+.main, .main12{
+    /*margin-top: 25px;*/
+
+    text-align: center;
+    font-size: 45px;
+    color: skyblue;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.main1, .main5, .main7, .main9, .main11, .main13{
+    text-align: justify;
+    margin: 15px 17px;
+    font-size: 18px;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+.main2{
+    color: skyblue;
+    text-decoration: solid;
+    font-weight: bold;
+
+}
+.main4, .main6, .main8, .main10{
+    margin-top: 10px;
+    font-weight: bold;
+    margin-left: 17px;
+    font-size: 20px;
+    color: skyblue;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+p{
+    color: white;
+}
+.mail{
+    color:red;
+
+}
