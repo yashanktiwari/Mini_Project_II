@@ -2,6 +2,8 @@ import {useState, useRef} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import "../css/SignUp.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = ({retailer}) => {
 
@@ -280,6 +282,7 @@ const Signup = ({retailer}) => {
                 })
                 .then((obj) => {
                     if (obj.data.error) {
+                        toast.error("User already present");
                         console.log("User already there in the db");
                     } else {
                         console.log(obj);

@@ -10,11 +10,11 @@ const jwt = require('jsonwebtoken');
 
 authRouter
     .route('/signupu')
-    .post(postSignUp);
+    .post(postSignUpu);
 
 authRouter
     .route('/signupr')
-    .post(postSignUp);
+    .post(postSignUpr);
 
 authRouter
     .route('/loginu')
@@ -28,12 +28,11 @@ authRouter
     .route('/extractToken')
     .post(getUserData);
 
-function postSignUp(req, res) {
+function postSignUpu(req, res) {
     const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image, retailer} = req.body;
 
-    let model = retailer ? Retailer : Consumer;
 
-    model.findOne({email: email})
+    Consumer.findOne({email: email})
         .then(async (userObj) => {
 
             if(userObj == null) {
@@ -51,7 +50,7 @@ function postSignUp(req, res) {
                         folder: `Users/${email}`
                     }).then((resultImage) => {
 
-                        model.create({
+                        Consumer.create({
                             profile_image: resultImage.secure_url,
                             username: fName + " " + lName,
                             password: hashedPassword,
@@ -72,7 +71,7 @@ function postSignUp(req, res) {
                             });
                     });
                 } else {
-                    model.create({
+                    Consumer.create({
                         username: fName + " " + lName,
                         password: hashedPassword,
                         email: email,
@@ -85,11 +84,90 @@ function postSignUp(req, res) {
                         gender: gender
                     })
                         .then((user) => {
-                            console.log(user)
                             res.send(user);
                         })
                         .catch((error) => {
                             console.log(error)
+                            res.json(error);
+                        });
+                }
+            } else {
+                // User found in DB
+                res.send({
+                    error: "User already present"
+                });
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(null);
+        })
+}
+
+function postSignUpr(req, res) {
+    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image, retailer, acNumber, acHolderName, ifsCode} = req.body;
+
+    Retailer.findOne({email: email})
+        .then(async (userObj) => {
+
+            if(userObj == null) {
+                // User not found in DB
+
+                //Hashing password
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(password, salt);
+
+                // Checking if the file is an image or not
+
+                if(profile_image.length != 0) {
+                    // Uploading the image on the cloudinary cloud
+                    cloudinary.uploader.upload(profile_image, {
+                        folder: `Users/${email}`
+                    }).then((resultImage) => {
+
+                        Retailer.create({
+                            profile_image: resultImage.secure_url,
+                            username: fName + " " + lName,
+                            password: hashedPassword,
+                            email: email,
+                            phone: phone,
+                            altPhone: altPhone,
+                            city: city,
+                            address: address,
+                            state: state,
+                            pin: pin,
+                            gender: gender,
+                            acNumber: acNumber,
+                            acHolderName: acHolderName,
+                            ifsCode: ifsCode
+                        })
+                            .then((user) => {
+                                res.send(user);
+                            })
+                            .catch((error) => {
+                                res.json(error);
+                            });
+                    });
+                } else {
+                    Retailer.create({
+                        username: fName + " " + lName,
+                        password: hashedPassword,
+                        email: email,
+                        phone: phone,
+                        altPhone: altPhone,
+                        city: city,
+                        address: address,
+                        state: state,
+                        pin: pin,
+                        gender: gender,
+                        acNumber: acNumber,
+                        acHolderName: acHolderName,
+                        ifsCode: ifsCode
+                    })
+                        .then((user) => {
+                            res.send(user);
+                        })
+                        .catch((error) => {
                             res.json(error);
                         });
                 }
