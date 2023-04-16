@@ -3,6 +3,7 @@ import axios from "axios";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import CommonNavbar from "../Components/CommonNavbar";
+import Footer from "../Components/Footer";
 
 const ContactUs = () => {
 
@@ -73,6 +74,7 @@ const ContactUs = () => {
                     </form>
                 </div>
             </section>
+            <Footer/>
         </>
     )
 };
