@@ -5,10 +5,15 @@ const propertyRouter = express.Router();
 const Property = require('../models/propertyModel');
 
 const cloudinary = require('../utils/cloudinary');
+const {get} = require("mongoose");
 
 propertyRouter
     .route('/addnewproperty')
     .post(addNewProperty);
+
+propertyRouter
+    .route('/getallproperties')
+    .get(getAllProperties);
 
 async function addNewProperty(req, res) {
     const { primary_img, secondary_img, title, description, state, city, address, price, area, propertyType, owner_id } = req.body;
@@ -54,5 +59,24 @@ async function addNewProperty(req, res) {
             });
         });
 }
+
+function getAllProperties(req, res) {
+    Property.find({})
+        .then((properties) => {
+            console.log(properties);
+            res.send(properties);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send({
+                error: "Some error occurred"
+            });
+        });
+}
+
+// function getSingleProperty(req, res) {
+//     const {id} = req.body;
+//     Property.findById({})
+// }
 
 module.exports = propertyRouter;
