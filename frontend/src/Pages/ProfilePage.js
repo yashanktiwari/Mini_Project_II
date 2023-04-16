@@ -1,9 +1,9 @@
 import CommonNavbar from "../Components/CommonNavbar";
 import { useParams } from 'react-router';
 import {useEffect, useState} from "react";
-import axios from "axios";
-import {setUser} from "../utils/userSlice";
 import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import verifyToken from "../utils/verifyToken";
 
 const ProfilePage = () => {
     const {id} = useParams();
@@ -14,19 +14,12 @@ const ProfilePage = () => {
 
     const userStore = useSelector(store => store.user);
 
+    const navigate = useNavigate();
     useEffect(() => {
         if(userStore.user._id == null) {
             setToken(JSON.parse(localStorage.getItem('isLoggedIn')));
             if(token) {
-                axios.post('/extractToken', {token})
-                    .then((obj) => {
-                        dispatch(setUser(obj.data));
-                    })
-                    .catch((error) => {
-                        return {
-                            errorMsg: error
-                        }
-                    });
+                verifyToken(token, navigate, dispatch);
             }
         }
     }, [token]);

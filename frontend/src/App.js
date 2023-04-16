@@ -9,6 +9,7 @@ import ProfilePage from "./Pages/ProfilePage";
 import WishlistPage from "./Pages/WishlistPage";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsAndConditions from "./Pages/TermsAndConditions";
+import AddNewProperty from "./Pages/AddNewProperty";
 import {ToastContainer} from "react-toastify";
 
 
@@ -67,6 +68,11 @@ const App = () => {
                         exact
                         path='/termsandcondition'
                         element= <TermsAndConditions/>
+                    />
+                    <Route
+                        exact
+                        path='/addnewproperty'
+                        element= <AddNewProperty/>
                     />
                 </Routes>
             </BrowserRouter>

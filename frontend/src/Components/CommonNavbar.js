@@ -21,7 +21,7 @@ const CommonNavbar = () => {
         localStorage.removeItem('isLoggedIn');
         navigate('/');
     }
-    console.log(userStore);
+
     return (
         <>
             {/*    Update*/}

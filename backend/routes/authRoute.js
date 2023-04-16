@@ -229,31 +229,39 @@ function postLogin(req, res) {
 
 function getUserData(req, res) {
     const {token} = req.body;
-    const user = jwt.verify(token, process.env.SECRET_KEY);
 
-    const userid = user.userid;
-    const retailer = user.retailer;
-    if(retailer) {
-        Retailer.findById(userid)
-            .then((userData) => {
-                res.send(userData)
-            })
-            .catch((error) => {
-                res.send({
-                    error: error
+    try {
+        const user = jwt.verify(token, process.env.SECRET_KEY);
+
+        const userid = user.userid;
+        const retailer = user.retailer;
+        if(retailer) {
+            Retailer.findById(userid)
+                .then((userData) => {
+                    res.send(userData)
                 })
-            });
-    } else {
-        Consumer.findById(userid)
-            .then((userData) => {
-                res.send(userData)
-            })
-            .catch((error) => {
-                res.send({
-                    error: error
+                .catch((error) => {
+                    res.send({
+                        error: error
+                    })
+                });
+        } else {
+            Consumer.findById(userid)
+                .then((userData) => {
+                    res.send(userData)
                 })
-            });
+                .catch((error) => {
+                    res.send({
+                        error: error
+                    })
+                });
+        }
+    } catch(err) {
+        res.send({
+            error: "You have to login again"
+        });
     }
+
 }
 
 module.exports = authRouter;

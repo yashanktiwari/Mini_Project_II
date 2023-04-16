@@ -9,6 +9,12 @@ const propertySchema = new mongoose.Schema({
             type: String
         }
     ],
+    title: {
+        type: String
+    },
+    description: {
+        type: String
+    },
     state: {
         type: String
     },
@@ -18,10 +24,19 @@ const propertySchema = new mongoose.Schema({
     address: {
         type: String
     },
+    price: {
+        type: String
+    },
+    area: {
+        type: String
+    },
     property_type: {
         type: String
     },
-    price: {
+    owner_id: {
+        type: String
+    },
+    unique_id: {
         type: String
     }
 });
