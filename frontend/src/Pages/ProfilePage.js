@@ -83,7 +83,7 @@ const ProfilePage = () => {
             <input value={username} className={"border border-black p-1 block w-[15rem]"} onChange={(e) => {
                 setUsername(e.target.value);
             }}/>
-            <label className={"block"}>If you are changing the name, then you need to login again.</label>
+            {/*<label className={"block"}>If you are changing the name, then you need to login again.</label>*/}
 
             <label>Email: </label>
             <label>{email}</label>
