@@ -691,6 +691,7 @@ const Signup = ({ retailer }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
+    toast.success("Signing you up");
     if (retailer) {
       axios
         .post("/signupr", {

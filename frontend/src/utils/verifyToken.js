@@ -5,7 +5,6 @@ import {setUser} from "./userSlice";
 const verifyToken = (token, navigate, dispatch) => {
     axios.post('/extractToken', {token})
         .then((obj) => {
-            // console.log(obj);
             if(obj.data.error) {
                 toast.error("You need to login again");
                 localStorage.removeItem("isLoggedIn");

@@ -28,6 +28,10 @@ authRouter
     .route('/extractToken')
     .post(getUserData);
 
+authRouter
+    .route('/updateprofile')
+    .patch(updateProfile);
+
 function postSignUpu(req, res) {
     const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image, retailer} = req.body;
 
@@ -229,7 +233,6 @@ function postLogin(req, res) {
 
 function getUserData(req, res) {
     const {token} = req.body;
-
     try {
         const user = jwt.verify(token, process.env.SECRET_KEY);
 
@@ -241,6 +244,7 @@ function getUserData(req, res) {
                     res.send(userData)
                 })
                 .catch((error) => {
+                    console.log(error);
                     res.send({
                         error: error
                     })
@@ -251,17 +255,45 @@ function getUserData(req, res) {
                     res.send(userData)
                 })
                 .catch((error) => {
+                    console.log(error);
                     res.send({
                         error: error
                     })
                 });
         }
     } catch(err) {
+        console.log(err);
         res.send({
             error: "You have to login again"
         });
     }
 
+}
+
+async function updateProfile(req, res) {
+    const {userid, profile_image, username, email, phone, altPhone, state, city, address, role} = req.body;
+    let model = role=="retailer" ? Retailer : Consumer;
+
+    let user = await model.findById(userid);
+    if(user) {
+        user.profile_image = profile_image;
+                user.username = username;
+                user.email = email;
+                user.phone = phone;
+                user.altPhone = altPhone;
+                user.state = state;
+                user.city = city;
+                user.address = address;
+
+                await user.save();
+                res.send({
+                    user
+                });
+    } else {
+        res.send({
+            message: "User not found"
+        });
+    }
 }
 
 module.exports = authRouter;
