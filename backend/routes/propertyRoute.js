@@ -15,6 +15,10 @@ propertyRouter
     .route('/getallproperties')
     .get(getAllProperties);
 
+propertyRouter
+    .route('/getsingleproperty')
+    .post(getSingleProperty);
+
 async function addNewProperty(req, res) {
     const { primary_img, secondary_img, title, description, state, city, address, price, area, propertyType, owner_id } = req.body;
     const unique_id = Date.now();
@@ -74,9 +78,19 @@ function getAllProperties(req, res) {
         });
 }
 
-// function getSingleProperty(req, res) {
-//     const {id} = req.body;
-//     Property.findById({})
-// }
+function getSingleProperty(req, res) {
+    const {id} = req.body;
+    Property.findById(id)
+        .then((property) => {
+            res.send({
+                property
+            });
+        })
+        .catch((error) => {
+            res.send({
+                error: error
+            });
+        });
+}
 
 module.exports = propertyRouter;

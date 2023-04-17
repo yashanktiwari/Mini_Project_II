@@ -10,6 +10,7 @@ import WishlistPage from "./Pages/WishlistPage";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsAndConditions from "./Pages/TermsAndConditions";
 import AddNewProperty from "./Pages/AddNewProperty";
+import SinglePropertyPage from "./Pages/SinglePropertyPage";
 import {ToastContainer} from "react-toastify";
 
 
@@ -62,17 +63,22 @@ const App = () => {
                     <Route
                         exact
                         path='/privacypolicy'
-                        element= <PrivacyPolicy/>
+                        element= <PrivacyPolicy />
                     />
                     <Route
                         exact
                         path='/termsandcondition'
-                        element= <TermsAndConditions/>
+                        element= <TermsAndConditions />
                     />
                     <Route
                         exact
                         path='/addnewproperty'
-                        element= <AddNewProperty/>
+                        element= <AddNewProperty />
+                    />
+                    <Route
+                        exact
+                        path='/properties/:id'
+                        element= <SinglePropertyPage />
                     />
                 </Routes>
             </BrowserRouter>
