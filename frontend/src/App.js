@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes,} from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import SignupPage from "./Pages/SignupPage";
 import Dashboard from "./Pages/Dashboard";
@@ -12,13 +12,16 @@ import TermsAndConditions from "./Pages/TermsAndConditions";
 import AddNewProperty from "./Pages/AddNewProperty";
 import SinglePropertyPage from "./Pages/SinglePropertyPage";
 import {ToastContainer} from "react-toastify";
+import ScrollToTop from "./Components/ScrollToTop";
 
 
 const App = () => {
+
     return (
         <>
             <ToastContainer />
             <BrowserRouter>
+                <ScrollToTop/>
                 <Routes>
                     <Route
                         exact
