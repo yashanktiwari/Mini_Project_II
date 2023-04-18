@@ -278,7 +278,10 @@ async function updateProfile(req, res) {
     if(upload) {
 
         try {
-            await cloudinary.uploader.destroy(public_id);
+            if(public_id.length != 0) {
+                await cloudinary.uploader.destroy(public_id);
+            }
+
 
             let result = await cloudinary.uploader.upload(profile_image, {
                 folder: `Users/${email}`
