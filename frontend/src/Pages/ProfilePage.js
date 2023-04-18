@@ -1,6 +1,6 @@
 import CommonNavbar from "../Components/CommonNavbar";
 import {useParams} from "react-router";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import verifyToken from "../utils/verifyToken";
@@ -14,18 +14,21 @@ const ProfilePage = () => {
 
     const dispatch = useDispatch();
 
+    const inputRef = useRef();
+
     const userStore = useSelector(store => store.user);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(userStore.user._id == null) {
+        if (userStore.user._id == null) {
             setToken(JSON.parse(localStorage.getItem('isLoggedIn')));
-            if(token) {
+            if (token) {
                 verifyToken(token, navigate, dispatch);
             }
         }
     }, [token]);
+
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -35,9 +38,10 @@ const ProfilePage = () => {
     const [city, setCity] = useState("");
     const [address, setAddress] = useState("");
     const [image, setImage] = useState([]);
+    const [showImage, setShowImage] = useState("");
 
     useEffect(() => {
-        if(userStore.user) {
+        if (userStore.user) {
             setUsername(userStore.user.username);
             setEmail(userStore.user.email);
             setPhone(userStore.user.phone);
@@ -48,36 +52,99 @@ const ProfilePage = () => {
         }
     }, [userStore])
 
+    const setFiletoBase = (file) => {
+        const reader = new FileReader();
+
+        // Reader is reading the file
+        reader.readAsDataURL(file);
+
+        // Once the reading is completed, onloadend is triggered
+        reader.onloadend = () => {
+            setImage(reader.result);
+        };
+    };
+
+    function handleImageSubmission(e) {
+        if (e.target.files && e.target.files[0]) {
+            const image = e.target.files[0];
+            // Checking if the file is an image or not
+            setFiletoBase(image);
+            setShowImage(URL.createObjectURL(image));
+        }
+    }
 
     function handleProfileUpdate(e) {
         toast.success("Updating profile");
-        axios.patch('/updateprofile', {
-            userid: id,
-            profile_image: userStore.user.profile_image,
-            username,
-            email,
-            phone,
-            altPhone,
-            state,
-            city,
-            address,
-            retailer: userStore.user.role
-        })
-            .then((obj) => {
-                verifyToken(token, navigate, dispatch);
-                toast.success("Profile updated successfully");
+
+        if(image.length == 0) {
+            axios.patch('/updateprofile', {
+                userid: id,
+                profile_image: userStore.user.profile_image,
+                public_id: userStore.user.public_id,
+                username,
+                email,
+                phone,
+                altPhone,
+                state,
+                city,
+                address,
+                role: userStore.user.role,
+                upload: false
             })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then((obj) => {
+                    const curToken = JSON.parse(localStorage.getItem('isLoggedIn'));
+                    verifyToken(curToken, navigate, dispatch);
+                    toast.success("Profile updated successfully");
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } else {
+            axios.patch('/updateprofile', {
+                userid: id,
+                profile_image: image,
+                public_id: userStore.user.public_id,
+                username,
+                email,
+                phone,
+                altPhone,
+                state,
+                city,
+                address,
+                role: userStore.user.role,
+                upload: true
+            })
+                .then((obj) => {
+                    const curToken = JSON.parse(localStorage.getItem('isLoggedIn'));
+                    verifyToken(curToken, navigate, dispatch);
+                    toast.success("Profile updated successfully");
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
     }
 
     return (
         <>
             {/* Write the html code here */}
-            <CommonNavbar />
+            <CommonNavbar/>
 
-            <img src={userStore.user.profile_image} alt="..." className="rounded-full h-32 w-32"/>
+            {showImage ? (
+                <img src={showImage} alt="..." className={"cursor-pointer rounded-full h-32 w-32"}
+                     onClick={() => {
+                         inputRef.current.click()
+                     }}/>
+            ) : (
+                <img src={userStore.user.profile_image} alt="..." className={"cursor-pointer rounded-full h-32 w-32"}
+                     onClick={() => {
+                         inputRef.current.click()
+                     }}/>
+            )}
+
+            <input type={"file"} ref={inputRef} accept={"image/png, image/jpg"} className={"hidden"}
+                   onChange={handleImageSubmission}/>
 
             <label>Name: </label>
             <input value={username} className={"border border-black p-1 block w-[15rem]"} onChange={(e) => {
@@ -112,9 +179,11 @@ const ProfilePage = () => {
             }}/>
 
             <label>Address: </label>
-            <textarea value={address} className={"border border-black p-1 block w-[15rem] resize-none overflow-hidden overflow-y-scroll"} onChange={(e) => {
-                setAddress(e.target.value);
-            }}></textarea>
+            <textarea value={address}
+                      className={"border border-black p-1 block w-[15rem] resize-none overflow-hidden overflow-y-scroll"}
+                      onChange={(e) => {
+                          setAddress(e.target.value);
+                      }}></textarea>
 
             {/*<input value={address} className={"border border-black p-1"} onChange={(e) => {*/}
             {/*    setAddress(e.target.value);*/}

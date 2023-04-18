@@ -56,6 +56,7 @@ function postSignUpu(req, res) {
 
                         Consumer.create({
                             profile_image: resultImage.secure_url,
+                            public_id: resultImage.public_id,
                             username: fName + " " + lName,
                             password: hashedPassword,
                             email: email,
@@ -271,12 +272,22 @@ function getUserData(req, res) {
 }
 
 async function updateProfile(req, res) {
-    const {userid, profile_image, username, email, phone, altPhone, state, city, address, role} = req.body;
-    let model = role=="retailer" ? Retailer : Consumer;
+    const {userid, profile_image, username, email, phone, altPhone, state, city, address, role, upload, public_id} = req.body;
+    let model = role==="retailer" ? Retailer : Consumer;
 
-    let user = await model.findById(userid);
-    if(user) {
-        user.profile_image = profile_image;
+    if(upload) {
+
+        try {
+            await cloudinary.uploader.destroy(public_id);
+
+            let result = await cloudinary.uploader.upload(profile_image, {
+                folder: `Users/${email}`
+            });
+
+            let user = await model.findById(userid);
+            if(user) {
+                user.profile_image = result.url;
+                user.public_id = result.public_id;
                 user.username = username;
                 user.email = email;
                 user.phone = phone;
@@ -289,11 +300,38 @@ async function updateProfile(req, res) {
                 res.send({
                     user
                 });
+            } else {
+                res.send({
+                    message: "User not found"
+                })
+            }
+        } catch(error) {
+            console.log(error);
+        }
+
     } else {
-        res.send({
-            message: "User not found"
-        });
+        let user = await model.findById(userid);
+        if(user) {
+            user.profile_image = profile_image;
+            user.username = username;
+            user.email = email;
+            user.phone = phone;
+            user.altPhone = altPhone;
+            user.state = state;
+            user.city = city;
+            user.address = address;
+
+            await user.save();
+            res.send({
+                user
+            });
+        } else {
+            res.send({
+                message: "User not found"
+            });
+        }
     }
+
 }
 
 module.exports = authRouter;
