@@ -51,7 +51,7 @@ function postSignUpu(req, res) {
                 if(profile_image.length !== 0) {
                     // Uploading the image on the cloudinary cloud
                     cloudinary.uploader.upload(profile_image, {
-                        folder: `Users/${email}`
+                        folder: `Users/${email}/consumer`
                     }).then((resultImage) => {
 
                         Consumer.create({
@@ -127,7 +127,7 @@ function postSignUpr(req, res) {
                 if(profile_image.length !== 0) {
                     // Uploading the image on the cloudinary cloud
                     cloudinary.uploader.upload(profile_image, {
-                        folder: `Users/${email}`
+                        folder: `Users/${email}/retailer`
                     }).then((resultImage) => {
 
                         Retailer.create({
@@ -284,7 +284,7 @@ async function updateProfile(req, res) {
 
 
             let result = await cloudinary.uploader.upload(profile_image, {
-                folder: `Users/${email}`
+                folder: `Users/${email}/${role}`
             });
 
             let user = await model.findById(userid);
