@@ -33,7 +33,7 @@ authRouter
     .patch(updateProfile);
 
 function postSignUpu(req, res) {
-    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image, retailer} = req.body;
+    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image} = req.body;
 
 
     Consumer.findOne({email: email})
@@ -48,7 +48,7 @@ function postSignUpu(req, res) {
 
                 // Checking if the file is an image or not
 
-                if(profile_image.length != 0) {
+                if(profile_image.length !== 0) {
                     // Uploading the image on the cloudinary cloud
                     cloudinary.uploader.upload(profile_image, {
                         folder: `Users/${email}`
@@ -110,7 +110,7 @@ function postSignUpu(req, res) {
 }
 
 function postSignUpr(req, res) {
-    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image, retailer, acNumber, acHolderName, ifsCode} = req.body;
+    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image, acNumber, acHolderName, ifsCode} = req.body;
 
     Retailer.findOne({email: email})
         .then(async (userObj) => {
@@ -124,7 +124,7 @@ function postSignUpr(req, res) {
 
                 // Checking if the file is an image or not
 
-                if(profile_image.length != 0) {
+                if(profile_image.length !== 0) {
                     // Uploading the image on the cloudinary cloud
                     cloudinary.uploader.upload(profile_image, {
                         folder: `Users/${email}`
@@ -278,7 +278,7 @@ async function updateProfile(req, res) {
     if(upload) {
 
         try {
-            if(public_id.length != 0) {
+            if(public_id.length !== 0) {
                 await cloudinary.uploader.destroy(public_id);
             }
 
