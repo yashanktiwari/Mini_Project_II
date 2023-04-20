@@ -30,7 +30,7 @@ const Footer = () => {
                                         <a href="https://tailwindcss.com/" className="hover:underline">Post your Property</a>
                                     </li>
                                     <li className="mb-4">
-                                        <a href="https://tailwindcss.com/" className="hover:underline">Articles</a>
+                                        <a target={"_blank"} href="https://medium.com/@assist.estately" className="hover:underline">Articles</a>
                                     </li>
                                     <li >
                                         <a href="https://tailwindcss.com/" className="hover:underline">FAQ</a>
@@ -43,18 +43,18 @@ const Footer = () => {
                                 <ul className="text-gray-400 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
                                         <a href="https://github.com/themesberg/flowbite"
-                                           className="hover:underline ">Github</a>
+                                           className="hover:underline ">Telegram</a>
                                     </li>
                                     <li className="mb-4">
-                                        <a href="https://github.com/themesberg/flowbite"
+                                        <a href="https://www.instagram.com/estately_support/"
                                            className="hover:underline ">Instagram</a>
                                     </li>
                                     <li className="mb-4">
-                                        <a href="https://github.com/themesberg/flowbite"
+                                        <a target={"_blank"} href="https://twitter.com/EstatelyAssist"
                                            className="hover:underline ">Twitter</a>
                                     </li>
                                     <li>
-                                        <a href="https://discord.gg/4eeurUVvTy" className="hover:underline">Discord</a>
+                                        <a target={"_blank"} href="https://discord.com/channels/1097948836904837302/1097948837420732500" className="hover:underline">Discord</a>
                                     </li>
                                 </ul>
                             </div>
