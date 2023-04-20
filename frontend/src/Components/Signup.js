@@ -691,66 +691,75 @@ const Signup = ({ retailer }) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    toast.success("Signing you up");
-    if (retailer) {
-      axios
-        .post("/signupr", {
-          fName,
-          lName,
-          email,
-          phone,
-          altPhone,
-          state,
-          city,
-          address,
-          pin,
-          gender,
-          password,
-          profile_image: img,
-          retailer,
-          acNumber,
-          acHolderName,
-          ifsCode,
-        })
-        .then((obj) => {
-          if (obj.data.error) {
-            toast.error("User already present");
-          } else {
-            toast.success("Sign up successful");
-            navigate("/");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+
+    if(fName.length == 0 || lName.length == 0 || email.length == 0 || phone.length == 0 || state.length === 0 || city.length === 0 || address.length === 0 || pin.length === 0 || gender.length === 0 || password.length === 0 || confirmPassword.length === 0) {
+      toast.error("Please fill all the fields");
     } else {
-      axios
-        .post("/signupu", {
-          fName,
-          lName,
-          email,
-          phone,
-          altPhone,
-          state,
-          city,
-          address,
-          pin,
-          gender,
-          password,
-          profile_image: img,
-          retailer,
-        })
-        .then((obj) => {
-          if (obj.data.error) {
-            toast.error("User already present");
-          } else {
-            toast.success("Sign up successful");
-            navigate("/");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      if(password === confirmPassword) {
+        toast.success("Signing you up");
+        if (retailer) {
+          axios
+              .post("/signupr", {
+                fName,
+                lName,
+                email,
+                phone,
+                altPhone,
+                state,
+                city,
+                address,
+                pin,
+                gender,
+                password,
+                profile_image: img,
+                retailer,
+                acNumber,
+                acHolderName,
+                ifsCode,
+              })
+              .then((obj) => {
+                if (obj.data.error) {
+                  toast.error("User already present");
+                } else {
+                  toast.success("Sign up successful");
+                  navigate("/");
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        } else {
+          axios
+              .post("/signupu", {
+                fName,
+                lName,
+                email,
+                phone,
+                altPhone,
+                state,
+                city,
+                address,
+                pin,
+                gender,
+                password,
+                profile_image: img,
+                retailer,
+              })
+              .then((obj) => {
+                if (obj.data.error) {
+                  toast.error("User already present");
+                } else {
+                  toast.success("Sign up successful");
+                  navigate("/");
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        }
+      } else {
+        toast.error("Password and Confirm Password are not matching");
+      }
     }
   };
 
@@ -784,6 +793,12 @@ const Signup = ({ retailer }) => {
     }
   };
 
+  const [otp, setOtp] = useState("");
+  const [enteredOtp, setEnteredOtp] = useState("");
+
+  const [verified, setVerified] = useState(false);
+
+  const [number, setNumber] = useState("");
   return (
     <>
       <div className="bg-grey-lighter flex flex-col mx-auto w-[70%]">
@@ -824,7 +839,6 @@ const Signup = ({ retailer }) => {
                                   className={"hidden"}
                                   ref={inputRef}
                                   onChange={handleImageSubmission}
-                                  required
                               />
                           </div>
 
@@ -847,7 +861,7 @@ const Signup = ({ retailer }) => {
                                           onChange={(e) => {
                                               setFname(e.target.value);
                                           }}
-                                          required
+                                          
                                       />
                                   </div>
                               </div>
@@ -870,7 +884,7 @@ const Signup = ({ retailer }) => {
                                           onChange={(e) => {
                                               setLname(e.target.value);
                                           }}
-                                          required
+                                          
                                       />
                                   </div>
                               </div>
@@ -901,7 +915,7 @@ const Signup = ({ retailer }) => {
                       onChange={(e) => {
                         setEmail(e.target.value);
                       }}
-                      required
+                      
                     />
                   </div>
                 </div>
@@ -924,7 +938,7 @@ const Signup = ({ retailer }) => {
                       onChange={(e) => {
                         setPhone(e.target.value);
                       }}
-                      required
+                      
                     />
                   </div>
                 </div>
@@ -947,7 +961,7 @@ const Signup = ({ retailer }) => {
                       onChange={(e) => {
                         setAltPhone(e.target.value);
                       }}
-                      required
+                      
                     />
                   </div>
                 </div>
@@ -1041,7 +1055,7 @@ const Signup = ({ retailer }) => {
                       onChange={(e) => {
                         setAddress(e.target.value);
                       }}
-                      required
+                      
                     />
                   </div>
                 </div>
@@ -1064,7 +1078,7 @@ const Signup = ({ retailer }) => {
                       onChange={(e) => {
                         setPin(e.target.value);
                       }}
-                      required
+                      
                     />
                   </div>
                 </div>
@@ -1087,7 +1101,7 @@ const Signup = ({ retailer }) => {
                       onChange={(e) => {
                         setPassword(e.target.value);
                       }}
-                      required
+                      
                     />
                   </div>
                 </div>
@@ -1110,7 +1124,7 @@ const Signup = ({ retailer }) => {
                       onChange={(e) => {
                         setConfirmPassword(e.target.value);
                       }}
-                      required
+                      
                     />
                   </div>
                 </div>
@@ -1144,7 +1158,7 @@ const Signup = ({ retailer }) => {
                           onChange={(e) => {
                             setAcName(e.target.value);
                           }}
-                          required
+                          
                         />
                       </div>
                     </div>
@@ -1167,7 +1181,7 @@ const Signup = ({ retailer }) => {
                           onChange={(e) => {
                             setAcNumber(e.target.value);
                           }}
-                          required
+                          
                         />
                       </div>
                     </div>
@@ -1190,7 +1204,7 @@ const Signup = ({ retailer }) => {
                           onChange={(e) => {
                             setIfsCode(e.target.value);
                           }}
-                          required
+                          
                         />
                       </div>
                     </div>
@@ -1215,7 +1229,7 @@ const Signup = ({ retailer }) => {
                     onChange={(e) => {
                       setGender(e.target.value);
                     }}
-                    required
+                    
                   />
                 </span>
                 <span className="text-white border-2 rounded px-3 py-1">
@@ -1228,28 +1242,18 @@ const Signup = ({ retailer }) => {
                     onChange={(e) => {
                       setGender(e.target.value);
                     }}
-                    required
+                    
                   />
                 </span>
               </div>
 
-              {password.length && password === confirmPassword ? (
-                <button
+              <button
                   type="submit"
                   className="mt-[2rem] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   onClick={handleSignUp}
-                >
-                  Sign Up
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="mt-[2rem] text-white bg-gray-700 cursor-not-allowed font-medium rounded-lg px-5 py-2.5 text-center"
-                  disabled
-                >
-                  Sign Up
-                </button>
-              )}
+              >
+                Sign Up
+              </button>
             </div>
           </div>
         </form>

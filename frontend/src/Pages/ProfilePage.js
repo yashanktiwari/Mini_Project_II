@@ -85,7 +85,7 @@ const ProfilePage = () => {
     function handleProfileUpdate(e) {
         toast.success("Updating profile");
         toggleModal();
-        if(image.length == 0) {
+        if(image.length === 0) {
             axios.patch('/updateprofile', {
                 userid: id,
                 profile_image: userStore.user.profile_image,

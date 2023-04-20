@@ -38,16 +38,18 @@ const AddNewProperty = () => {
     const [primaryImage, setPrimaryImage] = useState([]);
     const [secondaryImages, setSecondaryImages] = useState([]);
 
+    const [compressedImages, setCompressedImages] = useState([]);
 
     const onSelectFiles = (e) => {
-        // const selectedFiles = e.target.files;
         const selectedFilesArray = Array.from(e.target.files);
+        console.log(selectedFilesArray);
+
 
         const imagesArr = selectedFilesArray.map((image) => {
             return URL.createObjectURL(image);
         });
 
-        selectedFilesArray.slice(1).forEach(image => {
+        selectedFilesArray.slice(0).forEach(image => {
             const reader = new FileReader();
             reader.readAsDataURL(image);
             reader.onloadend = () => {
@@ -107,74 +109,114 @@ const AddNewProperty = () => {
         <>
             {/* Write the html code here */}
             <CommonNavbar/>
-            <h1>Hello from add new property page</h1>
-            <label htmlFor="title">Title</label>
+
+
+            <div className={"bg-gray-900"}>
+            <h1 className={"font-bold text-3xl text-white"}>List a new property</h1>
+
+            <div className={"border border-gray-500 w-[75rem] h-fit rounded-xl"}>
+                <div className={"flex justify-center items-center p-1 border border-black m-5 rounded-xl bg-gray-700 text-white"}>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     className="bi bi-plus mr-1 font-bold h-6 w-6" viewBox="0 0 16 16">
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+                    <label className="cursor-pointer p-2"> Add Images
+                        <input type="file" multiple accept="image/png, image/jpeg" onChange={onSelectFiles}
+                               className="hidden"/>
+                    </label>
+
+                </div>
+                    <div className="flex justify-center items-center flex-wrap">
+                        {showSelectedImages &&
+                            showSelectedImages.map((image, index) => {
+                                return (
+                                    <>
+                                        <div key={index} className="flex flex-col my-4">
+                                            <img src={image} className="h-40 w-48 rounded-xl mx-4 border border-gray my-2"/>
+                                            <button className="mx-4 bg-red-600 rounded-xl text-white h-8" onClick={() => {
+                                                setShowSelectedImages(showSelectedImages.filter((e) => e !== image));
+                                                console.log(showSelectedImages);
+                                            }}>Delete
+                                            </button>
+                                        </div>
+                                    </>
+                                )
+                            })
+                        }
+                    </div>
+
+            </div>
+
+            <label htmlFor="title" className={"text-white"}>Title</label>
             <input type="text" id="title" className="border border-black block" onChange={(e) => {
                 setTitle(e.target.value);
             }}/>
 
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description" className={"text-white"}>Description</label>
             <textarea type="text" id="description" className="border border-black block resize-none" onChange={(e) => {
                 setDescription(e.target.value);
             }}/>
 
-            <label htmlFor="state">State</label>
+            <label htmlFor="state" className={"text-white"}>State</label>
             <input type="text" id="state" className="border border-black block" onChange={(e) => {
                 setState(e.target.value);
             }}/>
 
-            <label htmlFor="city">City</label>
+            <label htmlFor="city" className={"text-white"}>City</label>
             <input type="text" id="city" className="border border-black block" onChange={(e) => {
                 setCity(e.target.value);
             }}/>
 
-            <label htmlFor="address">Address</label>
+            <label htmlFor="address" className={"text-white"}>Address</label>
             <textarea type="text" id="address" className="border border-black block resize-none" onChange={(e) => {
                 setAddress(e.target.value);
             }}/>
 
-            <label htmlFor="price">Price</label>
+            <label htmlFor="price" className={"text-white"}>Price</label>
             <input type="number" id="price" className="border border-black block" onChange={(e) => {
                 setPrice(e.target.value);
             }}/>
 
-            <label htmlFor="area">Area (in sq. feet)</label>
+            <label htmlFor="area" className={"text-white"}>Area (in sq. feet)</label>
             <input type="number" id="area" className="border border-black block" onChange={(e) => {
                 setArea(e.target.value);
             }}/>
 
-            <label htmlFor="property-type">Property Type</label>
+            <label htmlFor="property-type" className={"text-white"}>Property Type</label>
             <input type="text" id="property-type" className="border border-black block" onChange={(e) => {
                 setPropertyType(e.target.value);
             }}/>
 
-            <div className="my-4">
-                <label className="cursor-pointer border border-gray bg-gray-700 text-white p-2"> Add Images
-                    <input type="file" multiple accept="image/png, image/jpeg" onChange={onSelectFiles}
-                           className="hidden"/>
-                </label>
-                <div className="flex flex-wrap">
-                    {showSelectedImages &&
-                        showSelectedImages.map((image, index) => {
-                            return (
-                                <>
-                                    <div key={index} className="flex flex-col my-4">
-                                        <img src={image} className="h-40 w-48 rounded-xl mx-4 border border-gray my-2"/>
-                                        <button className="mx-4 bg-red-600 rounded-xl text-white h-8" onClick={() => {
-                                            setShowSelectedImages(showSelectedImages.filter((e) => e !== image));
-                                            console.log(showSelectedImages);
-                                        }}>Delete
-                                        </button>
-                                    </div>
-                                </>
-                            )
-                        })
-                    }
-                </div>
-            </div>
+            {/*<div className="my-4">*/}
+            {/*    <label className="cursor-pointer border border-gray bg-gray-700 text-white p-2"> Add Images*/}
+            {/*        <input type="file" multiple accept="image/png, image/jpeg" onChange={onSelectFiles}*/}
+            {/*               className="hidden"/>*/}
+            {/*    </label>*/}
+            {/*    <div className="flex flex-wrap">*/}
+            {/*        {showSelectedImages &&*/}
+            {/*            showSelectedImages.map((image, index) => {*/}
+            {/*                return (*/}
+            {/*                    <>*/}
+            {/*                        <div key={index} className="flex flex-col my-4">*/}
+            {/*                            <img src={image} className="h-40 w-48 rounded-xl mx-4 border border-gray my-2"/>*/}
+            {/*                            <button className="mx-4 bg-red-600 rounded-xl text-white h-8" onClick={() => {*/}
+            {/*                                setShowSelectedImages(showSelectedImages.filter((e) => e !== image));*/}
+            {/*                                console.log(showSelectedImages);*/}
+            {/*                            }}>Delete*/}
+            {/*                            </button>*/}
+            {/*                        </div>*/}
+            {/*                    </>*/}
+            {/*                )*/}
+            {/*            })*/}
+            {/*        }*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <button className="bg-gray-700 my-4 p-2 text-white" onClick={handleAddingPost}>List New Property</button>
             <Footer/>
+            </div>
         </>
     )
 };
