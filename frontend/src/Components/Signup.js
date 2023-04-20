@@ -42,9 +42,9 @@ const Signup = ({ retailer }) => {
   const [altPhone, setAltPhone] = useState("");
 
   // Additional Account Details
-  const [acHolderName, setAcName] = useState("");
-  const [acNumber, setAcNumber] = useState("");
-  const [ifsCode, setIfsCode] = useState("");
+  // const [acHolderName, setAcName] = useState("");
+  // const [acNumber, setAcNumber] = useState("");
+  // const [ifsCode, setIfsCode] = useState("");
 
   const navigate = useNavigate();
 
@@ -75,9 +75,6 @@ const Signup = ({ retailer }) => {
                 password,
                 profile_image: img,
                 retailer,
-                acNumber,
-                acHolderName,
-                ifsCode,
               })
               .then((obj) => {
                 if (obj.data.error) {
@@ -490,88 +487,6 @@ const Signup = ({ retailer }) => {
                     />
                   </div>
                 </div>
-
-                {retailer ? (
-                  <>
-                    <h3 className="text-white col-span-full text-3xl font-semibold mt-4">
-                      Additional Account Details
-                    </h3>
-                    <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700 col-span-full" />
-                  </>
-                ) : null}
-
-                {retailer ? (
-                  <>
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="acHolderName"
-                        className="block text-sm leading-6 text-white font-semibold"
-                      >
-                        Account Holder Name
-                      </label>
-                      <div className="mt-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
-                        <input
-                          type="text"
-                          name="acHolderName"
-                          id="acHolderName"
-                          placeholder="A/C Holder Name"
-                          autoComplete="acHolderName"
-                          className="block w-full rounded-md p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                          onChange={(e) => {
-                            setAcName(e.target.value);
-                          }}
-                          
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="acNumber"
-                        className="block text-sm leading-6 text-white font-semibold"
-                      >
-                        Account Number
-                      </label>
-                      <div className="mt-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
-                        <input
-                          type="text"
-                          name="acNumber"
-                          id="acNumber"
-                          placeholder="A/C Number"
-                          autoComplete="acNumber"
-                          className="block w-full rounded-md p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                          onChange={(e) => {
-                            setAcNumber(e.target.value);
-                          }}
-                          
-                        />
-                      </div>
-                    </div>
-
-                    <div className="sm:col-span-2">
-                      <label
-                        htmlFor="ifsCode"
-                        className="block text-sm leading-6 text-white font-semibold"
-                      >
-                        IFS Code
-                      </label>
-                      <div className="mt-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
-                        <input
-                          type="text"
-                          name="ifsCode"
-                          id="ifsCode"
-                          placeholder="IFS Code"
-                          autoComplete="ifsCode"
-                          className="block w-full rounded-md p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                          onChange={(e) => {
-                            setIfsCode(e.target.value);
-                          }}
-                          
-                        />
-                      </div>
-                    </div>
-                  </>
-                ) : null}
               </div>
 
               <div className="sm:col-span-2 mt-[2rem]">

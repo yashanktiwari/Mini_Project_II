@@ -110,7 +110,7 @@ function postSignUpu(req, res) {
 }
 
 function postSignUpr(req, res) {
-    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image, acNumber, acHolderName, ifsCode} = req.body;
+    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image} = req.body;
 
     Retailer.findOne({email: email})
         .then(async (userObj) => {
@@ -142,9 +142,6 @@ function postSignUpr(req, res) {
                             state: state,
                             pin: pin,
                             gender: gender,
-                            acNumber: acNumber,
-                            acHolderName: acHolderName,
-                            ifsCode: ifsCode
                         })
                             .then((user) => {
                                 res.send(user);
@@ -165,9 +162,6 @@ function postSignUpr(req, res) {
                         state: state,
                         pin: pin,
                         gender: gender,
-                        acNumber: acNumber,
-                        acHolderName: acHolderName,
-                        ifsCode: ifsCode
                     })
                         .then((user) => {
                             res.send(user);
