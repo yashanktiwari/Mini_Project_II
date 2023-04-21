@@ -1,0 +1,132 @@
+:root {
+    --SLICE-WIDTH: 150px;
+    --THUMB-COLOR: #0062f9;
+    --THUMB-SIZE: 15px;
+}
+
+.container {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+/* Removing the default appearance */
+.thumb,
+.thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.thumb:focus {
+    outline: none;
+}
+
+.thumb {
+    pointer-events: none;
+    position: absolute;
+    height: 0px;
+    width: var(--SLICE-WIDTH);
+}
+
+.thumb--left {
+    z-index: 3;
+}
+
+.thumb--right {
+    z-index: 4;
+}
+
+/* For Chrome browsers */
+.thumb::-webkit-slider-thumb {
+    background-color: var(--THUMB-COLOR);
+    border: none;
+    outline: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+    height: var(--THUMB-SIZE);
+    width: var(--THUMB-SIZE);
+    margin-top: 9px;
+    pointer-events: all;
+    position: relative;
+}
+
+/* For Firefox browsers */
+.thumb::-moz-range-thumb {
+    background-color: var(--THUMB-COLOR);
+    border: none;
+    outline: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+    height: var(--THUMB-SIZE);
+    width: var(--THUMB-SIZE);
+    margin-top: 4px;
+    pointer-events: all;
+    position: relative;
+}
+
+.slider {
+    position: relative;
+    width: calc(var(--SLICE-WIDTH) - 5px);
+    margin-left: 2px;
+}
+
+.slider__track,
+.slider__range {
+    position: absolute;
+    bottom: -7px; /* Here you move the slice up or down only on any browser that is not firefox */
+}
+
+@supports (-moz-appearance: none) {
+    /* This check if the browser is firefox */
+    .slider__track,
+    .slider__range {
+        bottom: -5px; /* Here you move the slice up or down only on firefox browser */
+    }
+}
+
+.slider__track,
+.slider__range {
+    border-radius: 3px;
+    height: 4px; /* Here you define the height of the slice */
+}
+
+.slider__track {
+    background-color: hsl(205, 25%, 75%);
+    width: 100%;
+    z-index: 1;
+}
+
+.slider__range {
+    background-color: #45b4ff;
+    z-index: 2;
+}
+
+.slider__left-value,
+.slider__right-value {
+    color: black;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.slider__key {
+    color: black;
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.slider__left-value {
+    left: 6px;
+}
+
+.slider__right-value {
+    right: -4px;
+}
+
+.values {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: var(--SLICE-WIDTH);
+}
