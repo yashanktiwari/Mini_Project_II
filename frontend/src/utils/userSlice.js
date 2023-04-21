@@ -9,9 +9,19 @@ const userSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload;
         },
+        removeItemFromCart: (state, action) => {
+            let id = action.payload;
+            let idx;
+            state.user.wishlist.forEach((item, index) => {
+                if(item.propertyId === id) {
+                    idx = index;
+                }
+            });
+            state.user.wishlist.splice(idx, 1);
+        }
     },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, removeItemFromCart } = userSlice.actions;
 
 export default userSlice.reducer;

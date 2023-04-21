@@ -22,6 +22,7 @@ const verifyOTPRouter = require('./routes/verifyOTPRoute');
 const changePasswordRouter = require('./routes/changePasswordRoute');
 const propertyRouter = require('./routes/propertyRoute');
 const verifyEmailRouter = require('./routes/verifyEmailRoute');
+const cartRouter = require('./routes/cartRoute');
 
 // Middlewares for setting the routers
 app.use('/', authRouter);
@@ -31,6 +32,7 @@ app.use('/', verifyOTPRouter);
 app.use('/', changePasswordRouter);
 app.use('/', propertyRouter);
 app.use('/', verifyEmailRouter);
+app.use('/', cartRouter);
 
 // Getting the port from the environment variables
 const PORT = process.env.PORT;

@@ -41,6 +41,15 @@ const retailerSchema = new mongoose.Schema({
         type: String,
         default: "retailer"
     },
+    wishlist: [
+        {
+            propertyId: String,
+            propertyImage: String,
+            propertyTitle: String,
+            propertyPrice: String,
+            propertyAddress: String,
+        }
+    ],
     otp: {
         type: String
     }
