@@ -4,6 +4,8 @@ import {useEffect, useState} from "react";
 import CommonNavbar from "../Components/CommonNavbar";
 import verifyToken from "../utils/verifyToken";
 import axios from "axios";
+// import FilterBox from "../Components/FilterBox";
+import DashboardCarousel from "../Components/DashboardCarousel";
 
 const Dashboard = () => {
 
@@ -44,31 +46,53 @@ const Dashboard = () => {
     return (
         <>
             <CommonNavbar />
-            <h1>Dashboard</h1>
-            <h1>User is logged in</h1>
-            <h1>The email is: {userStore.user.email}</h1>
-            <h1>The userid is: {userStore.user._id}</h1>
-            <h1>The role is: {userStore.user.role}</h1>
+            {/*<h1>Dashboard</h1>*/}
+            {/*<h1>User is logged in</h1>*/}
+            {/*<h1>The email is: {userStore.user.email}</h1>*/}
+            {/*<h1>The userid is: {userStore.user._id}</h1>*/}
+            {/*<h1>The role is: {userStore.user.role}</h1>*/}
 
-            <div className="flex">
-            {properties &&
-                properties.map((property) => {
-                    return (
+            {/*<FilterBox/>*/}
 
-                        <Link to={`/properties/${property._id}`}
-                           className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 bg-gray-800 dark:hover:bg-gray-700 mx-2">
-                            <img
-                                className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                src={property.primary_img} alt="Property_Image" />
-                                <div className="flex flex-col justify-between p-4 leading-normal">
-                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{property.title}</h5>
-                                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{property.description}</p>
+            <DashboardCarousel/>
+
+
+            <div className="grid grid-cols-2 gap-12 mx-12 mt-6">
+
+                {properties &&
+                        properties.map((property) => {
+                            return (
+                                <div className="rounded-[7px] mb-4">
+                                    <Link to={`/properties/${property._id}`}
+                                       className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <img
+                                            className="object-cover w-full rounded-t-lg h-[100%] md:h-[100%] md:w-2/5 md:rounded-none md:rounded-l-lg"
+                                            src={property.primary_img} alt="Property_Image" />
+                                            <div className="flex flex-col justify-between p-4 leading-normal">
+                                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{property.title}</h5>
+                                                <span >
+                                                    <p className="text-lg inline font-semibold tracking-tight text-white">Owner :</p>
+                                                    <p className="inline text-white tracking-wide">{}</p>
+                                                </span>
+                                                <span>
+                                                    <p className="text-lg inline font-semibold tracking-tight text-white">Address : </p>
+                                                    <p className="inline text-white tracking-wide">{property.address}</p>
+                                                </span>
+                                                <span>
+                                                    <p className="text-lg inline font-semibold tracking-tight text-white">Area : </p>
+                                                    <p className="inline text-white tracking-wide">{property.area} sq. ft.</p>
+                                                </span>
+                                                <span>
+                                                    <p className="text-lg inline font-semibold tracking-tight text-white">Price : </p>
+                                                    <p className="inline text-white tracking-wide">Rs. {property.price}</p>
+                                                </span>
+                                            </div>
+                                    </Link>
                                 </div>
-                        </Link>
+                            )
+                        })
+                    }
 
-                )
-                })
-            }
             </div>
 
             {/*<button onClick={handleLogout}>Logout</button>*/}
