@@ -27,7 +27,7 @@ const CommonNavbar = () => {
         <>
             {/*    Update*/}
             <header className="flex justify-between">
-                <img src={logo} alt="Logo" className="h-[3rem] w-[7rem]"/>
+                <img src={logo} alt="Logo" className="h-[3rem] w-[10rem]"/>
 
                 <nav ref={navRef}>
                     <Link to="/dashboard">Dashboard</Link>
