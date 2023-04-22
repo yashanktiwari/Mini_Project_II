@@ -151,20 +151,29 @@ const ProfilePage = () => {
                 <div className="bg-gray-200 m-5 rounded-2xl p-4 grid grid-cols-8">
                     <div className="grid place-items-center col-span-2">
 
-                        {showImage ? (
-                            <img src={showImage} alt="..." className={"cursor-pointer border-4 border-white rounded-full h-32 w-32"}
-                                 onClick={() => {
-                                     inputRef.current.click()
-                                 }}/>
-                        ) : (
-                            <img src={userStore.user.profile_image} alt="..." className={"cursor-pointer border-4 border-white rounded-full h-32 w-32"}
-                                 onClick={() => {
-                                     inputRef.current.click()
-                                 }}/>
-                        )}
+                        {userStore.user?.profile_image ? (
+                            <img src={userStore.user.profile_image} alt="..." className={"border-4 border-white rounded-full h-32 w-32"}
+                                // onClick={() => {
+                                //     inputRef.current.click()
+                                // }}
+                            />
+                        ) : null}
+                        {/*{showImage ? (*/}
+                        {/*    <img src={showImage} alt="..." className={"border-4 border-white rounded-full h-32 w-32"}*/}
+                        {/*         // onClick={() => {*/}
+                        {/*         //     inputRef.current.click()*/}
+                        {/*         // }}*/}
+                        {/*    />*/}
+                        {/*) : (*/}
+                        {/*    <img src={userStore.user.profile_image} alt="..." className={"border-4 border-white rounded-full h-32 w-32"}*/}
+                        {/*         // onClick={() => {*/}
+                        {/*         //     inputRef.current.click()*/}
+                        {/*         // }}*/}
+                        {/*    />*/}
+                        {/*)}*/}
 
-                        <input type={"file"} ref={inputRef} accept={"image/png, image/jpg"} className={"hidden"}
-                               onChange={handleImageSubmission}/>
+                        {/*<input type={"file"} ref={inputRef} accept={"image/png, image/jpg"} className={"hidden"}*/}
+                        {/*       onChange={handleImageSubmission}/>*/}
 
                     </div>
 
@@ -322,9 +331,28 @@ const ProfilePage = () => {
 
                             <div className="grid md:grid-cols-2 md:gap-6">
 
+                                <div className="grid place-items-center col-span-full">
+
+                                    {showImage ? (
+                                        <img src={showImage} alt="..." className={"cursor-pointer border-4 border-white rounded-full h-32 w-32"}
+                                             onClick={() => {
+                                                 inputRef.current.click()
+                                             }}/>
+                                    ) : (
+                                        <img src={userStore.user.profile_image} alt="..." className={"cursor-pointer border-4 border-white rounded-full h-32 w-32"}
+                                             onClick={() => {
+                                                 inputRef.current.click()
+                                             }}/>
+                                    )}
+
+                                    <input type={"file"} ref={inputRef} accept={"image/png, image/jpg"} className={"hidden"}
+                                           onChange={handleImageSubmission}/>
+
+                                </div>
+
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="text" value={username} name="floating_first_name" id="floating_first_name"
-                                           className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                           className="block py-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"
                                            placeholder=" " required onChange={(e) => {
                                         setUsername(e.target.value);
                                     }}/>
@@ -336,7 +364,7 @@ const ProfilePage = () => {
 
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="tel" value={phone} name="floating_first_name" id="floating_first_name"
-                                           className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                           className="block py-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"
                                            placeholder=" " required onChange={(e) => {
                                         setPhone(e.target.value);
                                     }}/>
@@ -348,7 +376,7 @@ const ProfilePage = () => {
 
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="tel" value={altPhone} name="floating_first_name" id="floating_first_name"
-                                           className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                           className="block py-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"
                                            placeholder=" " required onChange={(e) => {
                                         setAltPhone(e.target.value);
                                     }}/>
@@ -360,7 +388,7 @@ const ProfilePage = () => {
 
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="text" value={address} name="floating_first_name" id="floating_first_name"
-                                           className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                           className="block py-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"
                                            placeholder=" " required onChange={(e) => {
                                         setAddress(e.target.value);
                                     }}/>
@@ -372,7 +400,7 @@ const ProfilePage = () => {
 
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="text" value={city} name="floating_first_name" id="floating_first_name"
-                                           className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                           className="block py-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"
                                            placeholder=" " required onChange={(e) => {
                                         setCity(e.target.value);
                                     }}/>
@@ -384,7 +412,7 @@ const ProfilePage = () => {
 
                                 <div className="relative z-0 w-full mb-6 group">
                                     <input type="text" value={state} name="floating_first_name" id="floating_first_name"
-                                           className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                           className="block py-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"
                                            placeholder=" " required onChange={(e) => {
                                         setState(e.target.value);
                                     }}/>
