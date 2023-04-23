@@ -65,15 +65,15 @@ const DashboardCarousel = () => {
                 <div className="hidden group-hover:block hover:bg-gray-300/10 hover:text-white absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
                     <BsChevronCompactRight onClick={nextSlide} size={30}/>
                 </div>
-                <div className="flex top-4 justify-center py-2">
-                    {
-                        slides.map((slide, slideIndex) => (
-                            <div key={slideIndex} onClick={() => goToSlide(slideIndex) } className="text-2xl cursor-pointer ">
-                                <RxDotFilled/>
-                            </div>
-                        ))
-                    }
-                </div>
+                {/*<div className="flex top-4 justify-center py-2">*/}
+                {/*    {*/}
+                {/*        slides.map((slide, slideIndex) => (*/}
+                {/*            <div key={slideIndex} onClick={() => goToSlide(slideIndex) } className="text-2xl cursor-pointer ">*/}
+                {/*                <RxDotFilled/>*/}
+                {/*            </div>*/}
+                {/*        ))*/}
+                {/*    }*/}
+                {/*</div>*/}
             </div>
         </>
     )

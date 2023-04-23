@@ -5,17 +5,15 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Titillium Web', sans-serif;
-
 }
-
 
 :root{
     --mainColor: #060606;
     --mainColorLight: #5871d1;
     --secondaryColor: #c40d1c;/* click or hover page*/
     --textColor: #f7f5f5;
-
 }
+
 header{
     display: flex;
     align-items: center;

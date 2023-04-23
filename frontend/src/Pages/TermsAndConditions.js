@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import HomeNavbar from "../Components/HomeNavbar";
 import Footer from "../Components/Footer";
+import CommonNavbar from "../Components/CommonNavbar";
 
 function TermsAndConiditions() {
     const privacy = useRef();
@@ -10,7 +11,7 @@ function TermsAndConiditions() {
 
     return (
         <>
-            <HomeNavbar/>
+            {localStorage.getItem("isLoggedIn") == null ? <HomeNavbar /> : <CommonNavbar />}
             <section className="bg-gray-900 py-4 px-16 tracking-wide">
                 <div className="tracking-tight text-4xl text-center text-sky-400 font-medium mb-4">
                     <h1>TERMS & CONDITIONS</h1>
