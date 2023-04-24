@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom";
 import verifyToken from "../utils/verifyToken";
 import axios from "axios";
 import {toast} from "react-toastify";
-import {setUser} from "../utils/userSlice";
 import Footer from "../Components/Footer";
 
 const ProfilePage = () => {
@@ -85,6 +84,7 @@ const ProfilePage = () => {
         setState(userStore.user.state);
         setCity(userStore.user.city);
         setAddress(userStore.user.address);
+        setShowImage(userStore.user.profile_image);
         overlayRef.current.classList.toggle("hidden");
         overlayRef.current.classList.toggle("flex");
     }
