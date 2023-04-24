@@ -10,6 +10,7 @@ import SinglePageCarousel from "../Components/SinglePageCarousel";
 import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
 import {removeItemFromCart} from "../utils/userSlice";
 import Datepicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 const SinglePropertyPage = () => {
@@ -33,6 +34,7 @@ const SinglePropertyPage = () => {
     const [timeSlot, setTimeSlot] = useState("");
 
     function bookAppointment() {
+        toggleVisitModal();
         console.log("Date: " + date + ", Month: " + month + ", Year: " + year + ", Time Slot: " + timeSlot + ", Name: " +  fullName);
     }
     function setAppointmentDate(obj) {
@@ -184,7 +186,7 @@ const SinglePropertyPage = () => {
                 </>) : null}
 
                 <div className="bg-black bg-opacity-50 absolute inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={visitRef}>
-                    <div className="bg-gray-200 py-2 px-3 rounded shadow-xl text-black w-[70%]">
+                    <div className="bg-gray-200 py-2 px-3 rounded shadow-xl text-black w-[50%]">
                         <div className="flex justify-between items-center mb-4">
                             <h4 className="text-4xl font-bold tracking-wide">
                                 Book Your Appointment
@@ -206,12 +208,12 @@ const SinglePropertyPage = () => {
                                                className="block py-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"
                                                placeholder="" required value={fullName} onChange={(e) => setFullName(e.target.value)}/>
                                         <label htmlFor="floating_first_name"
-                                               className="peer-focus:font-medium absolute text-md text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                               className="peer-focus:font-medium absolute text-md text-black placeholder:text-black duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                             Full Name
                                         </label>
                                     </div>
 
-                                    <div className="relative z-0 w-full mb-3 group text-black">
+                                    <div className="relative w-full mb-3 group text-black z-10">
                                         <label >
                                             Appointment Date
                                         </label>
@@ -236,7 +238,7 @@ const SinglePropertyPage = () => {
                                             name="propertytype"
                                             id="propertytype"
                                             autoComplete="address-level2"
-                                            className="block w-full rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-lg ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            className="z-0 block w-full rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset placeholder:text-lg ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             value={timeSlot}
                                             onChange={(e) => setTimeSlot(e.target.value)}
                                         >
@@ -303,7 +305,7 @@ const SinglePropertyPage = () => {
                         </div>
 
                         <div className={"mt-3 flex justify-end space-x-3"}>
-                            <button className="px-3 py-1 text-white rounded hover:bg-red-600 hover:bg-opacity-50 hover:text-red-100" onClick={toggleVisitModal}>Cancel</button>
+                            <button className="px-3 py-1 text-black rounded hover:bg-red-600 hover:bg-opacity-50 hover:text-red-100" onClick={toggleVisitModal}>Cancel</button>
                             <button className="px-3 py-1 bg-red-800 text-gray-200 rounded hover:bg-red-600" onClick={bookAppointment}>Book</button>
                         </div>
                         {/*<button className="p-1 mt-2 bg-blue-600 text-white px-3 py-2 rounded" onClick={handleProfileUpdate}>*/}

@@ -16,9 +16,6 @@ import SinglePropertyPage from "./Pages/SinglePropertyPage";
 import FAQ from "./Pages/FAQ";
 import {ToastContainer} from "react-toastify";
 import ScrollToTop from "./Components/ScrollToTop";
-// import FilterBox from "./Components/FilterBox";
-import DateValidationDisablePast from "./Components/DateValidationDisablePast";
-// import MultiRangeSlider from "./Components/MultiRangeSlider";
 
 const App = () => {
 
@@ -92,16 +89,6 @@ const App = () => {
                         exact
                         path='/properties/:id'
                         element= <SinglePropertyPage />
-                    />
-                    <Route
-                        exact
-                        path='/test'
-                        element= <DateValidationDisablePast/>
-                        // <MultiRangeSlider
-                        // min={0}
-                        // max={70000000}
-                        // onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
-                        // />
                     />
                 </Routes>
             </BrowserRouter>
