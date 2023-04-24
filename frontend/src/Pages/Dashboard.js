@@ -5,7 +5,6 @@ import CommonNavbar from "../Components/CommonNavbar";
 import verifyToken from "../utils/verifyToken";
 import axios from "axios";
 import Footer from "../Components/Footer";
-// import FilterBox from "../Components/FilterBox";
 import DashboardCarousel from "../Components/DashboardCarousel";
 import FilterBox from "../Components/FilterBox";
 
@@ -151,8 +150,6 @@ const Dashboard = () => {
 
                 </div>
             </section>
-
-            {/*<button onClick={handleLogout}>Logout</button>*/}
             <Footer />
         </>
     )
