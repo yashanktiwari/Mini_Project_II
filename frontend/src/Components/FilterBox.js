@@ -46,6 +46,7 @@ const FilterBox = ({cState, cCity, setFilters}) => {
         setCities(states.find((state) => state.name === event.target.value).cities);
         setCity("--City--");
     };
+
     function changeCity(event) {
         setCity(event.target.value);
     }
@@ -56,6 +57,11 @@ const FilterBox = ({cState, cCity, setFilters}) => {
             return;
         }
 
+        getFilteredProperties();
+
+    }
+
+    function getFilteredProperties() {
         axios.post('/getfilteredproperties', {state, city, minPrice, maxPrice, propertyType, minArea, maxArea})
             .then((obj) => {
                 if(obj.data.error) {
@@ -71,9 +77,6 @@ const FilterBox = ({cState, cCity, setFilters}) => {
             .catch((error) => {
                 console.log(error);
             })
-
-
-        // console.log("Country: " + country + ", State: " + state + ", City: " + city + ", Property Type: " + propertyType + ", Search Key: " + searchKey + ", Min Price : " + minPrice + ", Max Price : " + maxPrice + ", Min Area: " + minArea + ", Max Area: " + maxArea);
     }
 
     return (
@@ -173,16 +176,6 @@ const FilterBox = ({cState, cCity, setFilters}) => {
                     }}>
                         Show Recent Properties
                     </label>
-                    {/*<input*/}
-                    {/*    type="search"*/}
-                    {/*    name={"searchKey"}*/}
-                    {/*    value={searchKey}*/}
-                    {/*    className="block border-2 rounded-md text-black leading-6 px-[1rem] py-1 focus:ring-2 focus:ring-inset focus:ring-indigo-600"*/}
-                    {/*    placeholder="Search..."*/}
-                    {/*    aria-label="Search"*/}
-                    {/*    aria-describedby="button-addon2" onChange={(e) => {*/}
-                    {/*        setSearchKey(e.target.value);*/}
-                    {/*    }}/>*/}
                 </div>
             </div>
         </>
