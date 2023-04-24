@@ -1,7 +1,6 @@
-import {useParams} from "react-router";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import React, {useEffect, useRef, useState} from "react";
 import CommonNavbar from "../Components/CommonNavbar";
 import Footer from "../Components/Footer";
@@ -11,6 +10,7 @@ import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
 import {removeItemFromCart} from "../utils/userSlice";
 import Datepicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
+import {toast} from "react-toastify";
 
 
 const SinglePropertyPage = () => {
@@ -34,15 +34,27 @@ const SinglePropertyPage = () => {
     const [timeSlot, setTimeSlot] = useState("");
 
     function bookAppointment() {
+        axios.post(`/bookappointment/${userStore.user.email}`, {date, month, year, timeSlot, fullName})
+            .then((obj) => {
+                if(obj.data.message) {
+                    toast.success("Appointment booked successfully");
+                } else {
+                    toast.error("Appointment not booked, Please try again !!");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
         toggleVisitModal();
-        console.log("Date: " + date + ", Month: " + month + ", Year: " + year + ", Time Slot: " + timeSlot + ", Name: " +  fullName);
     }
+
     function setAppointmentDate(obj) {
         setDateObj(obj);
         setDate(obj.getDate());
         setMonth(obj.getMonth() + 1);
         setYear(obj.getFullYear());
     }
+
     const lastWeek = new Date();
     lastWeek.setDate(lastWeek.getDate() + 7);
     const [fullName, setFullName] = useState("");
@@ -123,6 +135,52 @@ const SinglePropertyPage = () => {
     });
 
     const [isPresent, setIsPresent] = useState(false);
+
+    function openRazorPayDialog(data) {
+        const options = {
+            key: "rzp_test_eoOxntDezEipHg",
+            amount: data.amount,
+            currency: data.currency,
+            name: "Estately",
+            order_id: data.id,
+            description: "Confirm your appointment",
+            handler: function(response) {
+                console.log(response);
+                axios.post('/verify', {response: response})
+                    .then((obj) => {
+                        console.log(obj);
+                        if(obj.data.signatureIsValid) {
+                            toast.success("Payment Successful");
+                            bookAppointment();
+                        } else {
+                            toast.error("Some error occurred");
+                        }
+
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            },
+            theme: {
+                color: "#3399cc"
+            }
+        };
+
+        const razorPay = new window.Razorpay(options);
+        razorPay.open();
+    }
+
+    const handlePayment = () => {
+        axios.get('/orders')
+            .then((obj) => {
+                if(obj.data.order) {
+                    openRazorPayDialog(obj.data.order);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (<>
             {/* Write the html code here */}
@@ -306,11 +364,8 @@ const SinglePropertyPage = () => {
 
                         <div className={"mt-3 flex justify-end space-x-3"}>
                             <button className="px-3 py-1 text-black rounded hover:bg-red-600 hover:bg-opacity-50 hover:text-red-100" onClick={toggleVisitModal}>Cancel</button>
-                            <button className="px-3 py-1 bg-red-800 text-gray-200 rounded hover:bg-red-600" onClick={bookAppointment}>Book</button>
+                            <button className="px-3 py-1 bg-red-800 text-gray-200 rounded hover:bg-red-600" onClick={handlePayment}>Book</button>
                         </div>
-                        {/*<button className="p-1 mt-2 bg-blue-600 text-white px-3 py-2 rounded" onClick={handleProfileUpdate}>*/}
-                        {/*    Update*/}
-                        {/*</button>*/}
                     </div>
                 </div>
             </section>

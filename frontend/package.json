@@ -21,6 +21,7 @@
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.2",
+    "styled-components": "^5.3.10",
     "tw-elements": "^1.0.0-beta2",
     "web-vitals": "^2.1.4"
   },
