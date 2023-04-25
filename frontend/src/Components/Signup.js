@@ -41,7 +41,7 @@ const Signup = ({retailer}) => {
     const [pin, setPin] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [altPhone, setAltPhone] = useState("");
-
+    const [vid, setVid] = useState("");
 
     const navigate = useNavigate();
 
@@ -74,6 +74,7 @@ const Signup = ({retailer}) => {
                             pin,
                             gender,
                             password,
+                            vid,
                             profile_image: img,
                             retailer,
                         })
@@ -102,6 +103,7 @@ const Signup = ({retailer}) => {
                             pin,
                             gender,
                             password,
+                            vid,
                             profile_image: img,
                             retailer,
                         })
@@ -179,7 +181,6 @@ const Signup = ({retailer}) => {
                 <h1 className="text-4xl font-semibold text-white mx-auto text-center my-5">
                     Signup Page
                 </h1>
-
 
                 <form>
                     <div className="mx-auto grid grid-rows-1 mb-2">
@@ -342,7 +343,6 @@ const Signup = ({retailer}) => {
                                             onChange={(e) => {
                                                 setAltPhone(e.target.value);
                                             }}
-
                                         />
                                     </div>
                                 </div>
@@ -509,41 +509,64 @@ const Signup = ({retailer}) => {
                                         />
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="sm:col-span-2 mt-[2rem]">
-                                <label
-                                    htmlFor="gender"
-                                    className="block text-sm leading-6 text-white font-semibold"
-                                >
-                                    Gender
-                                </label>
-                                <span className="text-white border-2 rounded px-3 py-1 mr-[2rem]">
-                  Male{"  "}
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Male"
-                                        className="mt-4"
-                                        onChange={(e) => {
-                                            setGender(e.target.value);
-                                        }}
+                                <div className="sm:col-span-2">
+                                    <label
+                                        htmlFor="vid"
+                                        className="block text-sm leading-6 text-white font-semibold"
+                                    >
+                                        VID
+                                    </label>
+                                    <div className="mt-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
+                                        <input
+                                            type="vid"
+                                            name="vid"
+                                            id="vid"
+                                            placeholder="VID"
+                                            autoComplete="vid"
+                                            className="block w-full rounded-md p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                                            onChange={(e) => {
+                                                setVid(e.target.value);
+                                            }}
 
-                                    />
-                </span>
-                                <span className="text-white border-2 rounded px-3 py-1">
-                  Female{"  "}
-                                    <input
-                                        type="radio"
-                                        name="gender"
-                                        value="Female"
-                                        className="mt-4"
-                                        onChange={(e) => {
-                                            setGender(e.target.value);
-                                        }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="sm:col-span-4">
+                                    <label
+                                        htmlFor="gender"
+                                        className="block text-sm leading-6 text-white font-semibold"
+                                    >
+                                        Gender
+                                    </label>
+                                    <span className="text-white border-2 rounded px-3 py-1 mr-[2rem]">
+                                    Male{"  "}
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Male"
+                                            className="mt-4"
+                                            onChange={(e) => {
+                                                setGender(e.target.value);
+                                            }}
 
-                                    />
-                </span>
+                                        />
+                                </span>
+                                    <span className="text-white border-2 rounded px-3 py-1">
+                                    Female{"  "}
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="Female"
+                                            className="mt-4"
+                                            onChange={(e) => {
+                                                setGender(e.target.value);
+                                            }}
+
+                                        />
+                                </span>
+                                </div>
+
                             </div>
 
                             <button
@@ -577,10 +600,10 @@ const Signup = ({retailer}) => {
                                         className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                                         onClick={() => setShowDialog(false)}
                                     >
-                    <span
-                        className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
+                                        <span
+                                            className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                                          ×
+                                        </span>
                                     </button>
                                 </div>
                                 {/*body*/}

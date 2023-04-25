@@ -243,7 +243,7 @@ const SinglePropertyPage = () => {
                     </div>
                 </>) : null}
 
-                <div className="bg-black bg-opacity-50 absolute inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={visitRef}>
+                <div className="bg-black bg-opacity-50 fixed inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={visitRef}>
                     <div className="bg-gray-200 py-2 px-3 rounded shadow-xl text-black w-[50%]">
                         <div className="flex justify-between items-center mb-4">
                             <h4 className="text-4xl font-bold tracking-wide">

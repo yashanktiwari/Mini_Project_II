@@ -33,7 +33,7 @@ authRouter
     .patch(updateProfile);
 
 function postSignUpu(req, res) {
-    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image} = req.body;
+    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, vid, profile_image} = req.body;
 
 
     Consumer.findOne({email: email})
@@ -66,6 +66,7 @@ function postSignUpu(req, res) {
                             address: address,
                             state: state,
                             pin: pin,
+                            vid: vid,
                             gender: gender
                         })
                             .then((user) => {
@@ -86,6 +87,7 @@ function postSignUpu(req, res) {
                         address: address,
                         state: state,
                         pin: pin,
+                        vid: vid,
                         gender: gender
                     })
                         .then((user) => {
@@ -110,7 +112,7 @@ function postSignUpu(req, res) {
 }
 
 function postSignUpr(req, res) {
-    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, profile_image} = req.body;
+    const {fName, lName, password, email, phone, altPhone, city, address, state, pin, gender, vid, profile_image} = req.body;
 
     Retailer.findOne({email: email})
         .then(async (userObj) => {
@@ -141,6 +143,7 @@ function postSignUpr(req, res) {
                             address: address,
                             state: state,
                             pin: pin,
+                            vid: vid,
                             gender: gender,
                         })
                             .then((user) => {
@@ -161,6 +164,7 @@ function postSignUpr(req, res) {
                         address: address,
                         state: state,
                         pin: pin,
+                        vid: vid,
                         gender: gender,
                     })
                         .then((user) => {
@@ -291,6 +295,7 @@ async function updateProfile(req, res) {
                 user.altPhone = altPhone;
                 user.state = state;
                 user.city = city;
+                user.vid = vid;
                 user.address = address;
 
                 await user.save();
@@ -316,6 +321,7 @@ async function updateProfile(req, res) {
             user.altPhone = altPhone;
             user.state = state;
             user.city = city;
+            user.vid = vid;
             user.address = address;
 
             await user.save();

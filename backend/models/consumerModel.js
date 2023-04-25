@@ -37,6 +37,9 @@ const consumerSchema = new mongoose.Schema({
     altPhone: {
         type: String
     },
+    vid: {
+        type: String
+    },
     role: {
         type: String,
         default: "consumer"
