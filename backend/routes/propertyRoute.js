@@ -27,7 +27,7 @@ propertyRouter
     .post(getFilteredProperties);
 
 async function addNewProperty(req, res) {
-    const { primary_img, secondary_img, title, description, state, city, address, price, area, propertyType, owner_id } = req.body;
+    const { primary_img, secondary_img, title, description, state, city, address, price, area, propertyType, amenities, owner_id } = req.body;
     const unique_id = Date.now();
 
     let imageBuffer = [];
@@ -56,7 +56,8 @@ async function addNewProperty(req, res) {
         area,
         property_type: propertyType,
         owner_id,
-        unique_id
+        unique_id,
+        amenities
     })
         .then((property) => {
             res.send({

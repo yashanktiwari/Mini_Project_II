@@ -38,7 +38,12 @@ const propertySchema = new mongoose.Schema({
     },
     unique_id: {
         type: String
-    }
+    },
+    amenities: [
+        {
+            type: Boolean
+        }
+    ]
 });
 
 const Property = mongoose.model('Property', propertySchema);

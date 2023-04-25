@@ -106,7 +106,8 @@ const ProfilePage = () => {
                 city,
                 address,
                 role: userStore.user.role,
-                upload: false
+                upload: false,
+                vid: userStore.user.vid
             })
                 .then((obj) => {
                     const curToken = JSON.parse(localStorage.getItem('isLoggedIn'));
@@ -129,7 +130,8 @@ const ProfilePage = () => {
                 city,
                 address,
                 role: userStore.user.role,
-                upload: true
+                upload: true,
+                vid: userStore.user.vid
             })
                 .then((obj) => {
                     const curToken = JSON.parse(localStorage.getItem('isLoggedIn'));
