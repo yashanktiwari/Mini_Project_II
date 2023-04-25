@@ -1,4 +1,5 @@
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
+import {BsChevronCompactLeft, BsChevronCompactRight} from "react-icons/bs";
 
 const SinglePageCarousel = ({images}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,48 +19,38 @@ const SinglePageCarousel = ({images}) => {
     const goToSlide = (slideIndex) => {
         setCurrentIndex(slideIndex);
     };
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         const isLastSlide = currentIndex === images.length - 1;
+    //         const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    //         setCurrentIndex(newIndex);
+    //     }, 4000)
+    //     return () => {
+    //         if(interval){
+    //             clearInterval(interval);
+    //         }
+    //     };
+    // }, [currentIndex]);
+
     return (
         <>
-            <div className="h-[100%] w-[100%] m-auto  relative group">
+            <div className="h-[100%] w-[100%] m-auto relative group">
                 <div
                     style={{ backgroundImage: `url(${images[currentIndex]})` }}
                     className='w-full h-[35rem] rounded-2xl bg-center bg-cover duration-500'
                 >
                 </div>
-                {/* Left Arrow */}
-                <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                    <span className="inline-block h-8 w-8" onClick={prevSlide}>
-                      <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                          className="h-8 w-8">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15.75 19.5L8.25 12l7.5-7.5"/>
-                      </svg>
-                    </span>
+
+                <div className="hidden group-hover:block hover:bg-gray-300/10 hover:text-white absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+                    <BsChevronCompactLeft onClick={prevSlide} size={30}/>
                 </div>
+
                 {/* Right Arrow */}
-                <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-                    <span className="inline-block h-8 w-8" onClick={nextSlide}>
-                      <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="1.5"
-                          stroke="currentColor"
-                          className="h-8 w-8">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M8.25 4.5l7.5 7.5-7.5 7.5"/>
-                      </svg>
-                    </span>
+                <div className="hidden group-hover:block hover:bg-gray-300/10 hover:text-white absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+                    <BsChevronCompactRight onClick={nextSlide} size={30}/>
                 </div>
+
 
                 <div className='flex top-4 justify-center py-2'>
                     {images.map((slide, slideIndex) => (

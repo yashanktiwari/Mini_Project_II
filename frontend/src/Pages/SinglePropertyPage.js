@@ -197,19 +197,11 @@ const SinglePropertyPage = () => {
             <section className="bg-gray-900">
                 {property ? (<>
                     <div className="grid grid-cols-5 py-8 gap-8 mx-8">
-                        <div className="rounded col-span-3">
-                            {Object.keys(property).length !== 0 &&
-                                (
-                                    <>
-                                        <SinglePageCarousel images={property.secondary_img} />
-                                    </>
-                                )
-                            }
-                        </div>
+
                         <div className="rounded-2xl col-span-2 p-4">
                             {/*<img src={property.primary_img} alt="Property_Image" className="h-32 w-32"/>*/}
-                            <div>
-                                <h1 className="text-5xl text-white mb-4 font-semibold inline">{property.title}</h1>
+                            <div className="mb-6">
+                                <h1 className="text-5xl text-white tracking-wide mb-4 font-semibold inline">{property.title}</h1>
                                 {isPresent ? (
                                     <>
                                         <AiFillHeart className={"text-red-500 cursor-pointer mb-4 inline h-8 w-12"}
@@ -222,20 +214,29 @@ const SinglePropertyPage = () => {
                                     </>
                                 )}
                             </div>
-                            <h2 className="text-3xl text-white mb-2 font-semibold">{property.description}</h2>
-                            <div className="mb-2">
-                                <h3 className="font-semibold text-white text-2xl mb-2 inline">Address: </h3>
-                                <p className="font-semibold text-white text-2xl mb-2 inline">{property.address}</p>
+
+                            <div className="mb-4">
+                                <h2 className="text-3xl font-medium text-white">Description</h2>
+                                <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
+                                <p className="text-lg text-white mb-2 font-medium">{property.description}</p>
                             </div>
 
-                            <div className="mb-2">
-                                <h3 className="font-semibold text-white mb-2 text-2xl inline">Rs. </h3>
-                                <p className="font-semibold text-white text-2xl inline mb-2">{property.price}</p>
+                            <div className="mb-4">
+                                <h2 className="text-3xl font-medium text-white">Address</h2>
+                                <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
+                                <p className="text-lg text-white mb-2 font-medium">{property.address}</p>
                             </div>
 
-                            <div className="mb-2">
-                                <h3 className="font-semibold text-white mb-2 text-2xl inline">Area: </h3>
-                                <p className="font-semibold text-white text-2xl inline mb-2">{property.area} sq. feet</p>
+                            <div className="mb-4">
+                                <h2 className="text-3xl font-medium text-white">Price</h2>
+                                <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
+                                <p className="text-lg text-white mb-2 font-medium">Rs. {property.price}</p>
+                            </div>
+
+                            <div className="mb-6">
+                                <h2 className="text-3xl font-medium text-white">Area</h2>
+                                <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
+                                <p className="text-lg text-white mb-2 font-medium">{property.area} sq. feet</p>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4 mt-4">
@@ -246,27 +247,50 @@ const SinglePropertyPage = () => {
                                     <button className="text-white rounded-full w-full text-xl text-center px-4 py-4 hover:bg-pink-700 border-pink-600 bg-pink-600">Pay Token Money</button>
                                 </div>
                             </div>
+                        </div>
 
+                        <div className="rounded col-span-3">
+                            {Object.keys(property).length !== 0 &&
+                                (
+                                    <>
+                                        <SinglePageCarousel images={property.secondary_img} />
+                                    </>
+                                )
+                            }
+                        </div>
+
+                    </div>
+
+                    <div className="mx-8">
+                        <div className="p-4">
+                            <h2 className="text-3xl font-medium ml-1 tracking-wide text-white">Amenities</h2>
+                            <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
+                        </div>
+                        <div className="grid grid-cols-4 mx-6 pb-10">
                             {property.amenities &&  property.amenities.map((value, index) => {
                                 if(value) {
                                     return (
                                         <>
-                                            <AiFillCheckCircle className={"text-green-500"}/>
-                                            <span className={"text-white"}>{amenityArr[index]}</span>
+                                            <div className="p-2 place-items-center">
+                                                <AiFillCheckCircle className={"text-green-500 mr-2 inline"}/>
+                                                <span className={"text-white inline text-lg"}>{amenityArr[index]}</span>
+                                            </div>
                                         </>
                                     )
                                 } else {
                                     return (
                                         <>
-                                            <AiFillCloseCircle className={"text-red-500"}/>
-                                            <span className={"text-white"}>{amenityArr[index]}</span>
+                                            <div className="p-2 place-items-center">
+                                                <AiFillCloseCircle className={"text-red-500 mr-2 inline"}/>
+                                                <span className={"text-white inline text-lg"}>{amenityArr[index]}</span>
+                                            </div>
                                         </>
                                     )
                                 }
                             })}
-
                         </div>
                     </div>
+
                 </>) : null}
 
                 <div className="bg-black bg-opacity-50 fixed inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={visitRef}>
@@ -284,7 +308,6 @@ const SinglePropertyPage = () => {
                         <div className="mt-2">
 
                             <form>
-
                                 <div className="grid md:grid-cols-1 md:gap-6">
 
                                     <div className="relative z-0 w-full mb-3 group">
@@ -335,55 +358,7 @@ const SinglePropertyPage = () => {
                                             <option className="mx-1 border-2">17:00 - 18:00</option>
                                         </select>
                                     </div>
-
-
-                                    {/*<div className="relative z-0 w-full mb-6 group">*/}
-                                    {/*    <input type="tel" value={phone} name="floating_first_name" id="floating_first_name"*/}
-                                    {/*           className="block py-2.5 px-0 w-full text-md text-white bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"*/}
-                                    {/*           placeholder=" " required onChange={(e) => {*/}
-                                    {/*        setPhone(e.target.value);*/}
-                                    {/*    }}/>*/}
-                                    {/*    <label htmlFor="floating_first_name"*/}
-                                    {/*           className="peer-focus:font-medium absolute text-md text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">*/}
-                                    {/*        Primary Mobile No.*/}
-                                    {/*    </label>*/}
-                                    {/*</div>*/}
-
-                                    {/*<div className="relative z-0 w-full mb-6 group">*/}
-                                    {/*    <input type="tel" value={altPhone} name="floating_first_name" id="floating_first_name"*/}
-                                    {/*           className="block py-2.5 px-0 w-full text-md text-white bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"*/}
-                                    {/*           placeholder=" " required onChange={(e) => {*/}
-                                    {/*        setAltPhone(e.target.value);*/}
-                                    {/*    }}/>*/}
-                                    {/*    <label htmlFor="floating_first_name"*/}
-                                    {/*           className="peer-focus:font-medium absolute text-md text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">*/}
-                                    {/*        Alternate Mobile No.*/}
-                                    {/*    </label>*/}
-                                    {/*</div>*/}
-
-                                    {/*<div className="relative z-0 w-full mb-6 group">*/}
-                                    {/*    <input type="date" value={altPhone} name="floating_first_name" id="floating_first_name"*/}
-                                    {/*           className="block py-2.5 px-0 w-full text-md text-white bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"*/}
-                                    {/*           placeholder=" " required onChange={(e) => {*/}
-                                    {/*        setAltPhone(e.target.value);*/}
-                                    {/*    }}/>*/}
-                                    {/*    <label htmlFor="floating_first_name"*/}
-                                    {/*           className="peer-focus:font-medium absolute text-md text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">*/}
-                                    {/*        Date*/}
-                                    {/*    </label>*/}
-                                    {/*</div>*/}
-
-                                    {/*<div className="relative z-0 w-full mb-6 group">*/}
-                                    {/*    <input type="time" value={altPhone} name="floating_first_name" id="floating_first_name"*/}
-                                    {/*           className="block py-2.5 px-0 w-full text-md text-white bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer"*/}
-                                    {/*           placeholder=" " required onChange={(e) => {*/}
-                                    {/*        setAltPhone(e.target.value);*/}
-                                    {/*    }}/>*/}
-                                    {/*    <label htmlFor="floating_first_name"*/}
-                                    {/*           className="peer-focus:font-medium absolute text-md text-gray-200 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">*/}
-                                    {/*        Date*/}
-                                    {/*    </label>*/}
-                                    </div>
+                                </div>
                             </form>
 
                         </div>

@@ -147,7 +147,7 @@ const AddNewProperty = () => {
                         <div className="border-b border-gray-900/10 pb-6 grid-cols-2">
                             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
-                                <div className="sm:col-span-2">
+                                <div className="sm:col-span-3">
                                     <label
                                         htmlFor="title"
                                         className="block text-sm leading-6 text-white font-semibold"
@@ -167,7 +167,7 @@ const AddNewProperty = () => {
                                     </div>
                                 </div>
 
-                                <div className="sm:col-span-2">
+                                <div className="sm:col-span-3">
                                     <label
                                         htmlFor="description"
                                         className="block text-sm leading-6 text-white font-semibold"
@@ -183,26 +183,6 @@ const AddNewProperty = () => {
                                             autoComplete="description"
                                             className="inline w-full rounded-md border-0 p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             onChange={(e) => {setDescription(e.target.value)}}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="sm:col-span-2">
-                                    <label
-                                        htmlFor="area"
-                                        className="block text-sm leading-6 text-white font-semibold"
-                                    >
-                                        Area ( in sq. feet )
-                                    </label>
-                                    <div className="mt-2">
-                                        <input
-                                            id="area"
-                                            name="area"
-                                            type="number"
-                                            placeholder="Area"
-                                            autoComplete="area"
-                                            className="inline w-full rounded-md border-0 p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            onChange={(e) => {setArea(e.target.value)}}
                                         />
                                     </div>
                                 </div>
@@ -303,6 +283,26 @@ const AddNewProperty = () => {
 
                                 <div className="sm:col-span-2">
                                     <label
+                                        htmlFor="area"
+                                        className="block text-sm leading-6 text-white font-semibold"
+                                    >
+                                        Area ( in sq. feet )
+                                    </label>
+                                    <div className="mt-2">
+                                        <input
+                                            id="area"
+                                            name="area"
+                                            type="number"
+                                            placeholder="Area"
+                                            autoComplete="area"
+                                            className="inline w-full rounded-md border-0 p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            onChange={(e) => {setArea(e.target.value)}}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="sm:col-span-2">
+                                    <label
                                         htmlFor="price"
                                         className="block text-sm leading-6 text-white font-semibold"
                                     >
@@ -340,6 +340,109 @@ const AddNewProperty = () => {
                                         />
                                     </div>
                                 </div>
+
+                                {/*amenities array -> lift security playground garden water-supply power-backup parking-area gym shopping-mall hospital schools market-area*/}
+                                <div className="col-span-full">
+                                    <label
+                                        htmlFor="propertytype"
+                                        className="block text-sm leading-6 text-white font-semibold"
+                                    >
+                                        Amenities
+                                    </label>
+                                    <div className="grid grid-cols-4 border border-gray-500 mt-4 mx-auto p-4 h-fit rounded-xl">
+                                        <div className="place-self-center">
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"lift"} onChange={() => {
+                                                    toggleAmenities(0);
+                                                }}/>
+                                                <label htmlFor={"lift"} className={"text-white"}>Lift</label>
+                                            </div>
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"security"} onChange={() => {
+                                                    toggleAmenities(1);
+                                                }}/>
+                                                <label htmlFor={"security"} className={"text-white"}>Security Guards</label>
+                                            </div>
+
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"playground"} onChange={() => {
+                                                    toggleAmenities(2);
+                                                }}/>
+                                                <label htmlFor={"playground"} className={"text-white"}>Playground</label>
+                                            </div>
+                                        </div>
+
+                                        <div className="place-self-center">
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"garden"} onChange={() => {
+                                                    toggleAmenities(3);
+                                                }}/>
+                                                <label htmlFor={"garden"} className={"text-white"}>Garden</label>
+                                            </div>
+
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"water-supply"} onChange={() => {
+                                                    toggleAmenities(4);
+                                                }}/>
+                                                <label htmlFor={"water-supply"} className={"text-white"}>Water Supply</label>
+                                            </div>
+
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"power-backup"} onChange={() => {
+                                                    toggleAmenities(5);
+                                                }}/>
+                                                <label htmlFor={"power-backup"} className={"text-white"}>Power Backup</label>
+                                            </div>
+                                        </div>
+
+                                        <div className="place-self-center">
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"parking-area"} onChange={() => {
+                                                    toggleAmenities(6);
+                                                }}/>
+                                                <label htmlFor={"parking-area"} className={"text-white"}>Parking Area</label>
+                                            </div>
+
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"gym"} onChange={() => {
+                                                    toggleAmenities(7);
+                                                }}/>
+                                                <label htmlFor={"gym"} className={"text-white"}>Gym</label>
+                                            </div>
+
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"shopping-mall"} onChange={() => {
+                                                    toggleAmenities(8);
+                                                }}/>
+                                                <label htmlFor={"shopping-mall"} className={"text-white"}>Shopping Mall</label>
+                                            </div>
+                                        </div>
+
+                                        <div className="place-self-center">
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"hospital"} onChange={() => {
+                                                    toggleAmenities(9);
+                                                }}/>
+                                                <label htmlFor={"hospital"} className={"text-white"}>Hospital</label>
+                                            </div>
+
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"schools"} onChange={() => {
+                                                    toggleAmenities(10);
+                                                }}/>
+                                                <label htmlFor={"schools"} className={"text-white"}>Schools</label>
+                                            </div>
+
+                                            <div>
+                                                <input type={"checkbox"} className="mr-2" id={"market-area"} onChange={() => {
+                                                    toggleAmenities(11);
+                                                }}/>
+                                                <label htmlFor={"market-area"} className={"text-white"}>Market Area</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -382,69 +485,6 @@ const AddNewProperty = () => {
                     </div>
 
 
-                </div>
-
-                {/*amenities array -> lift security playground garden water-supply power-backup parking-area gym shopping-mall hospital schools market-area*/}
-                <div>
-                    <label htmlFor={"lift"} className={"text-white ml-6"}>Lift</label>
-                    <input type={"checkbox"} id={"lift"} onChange={() => {
-                        toggleAmenities(0);
-                    }}/>
-
-                    <label htmlFor={"security"} className={"text-white ml-6"}>Security Guards</label>
-                    <input type={"checkbox"} id={"security"} onChange={() => {
-                        toggleAmenities(1);
-                    }}/>
-
-                    <label htmlFor={"playground"} className={"text-white ml-6"}>Playground</label>
-                    <input type={"checkbox"} id={"playground"} onChange={() => {
-                        toggleAmenities(2);
-                    }}/>
-
-                    <label htmlFor={"garden"} className={"text-white ml-6"}>Garden</label>
-                    <input type={"checkbox"} id={"garden"} onChange={() => {
-                        toggleAmenities(3);
-                    }}/>
-
-                    <label htmlFor={"water-supply"} className={"text-white ml-6"}>Water Supply</label>
-                    <input type={"checkbox"} id={"water-supply"} onChange={() => {
-                        toggleAmenities(4);
-                    }}/>
-
-                    <label htmlFor={"power-backup"} className={"text-white ml-6"}>Power Backup</label>
-                    <input type={"checkbox"} id={"power-backup"} onChange={() => {
-                        toggleAmenities(5);
-                    }}/>
-
-                    <label htmlFor={"parking-area"} className={"text-white ml-6"}>Parking Area</label>
-                    <input type={"checkbox"} id={"parking-area"} onChange={() => {
-                        toggleAmenities(6);
-                    }}/>
-
-                    <label htmlFor={"gym"} className={"text-white ml-6"}>Gym</label>
-                    <input type={"checkbox"} id={"gym"} onChange={() => {
-                        toggleAmenities(7);
-                    }}/>
-
-                    <label htmlFor={"shopping-mall"} className={"text-white ml-6"}>Shopping Mall</label>
-                    <input type={"checkbox"} id={"shopping-mall"} onChange={() => {
-                        toggleAmenities(8);
-                    }}/>
-
-                    <label htmlFor={"hospital"} className={"text-white ml-6"}>Hospital</label>
-                    <input type={"checkbox"} id={"hospital"} onChange={() => {
-                        toggleAmenities(9);
-                    }}/>
-
-                    <label htmlFor={"schools"} className={"text-white ml-6"}>Schools</label>
-                    <input type={"checkbox"} id={"schools"} onChange={() => {
-                        toggleAmenities(10);
-                    }}/>
-
-                    <label htmlFor={"market-area"} className={"text-white ml-6"}>Market Area</label>
-                    <input type={"checkbox"} id={"market-area"} onChange={() => {
-                        toggleAmenities(11);
-                    }}/>
                 </div>
             </section>
             <Footer/>
