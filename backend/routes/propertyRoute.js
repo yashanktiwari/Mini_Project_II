@@ -22,6 +22,10 @@ propertyRouter
     .route('/getcaraouselimages')
     .post(getCaraouselImages);
 
+propertyRouter
+    .route('/getfilteredproperties')
+    .post(getFilteredProperties);
+
 async function addNewProperty(req, res) {
     const { primary_img, secondary_img, title, description, state, city, address, price, area, propertyType, owner_id } = req.body;
     const unique_id = Date.now();
@@ -71,6 +75,22 @@ function getAllProperties(req, res) {
     Property.find({})
         .then((properties) => {
             res.send(properties);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send({
+                error: "Some error occurred"
+            });
+        });
+}
+
+function getFilteredProperties(req, res) {
+    const {state, city, minPrice, maxPrice, propertyType, minArea, maxArea} = req.body;
+    Property.find({state: state, city: city, price: {$lte : maxPrice, $gte : minPrice}, property_type: propertyType, area: {$lte: maxArea, $gte: minArea}})
+        .then((properties) => {
+            res.send({
+                properties
+            });
         })
         .catch((error) => {
             console.log(error);

@@ -1,3 +1,5 @@
+// noinspection ES6UnusedImports
+
 import React from 'react';
 import {BrowserRouter, Route, Routes,} from "react-router-dom";
 import HomePage from "./Pages/HomePage";
@@ -11,9 +13,9 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsAndConditions from "./Pages/TermsAndConditions";
 import AddNewProperty from "./Pages/AddNewProperty";
 import SinglePropertyPage from "./Pages/SinglePropertyPage";
+import FAQ from "./Pages/FAQ";
 import {ToastContainer} from "react-toastify";
 import ScrollToTop from "./Components/ScrollToTop";
-
 
 const App = () => {
 
@@ -72,6 +74,11 @@ const App = () => {
                         exact
                         path='/termsandcondition'
                         element= <TermsAndConditions />
+                    />
+                    <Route
+                        exact
+                        path='/FAQ'
+                        element= <FAQ />
                     />
                     <Route
                         exact

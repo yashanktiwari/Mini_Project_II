@@ -23,6 +23,8 @@ const changePasswordRouter = require('./routes/changePasswordRoute');
 const propertyRouter = require('./routes/propertyRoute');
 const verifyEmailRouter = require('./routes/verifyEmailRoute');
 const cartRouter = require('./routes/cartRoute');
+const bookAppointementRouter = require('./routes/bookAppointmentRoute');
+const paymentRouter = require('./routes/paymentRoute');
 
 // Middlewares for setting the routers
 app.use('/', authRouter);
@@ -33,6 +35,8 @@ app.use('/', changePasswordRouter);
 app.use('/', propertyRouter);
 app.use('/', verifyEmailRouter);
 app.use('/', cartRouter);
+app.use('/', bookAppointementRouter);
+app.use('/', paymentRouter);
 
 // Getting the port from the environment variables
 const PORT = process.env.PORT;

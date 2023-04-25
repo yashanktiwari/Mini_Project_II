@@ -57,7 +57,7 @@ const WishlistPage = () => {
                     <>
                         <div className={"min-h-[80vh] flex justify-center items-center"}>
                         <div
-                            className={"h-fit border border-gray-300  w-fit px-16 py-6 rounded-xl flex flex-col items-center justify-center sm-w-fit md:mx-4 sm:mx-4"}>
+                            className={"h-fit w-fit px-16 py-6 rounded-xl flex flex-col items-center justify-center sm-w-fit md:mx-4 sm:mx-4"}>
                             <h1 className={"font-semibold text-[#F5FEFD] text-4xl"}>Your wishlist is currently empty</h1>
                             <h1 className={"text-xl mt-2 text-[#F5FEFD]"}>Check out the <Link to={'/dashboard'}
                                                                                               className={"cursor-pointer text-blue-500"}>Latest
@@ -77,7 +77,7 @@ const WishlistPage = () => {
                                     <span>Properties</span>
                                 </>
                             )})</h1>
-                        <div className={"overflow-hidden overflow-y-scroll h-fit max-h-[75vh] border border-gray-300 px-4 py-5 mt-4 rounded-xl"}>
+                        <div className={"h-fit max-h-[75vh] px-4 py-5 mt-4 rounded-xl"}>
                             {userStore.user.wishlist && userStore.user?.wishlist.map((property) => {
                                 return (
                                     <div key={property.propertyId}>

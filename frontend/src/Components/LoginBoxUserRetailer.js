@@ -200,7 +200,7 @@ const LoginBoxRetailerUser = () => {
 
     return (
         <>
-            <div className="w-full max-w-md px-2 py-2.5 sm:px-0">
+            <div className="w-full px-2 py-2.5 sm:px-0">
                 <Tab.Group>
                     <Tab.List className="flex space-x-1 rounded-xl bg-white p-1">
                         <Tab
