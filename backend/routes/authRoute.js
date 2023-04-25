@@ -261,7 +261,6 @@ function getUserData(req, res) {
                 });
         }
     } catch(err) {
-        console.log(err);
         res.send({
             error: "You have to login again"
         });
@@ -270,7 +269,7 @@ function getUserData(req, res) {
 }
 
 async function updateProfile(req, res) {
-    const {userid, profile_image, username, email, phone, altPhone, state, city, address, role, upload, public_id} = req.body;
+    const {userid, profile_image, username, email, phone, altPhone, state, city, address, role, upload, public_id, vid} = req.body;
     let model = role==="retailer" ? Retailer : Consumer;
 
     if(upload) {

@@ -81,7 +81,7 @@ const Dashboard = () => {
                                     return (
                                         <div className="rounded-[7px]" key={property._id}>
                                             <Link to={`/properties/${property._id}`}
-                                                  className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                                  className="flex flex-col items-center border rounded-lg shadow md:flex-row hover:bg-gray-100 border-gray-700 bg-gray-800 hover:bg-gray-700">
                                                 <img
                                                     className="object-cover w-full rounded-t-lg h-[12rem] md:w-2/5 md:rounded-none md:rounded-l-lg"
                                                     src={property.primary_img} alt="Property_Image" />

@@ -6,7 +6,7 @@ import CommonNavbar from "../Components/CommonNavbar";
 import Footer from "../Components/Footer";
 import verifyToken from "../utils/verifyToken";
 import SinglePageCarousel from "../Components/SinglePageCarousel";
-import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai';
+import {AiOutlineHeart, AiFillHeart, AiFillCheckCircle, AiFillCloseCircle} from 'react-icons/ai';
 import {removeItemFromCart} from "../utils/userSlice";
 import Datepicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
@@ -32,6 +32,7 @@ const SinglePropertyPage = () => {
     const [month, setMonth] = useState();
     const [year, setYear] = useState();
     const [timeSlot, setTimeSlot] = useState("");
+
 
     function bookAppointment() {
         axios.post(`/bookappointment/${userStore.user.email}`, {date, month, year, timeSlot, fullName})
@@ -182,6 +183,13 @@ const SinglePropertyPage = () => {
             })
     }
 
+    // amenities array -> lift security playground gardens water-supply power-backup parking-area gym shopping-mall hospital schools market-area
+    const [amenityArr, setAmenityArr] = useState(["Lift", "Security", "Playground", "Garden", "Water Supply", "Power Backup", "Parking Area", "Gym", "Shopping Mall", "Hospital", "Schools", "Market Area"]);
+
+    useEffect(() => {
+        console.log(property);
+    }, [property]);
+
     return (<>
             {/* Write the html code here */}
             <CommonNavbar/>
@@ -238,6 +246,24 @@ const SinglePropertyPage = () => {
                                     <button className="text-white rounded-full w-full text-xl text-center px-4 py-4 hover:bg-pink-700 border-pink-600 bg-pink-600">Pay Token Money</button>
                                 </div>
                             </div>
+
+                            {property.amenities &&  property.amenities.map((value, index) => {
+                                if(value) {
+                                    return (
+                                        <>
+                                            <AiFillCheckCircle className={"text-green-500"}/>
+                                            <span className={"text-white"}>{amenityArr[index]}</span>
+                                        </>
+                                    )
+                                } else {
+                                    return (
+                                        <>
+                                            <AiFillCloseCircle className={"text-red-500"}/>
+                                            <span className={"text-white"}>{amenityArr[index]}</span>
+                                        </>
+                                    )
+                                }
+                            })}
 
                         </div>
                     </div>
@@ -368,6 +394,7 @@ const SinglePropertyPage = () => {
                         </div>
                     </div>
                 </div>
+
             </section>
             <Footer/>
         </>
