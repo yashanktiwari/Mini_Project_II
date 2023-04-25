@@ -82,7 +82,7 @@ const FilterBox = ({cState, cCity, setFilters}) => {
     return (
         <>
             {/* Write the html code here */}
-            <div className="bg-gray-100 w-[92%] mx-auto flex flex-row items-center border-4 p-1 rounded-md">
+            <div className="bg-gray-100 w-fit mx-auto flex flex-row items-center border-4 p-1 mb-4 rounded-md">
 
                 <div className="m-2">
                     <select
