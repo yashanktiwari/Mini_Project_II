@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {BsChevronCompactLeft, BsChevronCompactRight} from "react-icons/bs";
-import {RxDotFilled} from "react-icons/rx";
+// import {RxDotFilled} from "react-icons/rx";
+
 
 const DashboardCarousel = () => {
     const slides = [
@@ -51,9 +52,23 @@ const DashboardCarousel = () => {
         setCurrentIndex(slideIndex);
     }
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const isLastSlide = currentIndex === slides.length - 1;
+            const newIndex = isLastSlide ? 0 : currentIndex + 1;
+            setCurrentIndex(newIndex);
+        }, 4000)
+        return () => {
+            if(interval){
+                clearInterval(interval);
+            }
+        };
+    }, [currentIndex]);
+
+
     return (
         <>
-            <div className="max-w-[1450px] h-[350px] pb-8 w-full m-auto relative group">
+            <div className="h-[350px] pb-8 w-full m-auto relative group">
                 <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className="w-full h-full bg-center bg-cover duration-500">
                 </div>
 

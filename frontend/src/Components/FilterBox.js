@@ -82,7 +82,7 @@ const FilterBox = ({cState, cCity, setFilters}) => {
     return (
         <>
             {/* Write the html code here */}
-            <div className="bg-grey-lighter w-fit mx-auto flex flex-row items-center border-4 p-1 rounded-md">
+            <div className="bg-gray-100 w-[92%] mx-auto flex flex-row items-center border-4 p-1 rounded-md">
 
                 <div className="m-2">
                     <select
@@ -171,7 +171,7 @@ const FilterBox = ({cState, cCity, setFilters}) => {
                 </button>
 
                 <div className="m-2">
-                    <label className={'bg-blue-300 cursor-pointer p-1 rounded-md'} onClick={(e) => {
+                    <label className={'bg-blue-300 cursor-pointer hover:bg-blue-400 p-2 rounded-md'} onClick={(e) => {
                         setFilters([]);
                     }}>
                         Show Recent Properties
