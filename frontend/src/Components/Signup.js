@@ -51,13 +51,19 @@ const Signup = ({retailer}) => {
     const handleSignUp = (e) => {
         e.preventDefault();
 
-        if (fName.length === 0 || lName.length === 0 || email.length === 0 || phone.length === 0 || state.length === 0 || city.length === 0 || address.length === 0 || pin.length === 0 || gender.length === 0 || password.length === 0 || confirmPassword.length === 0) {
+        if (fName.length === 0 || lName.length === 0 || email.length === 0 || phone.length === 0 || state.length === 0 || city.length === 0 || address.length === 0 || pin.length === 0 || gender.length === 0 || password.length === 0 || confirmPassword.length === 0 || vid.length == 0) {
             toast.error("Please fill all the fields");
         } else {
             if (!verified) {
                 toast.error("Please verify your email first");
                 return;
             }
+
+            if(vid.length != 12) {
+                toast.error("Enter a valid VID");
+                return;
+            }
+
             if (password === confirmPassword) {
                 toast.success("Signing you up");
                 if (retailer) {

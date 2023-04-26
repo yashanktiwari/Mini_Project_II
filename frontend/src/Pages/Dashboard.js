@@ -13,14 +13,6 @@ const Dashboard = () => {
     const [allProperties, setAllProperties] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);
 
-    const [state, setState] = useState("");
-    const [city, setCity] = useState("");
-    const [minPrice, setMinPrice] = useState("");
-    const [maxPrice, setMaxPrice] = useState("");
-    const [propertyType, setPropertyType] = useState("");
-    const [minArea, setMinArea] = useState("");
-    const [maxArea, setMaxArea] = useState("");
-
     const setFilters = (filteredArr) => {
         setFilteredProperties(filteredArr);
     }
@@ -56,8 +48,6 @@ const Dashboard = () => {
                 console.log(error);
             })
     }
-
-    console.log(" State: " + state + ", City: " + city + ", Property Type: " + propertyType + ", Min Price : " + minPrice + ", Max Price : " + maxPrice + ", Min Area: " + minArea + ", Max Area: " + maxArea);
 
     return (
         <>
