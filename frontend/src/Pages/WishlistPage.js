@@ -49,24 +49,24 @@ const WishlistPage = () => {
         }
 
         return (
-            <div className={"bg-gray-900 h-[115vh]"}>
+            <div className={"bg-gray-900"}>
                 {/* Write the html code here */}
                 <CommonNavbar/>
 
                 {userStore.user.wishlist && userStore.user.wishlist.length == 0 ? (
                     <>
-                        <div className={"min-h-[80vh] flex justify-center items-center"}>
-                        <div
-                            className={"h-fit w-fit px-16 py-6 rounded-xl flex flex-col items-center justify-center sm-w-fit md:mx-4 sm:mx-4"}>
-                            <h1 className={"font-semibold text-[#F5FEFD] text-4xl"}>Your wishlist is currently empty</h1>
-                            <h1 className={"text-xl mt-2 text-[#F5FEFD]"}>Check out the <Link to={'/dashboard'}
-                                                                                              className={"cursor-pointer text-blue-500"}>Latest
-                                Properties</Link> that are listed</h1>
-                        </div>
+                        <div className={"flex items-center min-h-[560px]"}>
+                            <div className={"h-fit w-fit px-16 py-6 rounded-xl flex flex-col items-center justify-center sm-w-fit md:mx-4 sm:mx-4"}
+                            >
+                                <h1 className={"font-semibold text-[#F5FEFD] text-4xl"}>Your wishlist is currently empty</h1>
+                                <h1 className={"text-xl mt-2 text-[#F5FEFD]"}>
+                                    Check out the <Link to={'/dashboard'}                                           className={"cursor-pointer text-blue-500"}>Latest Properties</Link> that are listed
+                                </h1>
+                            </div>
                         </div>
                     </>
                 ) : (
-                    <div className={"py-8 px-12 min-h-[80vh]"}>
+                    <div className={"py-8 px-12 min-h-[80vh] bg-gray-900"}>
                         <h1 className={"font-semibold text-3xl text-[#F5FEFD]"}>My Wishlist
                             ({userStore.user?.wishlist?.length} {userStore.user?.wishlist?.length == 1 ? (
                                 <>
@@ -76,36 +76,52 @@ const WishlistPage = () => {
                                 <>
                                     <span>Properties</span>
                                 </>
-                            )})</h1>
-                        <div className={"h-fit max-h-[75vh] px-4 py-5 mt-4 rounded-xl"}>
+                            )})
+                        </h1>
+
+                        <div className={"h-fit px-4 py-5 rounded-xl min-h-[768px]"}>
                             {userStore.user.wishlist && userStore.user?.wishlist.map((property) => {
                                 return (
-                                    <div key={property.propertyId}>
-                                        <div className={"flex mb-4"}>
-                                            <div
-                                                className="flex flex-col rounded-xl shadow md:flex-row w-full bg-gray-800">
-                                                <img
-                                                    className="px-4 py-2 w-72 object-cover w-full rounded-t-lg min-[500px]:h-40 min-[500px]:w-full md:h-64lg:h-52 lg:w-64 md:h-auto md:rounded-none md:rounded-l-lg"
-                                                    src={property.propertyImage} alt=""/>
-                                                <div className="flex flex-col justify-between p-4 w-full">
 
-                                                    <Link to={`/properties/${property.propertyId}`}
-                                                          className="mb-2 text-2xl font-bold tracking-tight text-white">{property.propertyTitle}</Link>
+                                <div className="rounded-[7px] my-5" key={property.propertyId}>
+                                    <div className="flex flex-col items-center border text-white rounded-lg shadow md:flex-row border-gray-700 bg-gray-800 hover:bg-gray-700">
+                                        <img
+                                            className="object-cover w-full rounded-t-lg h-[15rem] md:w-[20rem] md:rounded-none md:rounded-l-lg"
+                                            src={property.propertyImage} alt="Property_Image" />
+                                        <div className="flex flex-col justify-around p-4 leading-normal">
+                                            <div>
+                                            <Link to={`/properties/${property.propertyId}`}>
+                                                <h5 className="mb-4 text-4xl font-bold tracking-wide text-white">{property.propertyTitle}</h5>
+                                            </Link>
+                                            </div>
 
+                                            <div className="mb-2">
+                                                <p className="text-xl inline font-semibold tracking-tight text-white">Address : </p>
+                                                <p className="inline text-white tracking-wide">{property.propertyAddress}</p>
+                                            </div>
 
-                                                    <p className="mb-3 font-normal text-gray-400">Address: {property.propertyAddress}</p>
-                                                    <div className={"flex justify-between w-[100%]"}>
-                                                        <p className="mb-3 font-normal text-gray-400">Price: {property.propertyPrice}</p>
-                                                        <h5><span className={"text-[#F5FEFD] bg-red-700 p-2 rounded-xl h-7 w-7 cursor-pointer"}
-                                                                            onClick={(e) => handleRemoveFromCart(property.propertyId)}>Remove this property</span>
-                                                        </h5>
-                                                    </div>
+                                            <div className="mb-2">
+                                                <p className="text-xl inline font-semibold tracking-tight text-white">Area : </p>
+                                                <p className="inline text-white tracking-wide">{property.area} sq. ft.</p>
+                                            </div>
 
-                                                </div>
-
+                                            <div className="mb-2">
+                                                <p className="text-lg inline font-semibold tracking-tight text-white">Price : </p>
+                                                <p className="inline text-white tracking-wide">Rs. {property.propertyPrice}</p>
                                             </div>
                                         </div>
+
+                                        <button className="ml-auto mt-auto cursor-pointer z-10 text-[#F5FEFD] hover:bg-red-500 bg-red-700 rounded-xl p-2 m-4"
+                                            onClick={(e) => handleRemoveFromCart(property.propertyId)}>
+                                            Remove
+                                        </button>
+                                        {/*<h5><span className={"text-[#F5FEFD] bg-red-700 p-2 rounded-xl h-7 w-7 cursor-pointer"}*/}
+                                        {/*          onClick={(e) => handleRemoveFromCart(property.propertyId)}>Remove</span>*/}
+                                        {/*</h5>*/}
                                     </div>
+                                </div>
+
+
                                 )
                             })}
                         </div>
