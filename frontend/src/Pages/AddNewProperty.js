@@ -46,19 +46,15 @@ const AddNewProperty = () => {
     }, [token]);
 
     const [showSelectedImages, setShowSelectedImages] = useState([]);
-    // const [selectedImagesBase, setSelectedImagesBase] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    // const [state, setState] = useState("");
-    // const [city, setCity] = useState("");
+
     const [address, setAddress] = useState("");
     const [price, setPrice] = useState("");
     const [area, setArea] = useState("");
-    const [propertyType, setPropertyType] = useState("");
+    const [propertyType, setPropertyType] = useState("Residential");
     const [primaryImage, setPrimaryImage] = useState([]);
     const [secondaryImages, setSecondaryImages] = useState([]);
-
-    const [compressedImages, setCompressedImages] = useState([]);
 
     const onSelectFiles = (e) => {
         const selectedFilesArray = Array.from(e.target.files);
@@ -82,12 +78,11 @@ const AddNewProperty = () => {
         reader.onloadend = () => {
             setPrimaryImage(reader.result);
         }
-
         setShowSelectedImages(imagesArr);
     }
 
     const handleAddingPost = () => {
-        // console.log(amenities);
+
         if(showSelectedImages.length < 4) {
             toast.error("Please upload minimum 4 photos");
             return;
@@ -116,6 +111,8 @@ const AddNewProperty = () => {
             .then((obj) => {
                 if (obj.data.error) {
                     toast.error("Property not listed, Please try again!!!");
+                } else if(obj.data.errMsg) {
+                    toast.error("Some error occurred, Please try again after some time")
                 } else {
                     toast.success("Property successfully listed");
                     navigate('/dashboard');
@@ -142,11 +139,9 @@ const AddNewProperty = () => {
             <section className={"bg-gray-900"}>
                 <div className="w-[70%] mx-auto">
                     <h1 className={"font-bold text-4xl pt-4 text-white text-center"}>List a new property</h1>
-
                     <div className="mx-auto grid grid-rows-1">
                         <div className="border-b border-gray-900/10 pb-6 grid-cols-2">
                             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-
                                 <div className="sm:col-span-3">
                                     <label
                                         htmlFor="title"
@@ -276,7 +271,6 @@ const AddNewProperty = () => {
                                                 onChange={(e) => {
                                                     setAddress(e.target.value);
                                                 }}
-
                                             />
                                     </div>
                                 </div>
@@ -329,15 +323,21 @@ const AddNewProperty = () => {
                                         Property Type
                                     </label>
                                     <div className="mt-2">
-                                        <input
-                                            id="propertytype"
+                                        <select
                                             name="propertytype"
-                                            type="text"
-                                            placeholder="Property Type"
-                                            autoComplete="propertytype"
-                                            className="inline w-full rounded-md border-0 p-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            onChange={(e) => {setPropertyType(e.target.value)}}
-                                        />
+                                            id="propertytype"
+                                            autoComplete="address-level2"
+                                            className="block w-full rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            value={propertyType}
+                                            onChange={(e) => {
+                                                setPropertyType(e.target.value)
+                                            }}
+                                        >
+                                            <option className="mx-1 border-2">Residential</option>
+                                            <option className="mx-1 border-2">Commercial</option>
+                                            <option className="mx-1 border-2">Industrial</option>
+                                            <option className="mx-1 border-2">Agricultural</option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -442,13 +442,11 @@ const AddNewProperty = () => {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
                         <div className={"border border-gray-500 mt-4 h-fit rounded-xl"}>
                             <div className={"flex justify-center items-center p-1 border border-black m-5 rounded-xl bg-gray-700 text-white"}>
-
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      className="bi bi-plus mr-1 font-bold h-6 w-6" viewBox="0 0 16 16">
                                     <path
@@ -480,10 +478,8 @@ const AddNewProperty = () => {
                             </div>
                         </div>
 
-
                         <button className="text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded text-md px-5 py-2.5 text-center my-10" onClick={handleAddingPost}>List New Property</button>
                     </div>
-
 
                 </div>
             </section>
