@@ -13,7 +13,7 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsAndConditions from "./Pages/TermsAndConditions";
 import AddNewProperty from "./Pages/AddNewProperty";
 import SinglePropertyPage from "./Pages/SinglePropertyPage";
-import FAQ from "./Pages/FAQ";
+import FaqSection from "./Pages/FaqSection";
 import {ToastContainer} from "react-toastify";
 import ScrollToTop from "./Components/ScrollToTop";
 
@@ -78,7 +78,7 @@ const App = () => {
                     <Route
                         exact
                         path='/FAQ'
-                        element= <FAQ />
+                        element= <FaqSection />
                     />
                     <Route
                         exact

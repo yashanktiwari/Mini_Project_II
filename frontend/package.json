@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^1.7.13",
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
@@ -13,6 +15,7 @@
     "flowbite": "^1.6.5",
     "js-cookie": "^3.0.1",
     "react": "^18.2.0",
+    "react-collapse": "^5.1.1",
     "react-datepicker": "^4.11.0",
     "react-datetime-picker": "^5.0.3",
     "react-dom": "^18.2.0",

@@ -21,7 +21,7 @@ const Footer = () => {
                         </div>
                         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                             <div>
-                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">Estately</h2>
+                                <h2 className="mb-6 text-sm font-semibold uppercase text-white">Estately</h2>
                                 <ul className="text-gray-400 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
                                         <a href="https://flowbite.com/" className="hover:underline">Our Services</a>
@@ -33,7 +33,7 @@ const Footer = () => {
                                         <a target={"_blank"} href="https://medium.com/@assist.estately" className="hover:underline">Articles</a>
                                     </li>
                                     <li >
-                                        <a href="https://tailwindcss.com/" className="hover:underline">FAQ</a>
+                                        <Link to="/FAQ" className="hover:underline">FAQ</Link>
                                     </li>
                                 </ul>
                             </div>
