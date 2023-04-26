@@ -1,11 +1,11 @@
 import CommonNavbar from "../Components/CommonNavbar";
-import {useParams} from "react-router";
+// import {useParams} from "react-router";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {removeItemFromCart, setUser} from "../utils/userSlice";
 import {Link, useNavigate} from "react-router-dom";
-import {MdRemoveCircle} from "react-icons/md";
+// import {MdRemoveCircle} from "react-icons/md";
 import verifyToken from "../utils/verifyToken";
 import Footer from "../Components/Footer";
 

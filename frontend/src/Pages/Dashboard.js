@@ -79,11 +79,11 @@ const Dashboard = () => {
                             {allProperties &&
                                 allProperties.slice(0).reverse().map((property) => {
                                     return (
-                                        <div className="rounded-[7px] " key={property._id}>
+                                        <div className="rounded-[7px] overflow-hidden" key={property._id}>
                                             <Link to={`/properties/${property._id}`}
                                                   className="flex flex-col items-center border text-white rounded-lg shadow md:flex-row border-gray-700 bg-gray-800 hover:bg-gray-700">
                                                 <img
-                                                    className="object-cover w-full rounded-t-lg h-[12rem] md:w-2/5 md:rounded-none md:rounded-l-lg"
+                                                    className="hover:scale-105 transition-all duration-500 object-cover w-full rounded-t-lg h-[12rem] md:w-2/5 md:rounded-none md:rounded-l-lg"
                                                     src={property.primary_img} alt="Property_Image" />
                                                 <div className="flex flex-col justify-between p-4 leading-normal">
                                                     <h5 className="mb-4 text-2xl font-bold tracking-tight text-white">{property.title}</h5>
