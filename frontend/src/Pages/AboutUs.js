@@ -44,7 +44,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a target={"_blank"} href="https://www.instagram.com/_yashank_t/" className="text-[#00acee] hover:text-white">
+                                        <a target={"_blank"} href="https://twitter.com/yashank_tiwari" className="text-[#00acee] hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path
