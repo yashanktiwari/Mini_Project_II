@@ -223,7 +223,7 @@ const AboutUs = () => {
                                     technical strategy of the flowbite platform and brand.</p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
-                                        <a href="" className=" text-white hover:text-white">
+                                        <a href="https://instagram.com/kushagra_0228?igshid=ZDdkNTZiNTM=" className=" text-white hover:text-white">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 className="h-5 w-5 bg-gradient-to-b from-[#405DE6] via-[#833AB4] via-[#C13584] via-[#E1306C] via-[#FD1D1D] via-[#F56040] to-[#FFDC80] rounded-md"
