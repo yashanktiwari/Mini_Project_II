@@ -136,7 +136,7 @@ const FilterBox = ({cState, cCity, setFilters}) => {
 
 
                 <div className="m-2">
-                    <MultiRangeSlider min={0} onChange={()=>{}} max={4000} dispKey={"Area"} setMinimumValue={setMinArea} setMaximumValue={setMaxArea}/>
+                    <MultiRangeSlider min={0} onChange={()=>{}} max={100000} dispKey={"Area"} setMinimumValue={setMinArea} setMaximumValue={setMaxArea}/>
                 </div>
 
                 <div className="m-2">
