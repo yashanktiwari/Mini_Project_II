@@ -55,7 +55,7 @@ const WishlistPage = () => {
 
                 {userStore.user.wishlist && userStore.user.wishlist.length == 0 ? (
                     <>
-                        <div className={"flex items-center min-h-[560px]"}>
+                        <div className={"flex items-center justify-center min-h-[560px]"}>
                             <div className={"h-fit w-fit px-16 py-6 rounded-xl flex flex-col items-center justify-center sm-w-fit md:mx-4 sm:mx-4"}
                             >
                                 <h1 className={"font-semibold text-[#F5FEFD] text-4xl"}>Your wishlist is currently empty</h1>
@@ -84,14 +84,16 @@ const WishlistPage = () => {
                                 return (
 
                                 <div className="rounded-[7px] my-5" key={property.propertyId}>
-                                    <div className="flex flex-col items-center border text-white rounded-lg shadow md:flex-row border-gray-700 bg-gray-800 hover:bg-gray-700">
+                                    <div className="flex flex-col items-center border text-white rounded-lg shadow md:flex-row border-gray-700 bg-gray-800 hover:bg-gray-700 overflow-hidden">
+                                        <div className="overflow-hidden w-full md:w-[17rem]">
                                         <img
-                                            className="object-cover w-full rounded-t-lg h-[15rem] md:w-[20rem] md:rounded-none md:rounded-l-lg"
+                                            className="hover:scale-110 transition-all duration-500 object-cover w-full rounded-t-lg h-[12rem] sm:w-full lg:w-[17rem] md:rounded-none md:rounded-l-lg overflow-hidden"
                                             src={property.propertyImage} alt="Property_Image" />
-                                        <div className="flex flex-col justify-around p-4 leading-normal">
+                                        </div>
+                                        <div className="flex flex-col justify-around p-4 leading-normal ">
                                             <div>
                                             <Link to={`/properties/${property.propertyId}`}>
-                                                <h5 className="mb-4 text-4xl font-bold tracking-wide text-white">{property.propertyTitle}</h5>
+                                                <h5 className="mb-4 text-3xl font-bold tracking-wide text-white">{property.propertyTitle}</h5>
                                             </Link>
                                             </div>
 
