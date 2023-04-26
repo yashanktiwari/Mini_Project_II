@@ -32,7 +32,7 @@ const AboutUs = () => {
                                     technical strategy of the flowbite platform and brand.</p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
-                                        <a href="#" className=" text-white dark:hover:text-white">
+                                        <a target={"_blank"} href="https://www.instagram.com/_yashank_t/" className=" text-white dark:hover:text-white">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 className="h-5 w-5 bg-gradient-to-b from-[#405DE6] via-[#833AB4] via-[#C13584] via-[#E1306C] via-[#FD1D1D] via-[#F56040] to-[#FFDC80] rounded-md"
@@ -44,7 +44,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-[#00acee] hover:text-white">
+                                        <a target={"_blank"} href="https://www.instagram.com/_yashank_t/" className="text-[#00acee] hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path
@@ -53,7 +53,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-gray-300 hover:text-white">
+                                        <a target={"_blank"} href="https://github.com/yashanktiwari" className="text-gray-300 hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path fillRule="evenodd"
@@ -63,7 +63,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-blue-500 hover:text-white">
+                                        <a target={"_blank"} href="https://www.linkedin.com/in/yashank-tiwari-1a37aa13" className="text-blue-500 hover:text-white">
                                             <svg
                                                 className="w-5 h-5  fill-current"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,7 @@ const AboutUs = () => {
                                     technical strategy of the flowbite platform and brand.</p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
-                                        <a href="#" className=" text-white hover:text-white">
+                                        <a target={"_blank"} href="https://www.instagram.com/anuj.7777/" className=" text-white hover:text-white">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 className="h-5 w-5 bg-gradient-to-b from-[#405DE6] via-[#833AB4] via-[#C13584] via-[#E1306C] via-[#FD1D1D] via-[#F56040] to-[#FFDC80] rounded-md"
@@ -105,7 +105,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-[#00acee] hover:text-white">
+                                        <a target={"_blank"} href="https://twitter.com/anuj3002" className="text-[#00acee] hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path
@@ -114,7 +114,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-gray-300 hover:text-white">
+                                        <a target={"_blank"} href="https://github.com/AnujRuhela7" className="text-gray-300 hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path fillRule="evenodd"
@@ -124,7 +124,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-blue-500 hover:text-white">
+                                        <a target={"_blank"} href="https://www.linkedin.com/in/anuj-ruhela/" className="text-blue-500 hover:text-white">
                                             <svg
                                                 className="w-5 h-5  fill-current"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +154,7 @@ const AboutUs = () => {
                                     technical strategy of the flowbite platform and brand.</p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
-                                        <a href="#" className=" text-white hover:text-white">
+                                        <a target={"_blank"} href="https://www.instagram.com/saini_naman_18/" className=" text-white hover:text-white">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 className="h-5 w-5 bg-gradient-to-b from-[#405DE6] via-[#833AB4] via-[#C13584] via-[#E1306C] via-[#FD1D1D] via-[#F56040] to-[#FFDC80] rounded-md"
@@ -166,7 +166,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-[#00acee] hover:text-white">
+                                        <a target={"_blank"} href="https://twitter.com/namansaini45" className="text-[#00acee] hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path
@@ -175,7 +175,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-gray-300 hover:text-white">
+                                        <a target={"_blank"} href="https://github.com/NamanSaini18" className="text-gray-300 hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path fillRule="evenodd"
@@ -185,7 +185,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-blue-500 hover:text-white">
+                                        <a target={"_blank"} href="https://www.linkedin.com/in/naman-saini-970924226/" className="text-blue-500 hover:text-white">
                                             <svg
                                                 className="w-5 h-5  fill-current"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -215,7 +215,7 @@ const AboutUs = () => {
                                     technical strategy of the flowbite platform and brand.</p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
-                                        <a href="#" className=" text-white hover:text-white">
+                                        <a href="" className=" text-white hover:text-white">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 className="h-5 w-5 bg-gradient-to-b from-[#405DE6] via-[#833AB4] via-[#C13584] via-[#E1306C] via-[#FD1D1D] via-[#F56040] to-[#FFDC80] rounded-md"
@@ -227,7 +227,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-[#00acee] hover:text-white">
+                                        <a href={"#"} className="text-[#00acee] hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path
@@ -236,7 +236,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-gray-300 hover:text-white">
+                                        <a target={"_blank"} href="https://github.com/kushagra0207" className="text-gray-300 hover:text-white">
                                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
                                                  aria-hidden="true">
                                                 <path fillRule="evenodd"
@@ -246,7 +246,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" className="text-blue-500 hover:text-white">
+                                        <a target={"_blank"} href="https://www.linkedin.com/in/kushagra-gupta-14275322b/" className="text-blue-500 hover:text-white">
                                             <svg
                                                 className="w-5 h-5  fill-current"
                                                 xmlns="http://www.w3.org/2000/svg"
