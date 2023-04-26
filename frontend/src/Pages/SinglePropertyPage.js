@@ -26,6 +26,7 @@ const SinglePropertyPage = () => {
     const [property, setProperty] = useState({});
 
     const visitRef = useRef();
+    const paymentModal = useRef();
 
     const [dateObj, setDateObj] = useState();
     const [date, setDate] = useState();
@@ -59,9 +60,15 @@ const SinglePropertyPage = () => {
     const lastWeek = new Date();
     lastWeek.setDate(lastWeek.getDate() + 7);
     const [fullName, setFullName] = useState("");
+
     const toggleVisitModal = () => {
         visitRef.current.classList.toggle("hidden");
         visitRef.current.classList.toggle("flex");
+    }
+
+    const togglePaymentModal = () => {
+        paymentModal.current.classList.toggle("hidden");
+        paymentModal.current.classList.toggle("flex");
     }
 
     useEffect(() => {
@@ -171,8 +178,25 @@ const SinglePropertyPage = () => {
         razorPay.open();
     }
 
-    const handlePayment = () => {
-        axios.get('/orders')
+    const handleAppointmentPayment = () => {
+        axios.get('/appointmentorders')
+            .then((obj) => {
+                if(obj.data.order) {
+                    openRazorPayDialog(obj.data.order);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+    
+    const [amount, setAmount] = useState(0);
+    
+    const handleTokenMoneyPayment = () => {
+        togglePaymentModal();
+        axios.post('/tokenorders', {
+            amount: (3/100)*property.price
+        })
             .then((obj) => {
                 if(obj.data.order) {
                     openRazorPayDialog(obj.data.order);
@@ -244,7 +268,7 @@ const SinglePropertyPage = () => {
                                     <button className="text-white rounded-full w-full text-xl text-center px-4 py-4 hover:bg-pink-600 border-2 border-pink-600" onClick={toggleVisitModal}>Schedule Visit</button>
                                 </div>
                                 <div className="">
-                                    <button className="text-white rounded-full w-full text-xl text-center px-4 py-4 hover:bg-pink-700 border-pink-600 bg-pink-600">Pay Token Money</button>
+                                    <button className="text-white rounded-full w-full text-xl text-center px-4 py-4 hover:bg-pink-700 border-pink-600 bg-pink-600" onClick={togglePaymentModal}>Pay Token Money</button>
                                 </div>
                             </div>
                         </div>
@@ -365,11 +389,43 @@ const SinglePropertyPage = () => {
 
                         <div className={"mt-3 flex justify-end space-x-3"}>
                             <button className="px-3 py-1 text-black rounded hover:bg-red-600 hover:bg-opacity-50 hover:text-red-100" onClick={toggleVisitModal}>Cancel</button>
-                            <button className="px-3 py-1 bg-red-800 text-gray-200 rounded hover:bg-red-600" onClick={handlePayment}>Book</button>
+                            <button className="px-3 py-1 bg-red-800 text-gray-200 rounded hover:bg-red-600" onClick={() => {
+                                toggleVisitModal();
+                                handleAppointmentPayment();
+                            }}>Schedule Appointment</button>
                         </div>
                     </div>
                 </div>
 
+                {/* Modal */}
+                <div className="bg-black bg-opacity-50 fixed inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={paymentModal}>
+                    <div className="bg-gray-200 py-2 px-3 rounded shadow-xl text-black w-[50%]">
+                        <div className="flex justify-between items-center mb-4">
+                            <h4 className="text-4xl font-bold tracking-wide">
+                                Confirm...
+                            </h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+                                 stroke="currentColor" className="w-6 h-6 cursor-pointer p-1 hover:bg-gray-300 rounded-full" onClick={togglePaymentModal}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </div>
+
+                        <div className="mt-2">
+
+                            <h4>Have you visited the site yet?</h4>
+                            <h4>If not, we recommend you to first book an appointment and visit the site and then submit the token money.</h4>
+                        </div>
+
+                        <div className={"mt-3 flex justify-end space-x-3"}>
+                            {/*<button className="px-3 py-1 text-black rounded hover:bg-red-600 hover:bg-opacity-50 hover:text-red-100" onClick={togglePaymentModal}>No</button>*/}
+                            <button className="px-3 py-1 bg-red-800 text-gray-200 rounded hover:bg-red-600" onClick={() => {
+                                handleAppointmentPayment();
+                                togglePaymentModal();
+                            }}>Schedule Visit</button>
+                            <button className="px-3 py-1 bg-red-800 text-gray-200 rounded hover:bg-red-600" onClick={handleTokenMoneyPayment}>Pay token money</button>
+                        </div>
+                    </div>
+                </div>
             </section>
             <Footer/>
         </>

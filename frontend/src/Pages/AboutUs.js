@@ -63,7 +63,7 @@ const AboutUs = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a target={"_blank"} href="https://www.linkedin.com/in/yashank-tiwari-1a37aa13" className="text-blue-500 hover:text-white">
+                                        <a target={"_blank"} href="https://www.linkedin.com/in/yashank-tiwari/" className="text-blue-500 hover:text-white">
                                             <svg
                                                 className="w-5 h-5  fill-current"
                                                 xmlns="http://www.w3.org/2000/svg"

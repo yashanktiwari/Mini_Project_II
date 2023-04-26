@@ -5,8 +5,12 @@ const paymentRouter = express.Router();
 const crypto = require("crypto");
 
 paymentRouter
-    .route('/orders')
-    .get(createOrder);
+    .route('/appointmentorders')
+    .get(createAppointmentOrder);
+
+paymentRouter
+    .route('/tokenorders')
+    .post(createTokenOrder);
 
 paymentRouter
     .route('/verify')
@@ -28,12 +32,34 @@ function verifyOrder(req,res) {
     }
 }
 
-
-function createOrder(req, res) {
+function createAppointmentOrder(req, res) {
     let instance = new Razorpay({ key_id: process.env.RAZORPAY_KEY_ID, key_secret: process.env.RAZORPAY_KEY_SECRET })
 
     let options = {
         amount: 99900,  // amount in the smallest currency unit
+        currency: "INR",
+    };
+
+    instance.orders.create(options, function(err, order) {
+        if(err) {
+            console.log(err);
+            res.send({
+                err
+            })
+        } else {
+            res.send({
+                order
+            })
+        }
+    });
+}
+
+function createTokenOrder(req, res) {
+    const {amount} = req.body;
+    let instance = new Razorpay({ key_id: process.env.RAZORPAY_KEY_ID, key_secret: process.env.RAZORPAY_KEY_SECRET })
+
+    let options = {
+        amount: amount * 100,  // amount in the smallest currency unit
         currency: "INR",
     };
 
