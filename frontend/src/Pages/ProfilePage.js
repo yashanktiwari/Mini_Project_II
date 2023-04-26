@@ -7,6 +7,7 @@ import verifyToken from "../utils/verifyToken";
 import axios from "axios";
 import {toast} from "react-toastify";
 import Footer from "../Components/Footer";
+import {AiFillEye, AiFillEyeInvisible} from "react-icons/ai";
 
 const ProfilePage = () => {
 
@@ -89,6 +90,20 @@ const ProfilePage = () => {
         overlayRef.current.classList.toggle("flex");
     }
 
+    const vidRef = useRef();
+    const vidHiddenRef = useRef();
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVID = () => {
+        if(isVisible) {
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+        vidRef.current.classList.toggle("hidden");
+        vidHiddenRef.current.classList.toggle("hidden");
+    }
 
     function handleProfileUpdate(e) {
         toast.success("Updating profile");
@@ -147,7 +162,6 @@ const ProfilePage = () => {
 
     return (
         <>
-
             <CommonNavbar/>
             <section className="bg-gray-900">
                 <div className="grid grid-rows-2 p-8">
@@ -156,38 +170,34 @@ const ProfilePage = () => {
 
                             {userStore.user?.profile_image ? (
                                 <img src={userStore.user.profile_image} alt="..." className={"border-4 border-white rounded-full h-32 w-32"}
-                                    // onClick={() => {
-                                    //     inputRef.current.click()
-                                    // }}
                                 />
                             ) : null}
-                            {/*{showImage ? (*/}
-                            {/*    <img src={showImage} alt="..." className={"border-4 border-white rounded-full h-32 w-32"}*/}
-                            {/*         // onClick={() => {*/}
-                            {/*         //     inputRef.current.click()*/}
-                            {/*         // }}*/}
-                            {/*    />*/}
-                            {/*) : (*/}
-                            {/*    <img src={userStore.user.profile_image} alt="..." className={"border-4 border-white rounded-full h-32 w-32"}*/}
-                            {/*         // onClick={() => {*/}
-                            {/*         //     inputRef.current.click()*/}
-                            {/*         // }}*/}
-                            {/*    />*/}
-                            {/*)}*/}
-
-                            {/*<input type={"file"} ref={inputRef} accept={"image/png, image/jpg"} className={"hidden"}*/}
-                            {/*       onChange={handleImageSubmission}/>*/}
-
                         </div>
 
                         <div className="col-span-5">
 
-                            {/*<label>Name: </label>*/}
-                            <p className="font-semibold tracking-wide text-4xl mt-5 text-white">{username}</p>
+                            <p className="font-semibold tracking-wide text-4xl mt-4 text-white">{username}</p>
 
-                            {/*<label className={"block"}>If you are changing the name, then you need to login again.</label>*/}
+                            <p className="font-medium text-2xl mt-4 capitalize text-gray-100">{userStore.user.role}</p>
 
-                            <p className="font-medium text-2xl mt-5 capitalize text-gray-100">{userStore.user.role}</p>
+
+                            <div className="mt-4">
+                                <p className="font-medium text-2xl mt-4 capitalize text-gray-300 hover:text-gray-100 inline">VID : </p>
+
+                                <p className="font-medium text-2xl mt-4 mr-2 capitalize text-gray-300 hover:text-gray-100 inline" ref={vidHiddenRef}>XXXX XXXX {userStore.user?.vid?.substring(8, 12)}</p>
+
+                                <p className="hidden font-medium text-2xl mt-5 capitalize text-gray-300 hover:text-gray-100 mr-2 inline" ref={vidRef}>{userStore.user?.vid?.substring(0, 4)} {userStore.user?.vid?.substring(4, 8)} {userStore.user?.vid?.substring(8, 12)}</p>
+
+                                {isVisible ? (
+                                    <>
+                                        <button onClick={toggleVID} className="invert text-lg inline"><AiFillEyeInvisible/></button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <button onClick={toggleVID} className="invert text-lg inline"><AiFillEye/></button>
+                                    </>
+                                )}
+                            </div>
 
                         </div>
 
