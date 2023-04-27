@@ -1,9 +1,11 @@
 import HomeNavbar from "../Components/HomeNavbar";
 import axios from "axios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import CommonNavbar from "../Components/CommonNavbar";
 import Footer from "../Components/Footer";
+import verifyToken from "../utils/verifyToken";
+import {useDispatch} from "react-redux";
 
 const ContactUs = () => {
 
@@ -24,6 +26,23 @@ const ContactUs = () => {
                 console.log(error);
             })
     }
+
+    const [token, setToken] = useState();
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(localStorage.getItem('isLoggedIn')) {
+            setToken(JSON.parse(localStorage.getItem('isLoggedIn')));
+
+            if(token) {
+                verifyToken(token, navigate, dispatch);
+            }
+        }
+    }, [token]);
+
+
+
 
     return (
         <>

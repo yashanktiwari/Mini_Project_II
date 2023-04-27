@@ -272,14 +272,12 @@ const ProfilePage = () => {
                                 {/*    setState(e.target.value);*/}
                                 {/*}}/>*/}
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </section>
 
-            <div className="bg-black bg-opacity-50 absolute inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={overlayRef}>
+            <div className="bg-black bg-opacity-50 absolute top-4 inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={overlayRef}>
                 <div className="bg-gray-800 py-2 px-3 rounded shadow-xl text-white w-[70%]">
                     <div className="flex justify-between items-center mb-4">
                         <h4 className="text-4xl font-bold">

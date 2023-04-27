@@ -1,8 +1,30 @@
-import { useRef } from "react";
+import {useEffect, useRef, useState} from "react";
 import HomeNavbar from "../Components/HomeNavbar";
 import Footer from "../Components/Footer";
+import CommonNavbar from "../Components/CommonNavbar";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import verifyToken from "../utils/verifyToken";
 
 function PrivacyReal() {
+
+    const [token, setToken] = useState();
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem('isLoggedIn')) {
+            setToken(JSON.parse(localStorage.getItem('isLoggedIn')));
+
+            if(token) {
+                verifyToken(token, navigate, dispatch);
+            }
+        }
+    }, [token]);
+
+
     const privacy = useRef();
     const showNavbar = () => {
         privacy.current.classList.toggle("responsive_nav");
@@ -10,7 +32,7 @@ function PrivacyReal() {
 
     return (
         <div >
-            <HomeNavbar/>
+            {localStorage.getItem("isLoggedIn") == null ? <HomeNavbar /> : <CommonNavbar />}
             <section className="bg-gray-900 py-4 px-16 tracking-wide">
             <div className="tracking-tight text-4xl text-center text-sky-400 font-medium mb-4">
                 <h1>PRIVACY POLICY</h1>

@@ -1,9 +1,29 @@
-import { useRef } from "react";
+import {useEffect, useRef, useState} from "react";
 import HomeNavbar from "../Components/HomeNavbar";
 import Footer from "../Components/Footer";
 import CommonNavbar from "../Components/CommonNavbar";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import verifyToken from "../utils/verifyToken";
 
 function TermsAndConiditions() {
+
+    const [token, setToken] = useState();
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem('isLoggedIn')) {
+            setToken(JSON.parse(localStorage.getItem('isLoggedIn')));
+
+            if(token) {
+                verifyToken(token, navigate, dispatch);
+            }
+        }
+    }, [token]);
+
     const privacy = useRef();
     const showNavbar = () => {
         privacy.current.classList.toggle("responsive_nav");

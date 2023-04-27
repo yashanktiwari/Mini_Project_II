@@ -2,7 +2,28 @@ import HomeNavbar from "../Components/HomeNavbar";
 import Footer from "../Components/Footer";
 import CommonNavbar from "../Components/CommonNavbar";
 import namanPic from "../assets/img/Naman.jpg";
+import {useEffect, useState} from "react";
+import verifyToken from "../utils/verifyToken";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 const AboutUs = () => {
+
+    const [token, setToken] = useState();
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem('isLoggedIn')) {
+            setToken(JSON.parse(localStorage.getItem('isLoggedIn')));
+
+            if(token) {
+                verifyToken(token, navigate, dispatch);
+            }
+        }
+    }, [token]);
+
     return (
         <>
             {localStorage.getItem("isLoggedIn") == null ? <HomeNavbar /> : <CommonNavbar />}

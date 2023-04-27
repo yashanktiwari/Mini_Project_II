@@ -1,10 +1,10 @@
 import {Fragment} from "react";
-import {AiFillCaretDown} from "react-icons/ai"
-import {BsList} from "react-icons/bs"
+import {MdKeyboardArrowDown} from "react-icons/md"
 import {useSelector} from "react-redux";
 import logo from '../assets/img/estately-logo.png';
 import {Link, useNavigate} from "react-router-dom";
 import {Menu, Transition} from '@headlessui/react'
+
 
 const CommonNavbar = () => {
 
@@ -45,7 +45,7 @@ const CommonNavbar = () => {
                                 <img src={userStore.user.profile_image} alt="Profile Image" className="w-12 mr-2 h-12 rounded-full"/>
                             ) : null}
                             <span>Hi!! {userStore.user.username}</span>
-                            <AiFillCaretDown className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+                            <MdKeyboardArrowDown className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
                         </Menu.Button>
                     </div>
 
@@ -110,7 +110,12 @@ const CommonNavbar = () => {
                     <div>
                         <Menu.Button
                             className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-gray-100 shadow-sm">
-                            <BsList className="-mr-1 h-7 w-7 text-gray-100" aria-hidden="true" />
+                            {userStore.user.profile_image ? (
+                                <>
+                                <img src={userStore.user.profile_image} alt="Profile Image" className="w-12 mr-2 h-12 rounded-full"/>
+                                    <MdKeyboardArrowDown className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+                                </>
+                            ) : null}
                         </Menu.Button>
                     </div>
 

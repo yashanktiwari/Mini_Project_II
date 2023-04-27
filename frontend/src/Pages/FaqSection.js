@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Faq from "../Components/FAQ";
 import HomeNavbar from "../Components/HomeNavbar";
 import CommonNavbar from "../Components/CommonNavbar";
 import Footer from "../Components/Footer";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import verifyToken from "../utils/verifyToken";
 const FaqSection = () => {
+
+    const [token, setToken] = useState();
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem('isLoggedIn')) {
+            setToken(JSON.parse(localStorage.getItem('isLoggedIn')));
+
+            if(token) {
+                verifyToken(token, navigate, dispatch);
+            }
+        }
+    }, [token]);
+
     const [open, setOpened] = useState(false);
 
     const toggle = (index) => {
