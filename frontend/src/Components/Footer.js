@@ -23,12 +23,8 @@ const Footer = () => {
                             <div>
                                 <h2 className="mb-6 text-sm font-semibold uppercase text-white">Estately</h2>
                                 <ul className="text-gray-400 dark:text-gray-400 font-medium">
-                                    <li className="mb-4">
-                                        <a href="https://flowbite.com/" className="hover:underline">Our Services</a>
-                                    </li>
-                                    <li className="mb-4">
-                                        <a href="https://tailwindcss.com/" className="hover:underline">Post your Property</a>
-                                    </li>
+
+
                                     <li className="mb-4">
                                         <a target={"_blank"} href="https://medium.com/@assist.estately" className="hover:underline">Articles</a>
                                     </li>
@@ -42,8 +38,7 @@ const Footer = () => {
                                     us</h2>
                                 <ul className="text-gray-400 dark:text-gray-400 font-medium">
                                     <li className="mb-4">
-                                        <a target={"_blank"} href="https://github.com/themesberg/flowbite"
-                                           className="hover:underline ">Telegram</a>
+                                        <a target={"_blank"} href="https://medium.com/@assist.estately">Medium</a>
                                     </li>
                                     <li className="mb-4">
                                         <a target={"_blank"} href="https://www.instagram.com/estately_support/"
