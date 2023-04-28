@@ -25,10 +25,10 @@ const propertySchema = new mongoose.Schema({
         type: String
     },
     price: {
-        type: String
+        type: Number
     },
     area: {
-        type: String
+        type: Number
     },
     property_type: {
         type: String

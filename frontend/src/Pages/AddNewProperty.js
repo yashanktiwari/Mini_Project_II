@@ -83,8 +83,8 @@ const AddNewProperty = () => {
 
     const handleAddingPost = () => {
 
-        if(showSelectedImages.length < 4) {
-            toast.error("Please upload minimum 4 photos");
+        if(showSelectedImages.length < 2) {
+            toast.error("Please upload minimum 2 photos");
             return;
         }
 

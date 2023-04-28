@@ -411,9 +411,10 @@ const SinglePropertyPage = () => {
                         </div>
 
                         <div className="mt-2">
-
                             <h4>Have you visited the site yet?</h4>
                             <h4>If not, we recommend you to first book an appointment and visit the site and then submit the token money.</h4>
+                            <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
+                            <h6 className="text-red-600">** Token Money is the 3% of total price of property</h6>
                         </div>
 
                         <div className={"mt-3 flex justify-end space-x-3"}>

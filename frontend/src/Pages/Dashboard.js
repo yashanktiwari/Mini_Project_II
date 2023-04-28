@@ -113,10 +113,6 @@ const Dashboard = () => {
                                                 src={property.primary_img} alt="Property_Image" />
                                             <div className="flex flex-col justify-between p-4 leading-normal">
                                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{property.title}</h5>
-                                                <span >
-                                                    <p className="text-lg inline font-semibold tracking-tight text-white">Owner :</p>
-                                                    <p className="inline text-white tracking-wide">{}</p>
-                                                </span>
                                                 <span>
                                                     <p className="text-lg inline font-semibold tracking-tight text-white">Address : </p>
                                                     <p className="inline text-white tracking-wide">{property.address}</p>
