@@ -41,7 +41,7 @@ const AboutUs = () => {
                             className="items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
                             <a href="#">
                                 <div className="overflow-hidden">
-                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[19rem] h-[13rem]"
+                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[14rem] h-[13rem]"
                                      src="https://media.licdn.com/dms/image/D4D03AQEdYZ_s62Z-ZA/profile-displayphoto-shrink_800_800/0/1673232044265?e=1687996800&v=beta&t=PuppL3kAkytBhh_m1T8etgzSdpzB-bPShpi0OnzfQYs"
                                      alt="Yashank Tiwari" />
                                 </div>
@@ -51,8 +51,7 @@ const AboutUs = () => {
                                     <a href="#">Yashank Tiwari</a>
                                 </h3>
                                 <span className="text-gray-400">Full Stack Web Developer</span>
-                                <p className="mt-3 mb-4 font-light text-gray-400">Bonnie drives the
-                                    technical strategy of the flowbite platform and brand.</p>
+                                <p className="mt-3 mb-4 font-light text-gray-400">Worked on the Backend and manages storage space</p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
                                         <a target={"_blank"} href="https://www.instagram.com/_yashank_t/" className=" text-white dark:hover:text-white">
@@ -114,8 +113,7 @@ const AboutUs = () => {
                                     <a href="#">Anuj Ruhela</a>
                                 </h3>
                                 <span className="text-gray-400">Full Stack Web Developer</span>
-                                <p className="mt-3 mb-4 font-light text-gray-400">Jese drives the
-                                    technical strategy of the flowbite platform and brand.</p>
+                                <p className="mt-3 mb-4 font-light text-gray-400">Constructed the website structure and worked on the web-end design </p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
                                         <a target={"_blank"} href="https://www.instagram.com/anuj.7777/" className=" text-white hover:text-white">
@@ -167,7 +165,7 @@ const AboutUs = () => {
                             className="items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
                             <a href="#">
                                 <div className="overflow-hidden">
-                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[18rem] h-[13rem]"
+                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[16rem] h-[13rem]"
                                      src={namanPic}
                                      alt="Naman Saini" />
                                 </div>
@@ -177,8 +175,7 @@ const AboutUs = () => {
                                     <a href="#">Naman Saini</a>
                                 </h3>
                                 <span className="text-gray-400">Full Stack Web Developer</span>
-                                <p className="mt-3 mb-4 font-light text-gray-400">Michael drives the
-                                    technical strategy of the flowbite platform and brand.</p>
+                                <p className="mt-3 mb-4 font-light text-gray-400">Worked as Frontend Developer and manages social relations</p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
                                         <a target={"_blank"} href="https://www.instagram.com/saini_naman_18/" className=" text-white hover:text-white">
@@ -230,7 +227,7 @@ const AboutUs = () => {
                             className="items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
                             <a href="#">
                                 <div className="overflow-hidden">
-                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[18rem] h-[13rem]"
+                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[16rem] h-[13rem]"
                                      src="https://media.licdn.com/dms/image/D4D03AQG5iQC2uy4t9A/profile-displayphoto-shrink_800_800/0/1671604883602?e=1687996800&v=beta&t=JuIPdzsfm2k89fxZCp_LwrlSeXKIJ8duQ5PgEhFhfW0"
                                      alt="Kushagra Gupta" />
                                 </div>
@@ -240,11 +237,10 @@ const AboutUs = () => {
                                     <a href="#">Kushagra Gupta</a>
                                 </h3>
                                 <span className="text-gray-400">Full Stack Web Developer</span>
-                                <p className="mt-3 mb-4 font-light text-gray-400">Lana drives the
-                                    technical strategy of the flowbite platform and brand.</p>
+                                <p className="mt-3 mb-4 font-light text-gray-400">Worked as Frontend Developer and manages documentation</p>
                                 <ul className="flex space-x-4 sm:mt-0">
                                     <li>
-                                        <a href="https://instagram.com/kushagra_0228?igshid=ZDdkNTZiNTM=" className=" text-white hover:text-white">
+                                        <a href="https://instagram.com/kushagra_0228?igshid=ZDdkNTZiNTM=" target="_blank" className=" text-white hover:text-white">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 className="h-5 w-5 bg-gradient-to-b from-[#405DE6] via-[#833AB4] via-[#C13584] via-[#E1306C] via-[#FD1D1D] via-[#F56040] to-[#FFDC80] rounded-md"
