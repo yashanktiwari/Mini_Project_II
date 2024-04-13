@@ -82,14 +82,14 @@ const FilterBox = ({cState, cCity, setFilters}) => {
     return (
         <>
             {/* Write the html code here */}
-            <div className="bg-gray-100 w-fit mx-auto flex flex-row items-center border-4 p-1 mb-4 rounded-md">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-gray-100 w-fit mx-auto xl:flex xl:flex-row items-center border-4 p-1 mb-4 rounded-md">
 
                 <div className="m-2">
                     <select
                         id="country"
                         name="country"
                         autoComplete="country-name"
-                        className="block w-full rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full text-sm md:text-md rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         value={"India"}
                     >
                         <option>India</option>
@@ -101,7 +101,7 @@ const FilterBox = ({cState, cCity, setFilters}) => {
                         name="state"
                         id="state"
                         autoComplete="address-level1"
-                        className="block rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block text-sm md:text-md rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         value={state}
                         onChange={(e) => {
                             changeState(e);
@@ -113,12 +113,13 @@ const FilterBox = ({cState, cCity, setFilters}) => {
                         ))}
                     </select>
                 </div>
+
                 <div className="m-2">
                     <select
                         name="city"
                         id="city"
                         autoComplete="address-level2"
-                        className="block rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block text-sm md:text-md rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         value={city}
                         onChange={changeCity}
                     >
@@ -130,33 +131,33 @@ const FilterBox = ({cState, cCity, setFilters}) => {
                 </div>
 
                 <div className="m-2">
+                    <select
+                        name="propertytype"
+                        id="propertytype"
+                        autoComplete="address-level2"
+                        className="block text-sm md:text-base w-full rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        value={propertyType}
+                        onChange={changePropertyType}
+                    >
+                        <option className="mx-1 border-2 text-base">Residential</option>
+                        <option className="mx-1 border-2 text-base">Commercial</option>
+                        <option className="mx-1 border-2 text-base">Industrial</option>
+                        <option className="mx-1 border-2 text-base">Agricultural</option>
+                    </select>
+                </div>
+
+                <div className="m-2">
                     <MultiRangeSlider min={1000000} max={70000000} onChange={()=>{}} dispKey={"Price"} setMinimumValue = {setMinPrice} setMaximumValue = {setMaxPrice}
                      />
                 </div>
-
 
                 <div className="m-2">
                     <MultiRangeSlider min={0} onChange={()=>{}} max={100000} dispKey={"Area"} setMinimumValue={setMinArea} setMaximumValue={setMaxArea}/>
                 </div>
 
-                <div className="m-2">
-                    <select
-                        name="propertytype"
-                        id="propertytype"
-                        autoComplete="address-level2"
-                        className="block w-full rounded-md border-0 py-1.5 p-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        value={propertyType}
-                        onChange={changePropertyType}
-                    >
-                        <option className="mx-1 border-2">Residential</option>
-                        <option className="mx-1 border-2">Commercial</option>
-                        <option className="mx-1 border-2">Industrial</option>
-                        <option className="mx-1 border-2">Agricultural</option>
-                    </select>
-                </div>
 
                 <button
-                    className="input-group-text flex items-center whitespace-nowrap rounded-md px-3 py-1.5 text-center text-base font-normal border-2 bg-transparent hover:border-gray-900 m-2"
+                    className="input-group-text flex items-center whitespace-nowrap rounded-md px-3 py-1.5 text-center w-fit text-base font-normal border-2 bg-transparent hover:border-gray-900 m-2"
                     id="basic-addon2" onClick={search}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -170,8 +171,8 @@ const FilterBox = ({cState, cCity, setFilters}) => {
                     </svg>
                 </button>
 
-                <div className="m-2">
-                    <label className={'bg-blue-300 cursor-pointer hover:bg-blue-400 p-2 rounded-md'} onClick={(e) => {
+                <div className="m-2 flex">
+                    <label className={'bg-blue-300 w-full text-center text-sm md:text-md cursor-pointer sm:text-sm hover:bg-blue-400 p-2 rounded-md'} onClick={(e) => {
                         setFilters([]);
                     }}>
                         Show Recent Properties

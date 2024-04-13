@@ -220,12 +220,12 @@ const SinglePropertyPage = () => {
 
             <section className="bg-gray-900">
                 {property ? (<>
-                    <div className="grid grid-cols-5 py-8 gap-8 mx-8">
+                    <div className="grid md:grid-cols-5 py-4 md:py-8 gap-8 mx-4 md:mx-8">
 
-                        <div className="rounded-2xl col-span-2 p-4">
+                        <div className="rounded-2xl md:col-span-2 p-1 md:p-4">
                             {/*<img src={property.primary_img} alt="Property_Image" className="h-32 w-32"/>*/}
-                            <div className="mb-6">
-                                <h1 className="text-5xl text-white tracking-wide mb-4 font-semibold inline">{property.title}</h1>
+                            <div className="mb-3 md:mb-6">
+                                <h1 className="text-3xl md:text-5xl text-white tracking-wide mb-4 font-semibold inline">{property.title}</h1>
                                 {isPresent ? (
                                     <>
                                         <AiFillHeart className={"text-red-500 cursor-pointer mb-4 inline h-8 w-12"}
@@ -240,30 +240,30 @@ const SinglePropertyPage = () => {
                             </div>
 
                             <div className="mb-4">
-                                <h2 className="text-3xl font-medium text-white">Description</h2>
+                                <h2 className="text-xl md:text-3xl font-medium text-white">Description</h2>
                                 <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
-                                <p className="text-lg text-white mb-2 font-medium">{property.description}</p>
+                                <p className="text-base md:text-lg text-white mb-2 font-medium">{property.description}</p>
                             </div>
 
                             <div className="mb-4">
-                                <h2 className="text-3xl font-medium text-white">Address</h2>
+                                <h2 className="text-xl md:text-3xl  font-medium text-white">Address</h2>
                                 <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
-                                <p className="text-lg text-white mb-2 font-medium">{property.address}</p>
+                                <p className="text-base md:text-lg text-white mb-2 font-medium">{property.address}</p>
                             </div>
 
                             <div className="mb-4">
-                                <h2 className="text-3xl font-medium text-white">Price</h2>
+                                <h2 className="text-xl md:text-3xl font-medium text-white">Price</h2>
                                 <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
-                                <p className="text-lg text-white mb-2 font-medium">Rs. {property.price}</p>
+                                <p className="text-base md:text-lg text-white mb-2 font-medium">Rs. {property.price}</p>
                             </div>
 
                             <div className="mb-6">
-                                <h2 className="text-3xl font-medium text-white">Area</h2>
+                                <h2 className="text-xl md:text-3xl font-medium text-white">Area</h2>
                                 <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
-                                <p className="text-lg text-white mb-2 font-medium">{property.area} sq. feet</p>
+                                <p className="text-base md:text-lg text-white mb-2 font-medium">{property.area} sq. feet</p>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-4 mt-4">
+                            <div className="hidden md:grid md:grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
                                 <div className="">
                                     <button className="text-white rounded-full w-full text-xl text-center px-4 py-4 hover:bg-pink-600 border-2 border-pink-600" onClick={toggleVisitModal}>Schedule Visit</button>
                                 </div>
@@ -273,7 +273,7 @@ const SinglePropertyPage = () => {
                             </div>
                         </div>
 
-                        <div className="rounded col-span-3">
+                        <div className="rounded md:col-span-3">
                             {Object.keys(property).length !== 0 &&
                                 (
                                     <>
@@ -285,17 +285,17 @@ const SinglePropertyPage = () => {
 
                     </div>
 
-                    <div className="mx-8">
+                    <div className="mx-4 md:mx-8">
                         <div className="p-4">
                             <h2 className="text-3xl font-medium ml-1 tracking-wide text-white">Amenities</h2>
                             <hr className="h-[1px] bg-gray-200 mt-2 mb-1 border-0 dark:bg-gray-700"/>
                         </div>
-                        <div className="grid grid-cols-4 mx-6 pb-10">
+                        <div className="grid grid-cols-2 md:grid-cols-4 mx-1 md:mx-6 sm:pb-10">
                             {property.amenities &&  property.amenities.map((value, index) => {
                                 if(value) {
                                     return (
                                         <>
-                                            <div className="p-2 place-items-center">
+                                            <div className="p-1 md:p-2 place-items-center">
                                                 <AiFillCheckCircle className={"text-green-500 mr-2 inline"}/>
                                                 <span className={"text-white inline text-lg"}>{amenityArr[index]}</span>
                                             </div>
@@ -315,6 +315,16 @@ const SinglePropertyPage = () => {
                         </div>
                     </div>
 
+                    <div className="md:hidden rounded-2xl mx-4 md:mx-8 md:col-span-2 p-1 pb-5 md:p-4">
+                        <div className=" grid grid-cols-2 gap-4 mt-4">
+                            <div className="">
+                                <button className="text-white rounded-full w-full text-base text-center px-2 py-4 hover:bg-pink-600 border-2 border-pink-600" onClick={toggleVisitModal}>Schedule Visit</button>
+                            </div>
+                            <div className="">
+                                <button className="text-white rounded-full w-full text-base text-center px-2 py-4 hover:bg-pink-700 border-pink-600 bg-pink-600" onClick={togglePaymentModal}>Pay Token Money</button>
+                            </div>
+                        </div>
+                    </div>
                 </>) : null}
 
                 <div className="bg-black bg-opacity-50 fixed inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={visitRef}>

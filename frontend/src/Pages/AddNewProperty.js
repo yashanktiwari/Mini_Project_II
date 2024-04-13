@@ -137,7 +137,7 @@ const AddNewProperty = () => {
             <CommonNavbar/>
 
             <section className={"bg-gray-900"}>
-                <div className="w-[70%] mx-auto">
+                <div className="w-[85%] md:w-[70%] mx-auto">
                     <h1 className={"font-bold text-4xl pt-4 text-white text-center"}>List a new property</h1>
                     <div className="mx-auto grid grid-rows-1">
                         <div className="border-b border-gray-900/10 pb-6 grid-cols-2">
@@ -349,97 +349,97 @@ const AddNewProperty = () => {
                                     >
                                         Amenities
                                     </label>
-                                    <div className="grid grid-cols-4 border border-gray-500 mt-4 mx-auto p-4 h-fit rounded-xl">
-                                        <div className="place-self-center">
-                                            <div>
+                                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border border-gray-500 mt-4 mx-auto p-4 h-fit rounded-xl">
+                                        {/*<div className="place-self-center">*/}
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"lift"} onChange={() => {
                                                     toggleAmenities(0);
                                                 }}/>
                                                 <label htmlFor={"lift"} className={"text-white"}>Lift</label>
                                             </div>
-                                            <div>
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"security"} onChange={() => {
                                                     toggleAmenities(1);
                                                 }}/>
                                                 <label htmlFor={"security"} className={"text-white"}>Security Guards</label>
                                             </div>
 
-                                            <div>
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"playground"} onChange={() => {
                                                     toggleAmenities(2);
                                                 }}/>
                                                 <label htmlFor={"playground"} className={"text-white"}>Playground</label>
                                             </div>
-                                        </div>
+                                        {/*</div>*/}
 
-                                        <div className="place-self-center">
-                                            <div>
+                                        {/*<div className="place-self-center">*/}
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"garden"} onChange={() => {
                                                     toggleAmenities(3);
                                                 }}/>
                                                 <label htmlFor={"garden"} className={"text-white"}>Garden</label>
                                             </div>
 
-                                            <div>
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"water-supply"} onChange={() => {
                                                     toggleAmenities(4);
                                                 }}/>
                                                 <label htmlFor={"water-supply"} className={"text-white"}>Water Supply</label>
                                             </div>
 
-                                            <div>
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"power-backup"} onChange={() => {
                                                     toggleAmenities(5);
                                                 }}/>
                                                 <label htmlFor={"power-backup"} className={"text-white"}>Power Backup</label>
                                             </div>
-                                        </div>
+                                        {/*</div>*/}
 
-                                        <div className="place-self-center">
-                                            <div>
+                                        {/*<div className="place-self-center">*/}
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"parking-area"} onChange={() => {
                                                     toggleAmenities(6);
                                                 }}/>
                                                 <label htmlFor={"parking-area"} className={"text-white"}>Parking Area</label>
                                             </div>
 
-                                            <div>
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"gym"} onChange={() => {
                                                     toggleAmenities(7);
                                                 }}/>
                                                 <label htmlFor={"gym"} className={"text-white"}>Gym</label>
                                             </div>
 
-                                            <div>
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"shopping-mall"} onChange={() => {
                                                     toggleAmenities(8);
                                                 }}/>
                                                 <label htmlFor={"shopping-mall"} className={"text-white"}>Shopping Mall</label>
                                             </div>
-                                        </div>
+                                        {/*</div>*/}
 
-                                        <div className="place-self-center">
-                                            <div>
+                                        {/*<div className="place-self-center">*/}
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"hospital"} onChange={() => {
                                                     toggleAmenities(9);
                                                 }}/>
                                                 <label htmlFor={"hospital"} className={"text-white"}>Hospital</label>
                                             </div>
 
-                                            <div>
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"schools"} onChange={() => {
                                                     toggleAmenities(10);
                                                 }}/>
                                                 <label htmlFor={"schools"} className={"text-white"}>Schools</label>
                                             </div>
 
-                                            <div>
+                                            <div className="md:pl-4">
                                                 <input type={"checkbox"} className="mr-2" id={"market-area"} onChange={() => {
                                                     toggleAmenities(11);
                                                 }}/>
                                                 <label htmlFor={"market-area"} className={"text-white"}>Market Area</label>
                                             </div>
-                                        </div>
+                                        {/*</div>*/}
                                     </div>
                                 </div>
                             </div>

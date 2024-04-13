@@ -56,17 +56,17 @@ const WishlistPage = () => {
                 {userStore.user.wishlist && userStore.user.wishlist.length == 0 ? (
                     <>
                         <div className={"flex items-center justify-center min-h-[560px]"}>
-                            <div className={"h-fit w-fit px-16 py-6 rounded-xl flex flex-col items-center justify-center sm-w-fit md:mx-4 sm:mx-4"}
+                            <div className={"h-fit w-fit px-4 md:px-16 py-6 rounded-xl flex flex-col items-center justify-center sm-w-fit md:mx-4 sm:mx-4"}
                             >
-                                <h1 className={"font-semibold text-[#F5FEFD] text-4xl"}>Your wishlist is currently empty</h1>
-                                <h1 className={"text-xl mt-2 text-[#F5FEFD]"}>
-                                    Check out the <Link to={'/dashboard'}                                           className={"cursor-pointer text-blue-500"}>Latest Properties</Link> that are listed
+                                <h1 className={"font-semi-bold text-center text-[#F5FEFD] text-2xl md:text-4xl"}>Your wishlist is currently empty</h1>
+                                <h1 className={"text-lg md:text-xl mt-2 text-[#F5FEFD]"}>
+                                    Check out the <Link to={'/dashboard'}                                           className={"cursor-pointer text-blue-500"}>Latest Properties</Link>
                                 </h1>
                             </div>
                         </div>
                     </>
                 ) : (
-                    <div className={"py-8 px-12 min-h-[80vh] bg-gray-900"}>
+                    <div className={"py-8 px-4 md:px-12 min-h-[80vh] bg-gray-900"}>
                         <h1 className={"font-semibold text-3xl text-[#F5FEFD]"}>My Wishlist
                             ({userStore.user?.wishlist?.length} {userStore.user?.wishlist?.length == 1 ? (
                                 <>
@@ -79,7 +79,7 @@ const WishlistPage = () => {
                             )})
                         </h1>
 
-                        <div className={"h-fit px-4 py-5 rounded-xl min-h-[768px]"}>
+                        <div className={"h-fit px-1 md:px-4 py-5 rounded-xl min-h-[768px]"}>
                             {userStore.user.wishlist && userStore.user?.wishlist.map((property) => {
                                 return (
 
@@ -93,27 +93,27 @@ const WishlistPage = () => {
                                         <div className="flex flex-col justify-around p-4 leading-normal ">
                                             <div>
                                             <Link to={`/properties/${property.propertyId}`}>
-                                                <h5 className="mb-4 text-3xl font-bold tracking-wide text-white">{property.propertyTitle}</h5>
+                                                <h5 className="mb-2 md:mb-4 text-xl md:text-3xl font-bold tracking-wide text-white">{property.propertyTitle}</h5>
                                             </Link>
                                             </div>
 
                                             <div className="mb-2">
-                                                <p className="text-xl inline font-semibold tracking-tight text-white">Address : </p>
+                                                <p className="text-lg md:text-xl inline font-semibold tracking-tight text-white">Address : </p>
                                                 <p className="inline text-white tracking-wide">{property.propertyAddress}</p>
                                             </div>
 
                                             <div className="mb-2">
-                                                <p className="text-xl inline font-semibold tracking-tight text-white">Area : </p>
+                                                <p className="text-lg md:text-xl inline font-semibold tracking-tight text-white">Area : </p>
                                                 <p className="inline text-white tracking-wide">{property.area} sq. ft.</p>
                                             </div>
 
                                             <div className="mb-2">
-                                                <p className="text-lg inline font-semibold tracking-tight text-white">Price : </p>
+                                                <p className="text-lg md:text-xl inline font-semibold tracking-tight text-white">Price : </p>
                                                 <p className="inline text-white tracking-wide">Rs. {property.propertyPrice}</p>
                                             </div>
                                         </div>
 
-                                        <button className="ml-auto mt-auto cursor-pointer z-10 text-[#F5FEFD] hover:bg-red-500 bg-red-700 rounded-xl p-2 m-4"
+                                        <button className="ml-auto mt-auto cursor-pointer z-10 text-[#F5FEFD] hover:bg-red-500 bg-red-700 rounded-xl m-3 p-2 md:m-4"
                                             onClick={(e) => handleRemoveFromCart(property.propertyId)}>
                                             Remove
                                         </button>

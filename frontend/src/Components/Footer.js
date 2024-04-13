@@ -4,8 +4,8 @@ import logo from "../assets/img/estately-logo.png"
 const Footer = () => {
     return (
         <>
-            <footer className="bg-black">
-                <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+            <footer className="bg-black mx-auto">
+                <div className="md:px-10 w-full max-w-screen-xl p-4 py-6 lg:py-8 mx-auto">
                     <div className="md:flex md:justify-between">
                         <div className="mb-6 md:mb-0">
                             <Link to="/" className="flex items-center">
@@ -13,19 +13,19 @@ const Footer = () => {
                                      alt="Estately Logo"/>
                             </Link>
                         </div>
-                        <div className="w-1/3 ">
-                            <input className="w-3/5 p-2 pl-3 rounded-full inline mr-4" placeholder="Subscribe to our News Letter!"/>
+                        <div className="w-full md:w-1/3 mb-4 flex justify-end">
+                            <input className="w-4/5 sm:w-1/2 md:w-3/5 p-2 pl-3 rounded-full inline text-sm mr-4 mb-3" placeholder="Subscribe to our News Letter!"/>
                             <button type="button"
                                     className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Subscribe
                             </button>
                         </div>
-                        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                            <div>
-                                <h2 className="mb-6 text-sm font-semibold uppercase text-white">Estately</h2>
+                    </div>
+                    <div>
+                        <div className="grid md:grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-3">
+                            <div className="md:ml-4">
+                                <h2 className="mb-4 text-sm font-semibold uppercase text-white">Estately</h2>
                                 <ul className="text-gray-400 dark:text-gray-400 font-medium">
-
-
-                                    <li className="mb-4">
+                                    <li className="mb-2">
                                         <a target={"_blank"} href="https://medium.com/@assist.estately" className="hover:underline">Articles</a>
                                     </li>
                                     <li >
@@ -33,34 +33,33 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
-                            <div>
-                                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase text-white">Follow
-                                    us</h2>
+                            <div className="md:ml-4">
+                                <h2 className="mb-4 text-sm font-semibold uppercase text-white">Legal</h2>
                                 <ul className="text-gray-400 dark:text-gray-400 font-medium">
-                                    <li className="mb-4">
-                                        <a target={"_blank"} href="https://medium.com/@assist.estately">Medium</a>
+                                    <li className="mb-2">
+                                        <Link to="/privacypolicy" className="hover:underline">Privacy Policy</Link>
                                     </li>
-                                    <li className="mb-4">
+                                    <li>
+                                        <Link to="/termsandcondition" className="hover:underline">Terms &amp; Conditions</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="md:ml-4">
+                                <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase text-white">Follow us</h2>
+                                <ul className="text-gray-400 dark:text-gray-400 font-medium">
+                                    <li className="mb-2">
+                                        <a target={"_blank"} className="hover:underline" href="https://medium.com/@assist.estately">Medium</a>
+                                    </li>
+                                    <li className="mb-2">
                                         <a target={"_blank"} href="https://www.instagram.com/estately_support/"
                                            className="hover:underline ">Instagram</a>
                                     </li>
-                                    <li className="mb-4">
+                                    <li className="mb-2">
                                         <a target={"_blank"} href="https://twitter.com/EstatelyAssist"
                                            className="hover:underline ">Twitter</a>
                                     </li>
                                     <li>
                                         <a target={"_blank"} href="https://discord.com/channels/1097948836904837302/1097948837420732500" className="hover:underline">Discord</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h2 className="mb-6 text-sm font-semibold uppercase text-white">Legal</h2>
-                                <ul className="text-gray-400 dark:text-gray-400 font-medium">
-                                    <li className="mb-4">
-                                        <Link to="/privacypolicy" className="hover:underline">Privacy Policy</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/termsandcondition" className="hover:underline">Terms &amp; Conditions</Link>
                                     </li>
                                 </ul>
                             </div>

@@ -2,6 +2,9 @@ import HomeNavbar from "../Components/HomeNavbar";
 import Footer from "../Components/Footer";
 import CommonNavbar from "../Components/CommonNavbar";
 import namanPic from "../assets/img/Naman.jpg";
+import anujPic from "../assets/img/Anuj.jpeg";
+import yashankPic from "../assets/img/Yashank.jpeg";
+import kushagraPic from "../assets/img/Kushagra.jpeg";
 import {useEffect, useState} from "react";
 import verifyToken from "../utils/verifyToken";
 import {useDispatch} from "react-redux";
@@ -36,14 +39,14 @@ const AboutUs = () => {
                             Here at Estately we focus on providing the best services to our customers.
                         </p>
                     </div>
-                    <div className="grid gap-12 mb-6 lg:mb-16 md:grid-cols-2">
+                    <div className="grid gap-10 mb-6 lg:mb-16 sm:grid-cols-1 lg:grid-cols-2">
                         <div
-                            className="items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
+                            className="mx-8 md:mx-auto items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
                             <a href="#">
-                                <div className="overflow-hidden">
-                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[14rem] h-[13rem]"
-                                     src="https://media.licdn.com/dms/image/D4D03AQEdYZ_s62Z-ZA/profile-displayphoto-shrink_800_800/0/1673232044265?e=1687996800&v=beta&t=PuppL3kAkytBhh_m1T8etgzSdpzB-bPShpi0OnzfQYs"
-                                     alt="Yashank Tiwari" />
+                                <div className="overflow-hidden justify-around flex">
+                                    <img className="scale-110 hover:scale-125 transition-all duration-500 rounded-lg  sm:rounded-none sm:rounded-l-lg w-[16rem] h-[13rem]"
+                                         src={yashankPic}
+                                         alt="Yashank Tiwari" />
                                 </div>
                             </a>
                             <div className="p-5">
@@ -100,13 +103,13 @@ const AboutUs = () => {
                             </div>
                         </div>
                         <div
-                            className="items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
+                            className="mx-8 md:mx-auto items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
                             <a href="#">
-                                <div className="overflow-hidden">
-                                <img className="hover:scale-110 transition-all duration-500 w-[18rem] rounded-lg sm:rounded-none sm:rounded-l-lg h-[13rem]"
-                                     src="https://media.licdn.com/dms/image/D4D03AQEp2aTJbe3LgQ/profile-displayphoto-shrink_800_800/0/1682525444955?e=1687996800&v=beta&t=0jNkkzqKmwznHcXNgAHy6nWj9lw-SpwUWlHhXkCLisE"
-                                     alt="Anuj Ruhela" />
-                                </div>
+                                <div className="overflow-hidden justify-around flex">
+                                    <img className="hover:scale-110 transition-all duration-500 w-[18rem] rounded-lg sm:rounded-none sm:rounded-l-lg h-[13rem]"
+                                         src={anujPic}
+                                         alt="Anuj Ruhela" />
+                                    </div>
                             </a>
                             <div className="p-5">
                                 <h3 className="text-xl font-bold tracking-tight text-white">
@@ -162,12 +165,12 @@ const AboutUs = () => {
                             </div>
                         </div>
                         <div
-                            className="items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
+                            className="mx-8 md:mx-auto items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
                             <a href="#">
-                                <div className="overflow-hidden">
-                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[16rem] h-[13rem]"
-                                     src={namanPic}
-                                     alt="Naman Saini" />
+                                <div className="overflow-hidden justify-around flex">
+                                    <img className="scale-110 hover:scale-125 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[16rem] h-[13rem]"
+                                         src={namanPic}
+                                         alt="Naman Saini" />
                                 </div>
                             </a>
                             <div className="p-5">
@@ -224,12 +227,12 @@ const AboutUs = () => {
                             </div>
                         </div>
                         <div
-                            className="items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
+                            className="mx-8 md:mx-auto items-center rounded-lg shadow sm:flex bg-gray-800 border-gray-700 overflow-hidden">
                             <a href="#">
-                                <div className="overflow-hidden">
-                                <img className="hover:scale-110 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[16rem] h-[13rem]"
-                                     src="https://media.licdn.com/dms/image/D4D03AQG5iQC2uy4t9A/profile-displayphoto-shrink_800_800/0/1671604883602?e=1687996800&v=beta&t=JuIPdzsfm2k89fxZCp_LwrlSeXKIJ8duQ5PgEhFhfW0"
-                                     alt="Kushagra Gupta" />
+                                <div className="overflow-hidden mx-auto justify-around flex">
+                                    <img className="scale-110 hover:scale-125 transition-all duration-500 rounded-lg sm:rounded-none sm:rounded-l-lg w-[16rem] h-[13rem]"
+                                         src={kushagraPic}
+                                         alt="Kushagra Gupta" />
                                 </div>
                             </a>
                             <div className="p-5">

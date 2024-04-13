@@ -48,6 +48,7 @@ const DashboardCarousel = () => {
         setCurrentIndex(newIndex);
     }
 
+
     const goToSlide = (slideIndex) => {
         setCurrentIndex(slideIndex);
     }

@@ -164,29 +164,38 @@ const ProfilePage = () => {
         <>
             <CommonNavbar/>
             <section className="bg-gray-900">
-                <div className="grid grid-rows-2 p-8">
-                    <div className="bg-gray-800 m-5 rounded-2xl p-4 grid grid-cols-8">
-                        <div className="grid place-items-center col-span-2">
+                <div className="grid md:grid-rows-2 p-8">
+                    <div className="bg-gray-800 m-5 rounded-2xl p-4 grid sm:grid-cols-8">
 
-                            {userStore.user?.profile_image ? (
-                                <img src={userStore.user.profile_image} alt="..." className={"border-4 border-white rounded-full h-32 w-32"}
-                                />
-                            ) : null}
+                        <div className="flex justify-between col-span-8 sm:grid sm:place-items-center sm:col-span-2">
+                            <div className="sm:hidden"></div>
+                            <div className="grid place-items-center ml-5 sm:ml-0 col-span-2">
+                                {userStore.user?.profile_image ? (
+                                    <img src={userStore.user.profile_image} alt="..." className={"border-4 border-white rounded-full h-32 w-32"}
+                                    />
+                                ) : null}
+                            </div>
+                            <div className="sm:hidden block">
+                                <button className="rounded hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)]" onClick={toggleModal}>
+                                    <img src="https://www.svgrepo.com/show/502640/edit-1.svg" className="invert h-6 md:h-10 bg-transparent " alt="..." />
+                                </button>
+                            </div>
                         </div>
 
-                        <div className="col-span-5">
 
-                            <p className="font-semibold tracking-wide text-4xl mt-4 text-white">{username}</p>
+                        <div className="col-span-5 ml-4 md:ml-0">
 
-                            <p className="font-medium text-2xl mt-4 capitalize text-gray-100">{userStore.user.role}</p>
+                            <p className="font-semibold text-center md:text-left tracking-wide text-xl md:text-4xl mt-2 md:mt-4 text-white">{username}</p>
+
+                            <p className="font-medium text-center md:text-left text-lg md:text-2xl mt-2 md:mt-4 capitalize text-gray-100">{userStore.user.role}</p>
 
 
-                            <div className="mt-4">
-                                <p className="font-medium text-2xl mt-4 capitalize text-gray-300 hover:text-gray-100 inline">VID : </p>
+                            <div className="mt-2 md:mt-4 text-center md:text-left">
+                                <p className="font-medium text-lg md:text-2xl mt-2 md:mt-4 capitalize text-gray-300 hover:text-gray-100 inline">VID : </p>
 
-                                <p className="font-medium text-2xl mt-4 mr-2 capitalize text-gray-300 hover:text-gray-100 inline" ref={vidHiddenRef}>XXXX XXXX {userStore.user?.vid?.substring(8, 12)}</p>
+                                <p className="font-medium text-lg md:text-2xl mt-2 md:mt-4 mr-2 capitalize text-gray-300 hover:text-gray-100 inline" ref={vidHiddenRef}>XXXX XXXX {userStore.user?.vid?.substring(8, 12)}</p>
 
-                                <p className="hidden font-medium text-2xl mt-5 capitalize text-gray-300 hover:text-gray-100 mr-2 inline" ref={vidRef}>{userStore.user?.vid?.substring(0, 4)} {userStore.user?.vid?.substring(4, 8)} {userStore.user?.vid?.substring(8, 12)}</p>
+                                <p className="hidden font-medium text-lg md:text-2xl mt-5 capitalize text-gray-300 hover:text-gray-100 mr-2 inline" ref={vidRef}>{userStore.user?.vid?.substring(0, 4)} {userStore.user?.vid?.substring(4, 8)} {userStore.user?.vid?.substring(8, 12)}</p>
 
                                 {isVisible ? (
                                     <>
@@ -201,7 +210,7 @@ const ProfilePage = () => {
 
                         </div>
 
-                        <div className="">
+                        <div className="hidden sm:block">
                             <button className="rounded hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)]" onClick={toggleModal}>
                                 <img src="https://www.svgrepo.com/show/502640/edit-1.svg" className="invert h-10 bg-transparent " alt="..." />
                             </button>
@@ -209,42 +218,42 @@ const ProfilePage = () => {
 
                     </div>
 
-                    <div className="grid grid-cols-2 gap-8 m-5">
+                    <div className="grid md:grid-cols-2 gap-8 m-5">
 
                         <div className="bg-gray-800 rounded-2xl p-4">
-                            <h3 className="text-3xl mb-3 text-white">Contact Details </h3>
+                            <h3 className="text-xl md:text-3xl mb-3 font-bold text-white">Contact Details </h3>
 
                             <div className={"mb-2"}>
                                 <label>
-                                    <img src="https://www.svgrepo.com/show/435312/email.svg" className="h-7 inline invert" alt={"...."}/>
+                                    <img src="https://www.svgrepo.com/show/435312/email.svg" className="h-5 md:h-7 inline invert" alt={"...."}/>
                                 </label>
-                                <span className="ml-2 text-lg text-white">{email}</span>
+                                <span className="ml-2 text-base md:text-lg text-white">{email}</span>
                             </div>
 
                             <div className={"mb-2"}>
                                 <label>
-                                    <img src="https://www.svgrepo.com/show/511585/call-191.svg" className="h-7 inline invert"  alt={"..."}/>
+                                    <img src="https://www.svgrepo.com/show/511585/call-191.svg" className="h-5 md:h-7 inline invert"  alt={"..."}/>
                                 </label>
-                                <span className="ml-2 text-lg text-white">+91-{userStore.user.phone}</span>
+                                <span className="ml-2 text-base md:text-lg text-white">+91-{userStore.user.phone}</span>
 
                             </div>
 
                             <div className={"mb-2"}>
                                 <label className="">
-                                    <svg viewBox="0 0 24 24" fill="none" className="h-7 inline invert" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 1C2.34315 1 1 2.34315 1 4V15C1 16.6569 2.34315 18 4 18H6V22C6 22.388 6.22446 22.741 6.57584 22.9056C6.92723 23.0702 7.3421 23.0166 7.64018 22.7682L13.362 18H20C21.6569 18 23 16.6569 23 15V4C23 2.34315 21.6569 1 20 1H4Z" fill="#000000"></path> </g></svg>
+                                    <svg viewBox="0 0 24 24" fill="none" className="h-5 md:h-7 inline invert" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 1C2.34315 1 1 2.34315 1 4V15C1 16.6569 2.34315 18 4 18H6V22C6 22.388 6.22446 22.741 6.57584 22.9056C6.92723 23.0702 7.3421 23.0166 7.64018 22.7682L13.362 18H20C21.6569 18 23 16.6569 23 15V4C23 2.34315 21.6569 1 20 1H4Z" fill="#000000"></path> </g></svg>
                                 </label>
-                                <span className={"ml-2 text-lg text-white"}>+91-{userStore.user.altPhone}</span>
+                                <span className={"ml-2 text-base md:text-lg text-white"}>+91-{userStore.user.altPhone}</span>
 
                             </div>
                         </div>
 
                         <div className="bg-gray-800 rounded-2xl p-4">
-                            <h3 className="text-3xl mb-3 text-white">Address Details </h3>
+                            <h3 className="text-xl md:text-3xl mb-3 font-bold text-white">Address Details </h3>
                             <div className="mb-2">
                                 <label>
-                                    <img src="https://www.svgrepo.com/show/418950/address-location-map.svg" alt={"..."} className={"h-7 inline invert"}/>
+                                    <img src="https://www.svgrepo.com/show/418950/address-location-map.svg" alt={"..."} className={"h-5 md:h-7 inline invert"}/>
                                 </label>
-                                <span className="ml-2 text-lg text-white">{userStore.user.address}</span>
+                                <span className="ml-2 text-base md:text-lg text-white">{userStore.user.address}</span>
                                 {/*<textarea value={address}*/}
                                 {/*          className={"border border-black p-1 block w-[15rem] resize-none overflow-hidden overflow-y-scroll"}*/}
                                 {/*          onChange={(e) => {*/}
@@ -257,17 +266,17 @@ const ProfilePage = () => {
 
                             <div className="mb-2">
                                 <label>
-                                    <svg fill="#000000" viewBox="0 0 24 24" className="h-7 inline invert" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M13,9a1,1,0,0,0-1-1H3A1,1,0,0,0,2,9V22H13ZM6,20H4V18H6Zm0-4H4V14H6Zm0-4H4V10H6Zm5,8H8V18h3Zm0-4H8V14h3Zm0-4H8V10h3Zm3.5-6H6V3A1,1,0,0,1,7,2H17a1,1,0,0,1,1,1v7H15V6.5A.5.5,0,0,0,14.5,6ZM22,13v9H19.5V18h-2v4H15V13a1,1,0,0,1,1-1h5A1,1,0,0,1,22,13Z"></path></g></svg>
+                                    <svg fill="#000000" viewBox="0 0 24 24" className="h-5 md:h-7 inline invert" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M13,9a1,1,0,0,0-1-1H3A1,1,0,0,0,2,9V22H13ZM6,20H4V18H6Zm0-4H4V14H6Zm0-4H4V10H6Zm5,8H8V18h3Zm0-4H8V14h3Zm0-4H8V10h3Zm3.5-6H6V3A1,1,0,0,1,7,2H17a1,1,0,0,1,1,1v7H15V6.5A.5.5,0,0,0,14.5,6ZM22,13v9H19.5V18h-2v4H15V13a1,1,0,0,1,1-1h5A1,1,0,0,1,22,13Z"></path></g></svg>
                                 </label>
-                                <span className="ml-2 text-lg text-white">{userStore.user.city}</span>
+                                <span className="ml-2 text-base md:text-lg text-white">{userStore.user.city}</span>
 
                             </div>
 
                             <div className="mb-2">
                                 <label>
-                                    <img src="https://www.svgrepo.com/show/308274/government-building-building-museum-power.svg" className={"inline h-7 invert"} alt="..."/>
+                                    <img src="https://www.svgrepo.com/show/308274/government-building-building-museum-power.svg" className={"inline h-5 md:h-7 invert"} alt="..."/>
                                 </label>
-                                <span className={"ml-2 text-lg text-white"}>{userStore.user.state}</span>
+                                <span className={"ml-2 text-base md:text-lg text-white"}>{userStore.user.state}</span>
                                 {/*<input value={state} className={"border border-black p-1 block w-[15rem]"} onChange={(e) => {*/}
                                 {/*    setState(e.target.value);*/}
                                 {/*}}/>*/}
@@ -277,10 +286,10 @@ const ProfilePage = () => {
                 </div>
             </section>
 
-            <div className="bg-black bg-opacity-50 absolute top-4 inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={overlayRef}>
-                <div className="bg-gray-800 py-2 px-3 rounded shadow-xl text-white w-[70%]">
+            <div className="bg-black bg-opacity-50 w-full h-full absolute top-56 md:top-6 inset-0 justify-center items-center px-6 py-3 text-white rounded shadow hidden" ref={overlayRef}>
+                <div className="bg-gray-800 py-2 px-3 rounded shadow-xl text-white w-[85%] md:w-[70%]">
                     <div className="flex justify-between items-center mb-4">
-                        <h4 className="text-4xl font-bold">
+                        <h4 className="text-2xl md:text-4xl font-bold">
                             Update Details
                         </h4>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"

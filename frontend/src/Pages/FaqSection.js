@@ -78,7 +78,7 @@ const FaqSection = () => {
 
             <div className="bg-gray-900">
                 <div className="py-10 mx-auto w-full max-w-5xl">
-                    <h3 className="mb-8 text-4xl text-white text-center leading-0 font-extrabold tracking-wide sm:text-4xl sm:leading-10">
+                    <h3 className="mb-8 text-2xl md:text-4xl text-white text-center leading-0 font-extrabold tracking-wide sm:text-4xl sm:leading-10">
                         Frequently Asked Questions
                     </h3>
                     <hr className="border-0 border-gray-100" />

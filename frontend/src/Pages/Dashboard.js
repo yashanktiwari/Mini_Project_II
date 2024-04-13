@@ -62,7 +62,7 @@ const Dashboard = () => {
                 userStore && userStore.user.state && userStore.user.city ? <FilterBox cState={userStore.user.state} cCity={userStore.user.city} setFilters={setFilters}/> : null
             }
 
-            <div className="grid grid-cols-2 gap-12 mx-12 mt-10 pb-8">
+            <div className="grid md:grid-cols-2 gap-12 mx-12 mt-10 pb-8">
                 {
                     filteredProperties.length == 0 ? (
                         <>
@@ -76,7 +76,7 @@ const Dashboard = () => {
                                                     className="hover:scale-105 transition-all duration-500 object-cover w-full rounded-t-lg h-[12rem] md:w-2/5 md:rounded-none md:rounded-l-lg"
                                                     src={property.primary_img} alt="Property_Image" />
                                                 <div className="flex flex-col justify-between p-4 leading-normal">
-                                                    <h5 className="mb-4 text-2xl font-bold tracking-tight text-white">{property.title}</h5>
+                                                    <h5 className="md:mb-4 mb-2 text-2xl font-bold tracking-tight text-white">{property.title}</h5>
                                                 {/*    <span >*/}
                                                 {/*    <p className="text-lg inline font-semibold tracking-tight text-white">Owner :</p>*/}
                                                 {/*    <p className="inline text-white tracking-wide">{}</p>*/}
